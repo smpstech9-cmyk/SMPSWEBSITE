@@ -1,0 +1,20 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "SMPS Tech Lab Authoritative API Contracts",
+    "version": "1.0.0",
+    "description": "Authoritative typed contracts for Frontend-Backend communication."
+  },
+  "paths": {
+    "/api/v1/health": {
+      "get": {
+        "summary": "Health and readiness probe",
+        "responses": {
+          "200": {
+            "description": "Service operational"
+          }
+        }
+      }
+    }
+  }
+}

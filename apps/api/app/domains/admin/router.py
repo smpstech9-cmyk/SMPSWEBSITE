@@ -1,0 +1,1 @@
+"""Admin router.py definitions."""

@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /my-courses/
+Disallow: /settings/
+Disallow: /api/
+
+Sitemap: https://smps.in/sitemap.xml
