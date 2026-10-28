@@ -1,4 +1,5 @@
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/v1";
+const RAW_API = process.env.NEXT_PUBLIC_API_URL || "https://smpswebsite.onrender.com";
+const API_BASE_URL = RAW_API.endsWith("/api/v1") ? RAW_API : `${RAW_API}/api/v1`;
 
 export interface ApiErrorResponse {
   detail: string | Array<{ loc: string[]; msg: string; type: string }>;

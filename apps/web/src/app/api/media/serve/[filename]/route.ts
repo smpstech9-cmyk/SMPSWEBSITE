@@ -3,7 +3,7 @@ import path from "path";
 import { existsSync } from "fs";
 import { readFile } from "fs/promises";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://smpswebsite.onrender.com";
 
 export async function GET(
   request: NextRequest,
