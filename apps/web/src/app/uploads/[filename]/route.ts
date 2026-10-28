@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { readFile, writeFile, mkdir } from "fs/promises";
 import path from "path";
 import { existsSync } from "fs";
+import { readFile } from "fs/promises";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
@@ -16,32 +16,33 @@ export async function GET(
       return new NextResponse("Invalid filename", { status: 400 });
     }
 
-    const uploadsDir = path.join(process.cwd(), "public", "uploads");
-    const filePath = path.join(uploadsDir, filename);
-
-    // 1. If it already exists on disk, serve it immediately
-    if (existsSync(filePath)) {
-      const fileBuffer = await readFile(filePath);
-      const ext = path.extname(filename).toLowerCase();
-      const mimeTypes: Record<string, string> = {
-        ".png": "image/png",
-        ".jpg": "image/jpeg",
-        ".jpeg": "image/jpeg",
-        ".webp": "image/webp",
-        ".svg": "image/svg+xml",
-        ".gif": "image/gif",
-      };
-      const contentType = mimeTypes[ext] || "application/octet-stream";
-
-      return new NextResponse(fileBuffer, {
-        headers: {
-          "Content-Type": contentType,
-          "Cache-Control": "public, max-age=31536000, immutable",
-        },
-      });
+    // 1. If it happens to exist locally (e.g. bundled static assets), serve it
+    try {
+      const localPath = path.join(process.cwd(), "public", "uploads", filename);
+      if (existsSync(localPath)) {
+        const fileBuffer = await readFile(localPath);
+        const ext = path.extname(filename).toLowerCase();
+        const mimeTypes: Record<string, string> = {
+          ".png": "image/png",
+          ".jpg": "image/jpeg",
+          ".jpeg": "image/jpeg",
+          ".webp": "image/webp",
+          ".svg": "image/svg+xml",
+          ".gif": "image/gif",
+        };
+        const contentType = mimeTypes[ext] || "image/jpeg";
+        return new NextResponse(fileBuffer, {
+          headers: {
+            "Content-Type": contentType,
+            "Cache-Control": "public, max-age=31536000, immutable",
+          },
+        });
+      }
+    } catch {
+      // Ignore local check on cloud environments
     }
 
-    // 2. Otherwise fetch from the database via FastAPI backend
+    // 2. Authoritative Database Fetch: Stream directly from the Database via backend API
     const backendRes = await fetch(`${API_BASE}/api/v1/media/file/${encodeURIComponent(filename)}`, {
       cache: "no-store",
     });
@@ -51,14 +52,6 @@ export async function GET(
       const buffer = Buffer.from(arrayBuf);
       const contentType = backendRes.headers.get("content-type") || "image/jpeg";
 
-      // Cache back to disk asynchronously so subsequent hits are instant
-      try {
-        await mkdir(uploadsDir, { recursive: true });
-        await writeFile(filePath, buffer);
-      } catch (cacheErr) {
-        console.warn("Could not cache image to disk:", cacheErr);
-      }
-
       return new NextResponse(buffer, {
         headers: {
           "Content-Type": contentType,
@@ -67,9 +60,9 @@ export async function GET(
       });
     }
 
-    return new NextResponse("Image not found in database or storage", { status: 404 });
+    return new NextResponse("Image not found in database", { status: 404 });
   } catch (err: any) {
-    console.error("Error serving media:", err);
+    console.error("Error streaming image from database:", err);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }
