@@ -25,10 +25,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Ensure upload directory exists
-    const uploadsDir = path.join(process.cwd(), "public", "uploads");
-    await mkdir(uploadsDir, { recursive: true });
-
     // Generate safe, unique filename
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
@@ -42,13 +38,18 @@ export async function POST(request: NextRequest) {
       .replace(/[^a-z0-9]/g, "-")
       .slice(0, 30);
     const fileName = `${safeBaseName}-${Date.now()}-${randomHash}${cleanExt}`;
-    const filePath = path.join(uploadsDir, fileName);
-
-    await writeFile(filePath, buffer);
-
     const publicUrl = `/uploads/${fileName}`;
 
-    // Record asset in the database via backend API
+    // On local systems, optionally cache to disk; on Vercel (read-only filesystem), safely skip
+    try {
+      const uploadsDir = path.join(process.cwd(), "public", "uploads");
+      await mkdir(uploadsDir, { recursive: true });
+      await writeFile(path.join(uploadsDir, fileName), buffer);
+    } catch {
+      // Intentionally non-fatal: Vercel / serverless operates with a read-only filesystem
+    }
+
+    // Authoritative Database Persistence via FastAPI backend
     let dbAsset = null;
     try {
       const dbRes = await fetch(`${API_BASE}/api/v1/media/record`, {
@@ -62,11 +63,23 @@ export async function POST(request: NextRequest) {
           data_base64: buffer.toString("base64"),
         }),
       });
+
       if (dbRes.ok) {
         dbAsset = await dbRes.json();
+      } else {
+        const errText = await dbRes.text();
+        console.error("Database media recording failed:", errText);
+        return NextResponse.json(
+          { error: `Database failed to store media: ${errText || dbRes.statusText}` },
+          { status: 502 }
+        );
       }
-    } catch (e) {
-      console.warn("Backend media database recording non-fatal warning:", e);
+    } catch (e: any) {
+      console.error("Backend database connection error:", e);
+      return NextResponse.json(
+        { error: `Could not connect to database backend: ${e.message}` },
+        { status: 502 }
+      );
     }
 
     return NextResponse.json({
