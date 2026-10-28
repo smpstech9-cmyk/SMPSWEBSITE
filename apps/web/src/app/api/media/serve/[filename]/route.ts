@@ -7,9 +7,10 @@ const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { filename: string } }
+  props: { params: Promise<{ filename: string }> }
 ) {
   try {
+    const params = await props.params;
     const { filename } = params;
     if (!filename || filename.includes("..") || filename.includes("/")) {
       return new NextResponse("Invalid filename", { status: 400 });
