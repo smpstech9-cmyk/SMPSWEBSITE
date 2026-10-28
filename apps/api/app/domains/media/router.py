@@ -1,8 +1,9 @@
 """FastAPI router for Gallery items and Media assets."""
 import uuid
+import base64
 from typing import List
 from datetime import datetime, timezone
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status, Response
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, delete
 
@@ -118,18 +119,65 @@ async def batch_sync_gallery(payload: GalleryBatchSync, db: AsyncSession = Depen
 
 @router.post("/media/record", response_model=MediaAssetRead, status_code=status.HTTP_201_CREATED)
 async def record_media_asset(payload: MediaAssetCreate, db: AsyncSession = Depends(get_db)):
-    """Record a newly uploaded media asset in the database."""
+    """Record a newly uploaded media asset directly into the database."""
     asset = MediaAsset(
         id=f"asset-{uuid.uuid4().hex[:12]}",
         filename=payload.filename,
         file_url=payload.file_url,
         mime_type=payload.mime_type,
         size_bytes=payload.size_bytes,
+        data_base64=payload.data_base64,
     )
     db.add(asset)
     await db.commit()
     await db.refresh(asset)
     return asset
+
+
+@router.get("/media/file/{filename}")
+async def serve_media_by_filename(filename: str, db: AsyncSession = Depends(get_db)):
+    """Fetch and stream image binary data directly from the database by filename."""
+    stmt = select(MediaAsset).where(MediaAsset.filename == filename).order_by(MediaAsset.created_at.desc())
+    result = await db.execute(stmt)
+    asset = result.scalars().first()
+    if not asset or not asset.data_base64:
+        raise HTTPException(status_code=404, detail="Image asset not found in database")
+    
+    try:
+        img_bytes = base64.b64decode(asset.data_base64)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail="Failed to decode image data from database")
+
+    return Response(
+        content=img_bytes,
+        media_type=asset.mime_type,
+        headers={
+            "Cache-Control": "public, max-age=31536000, immutable",
+            "Content-Length": str(len(img_bytes)),
+        },
+    )
+
+
+@router.get("/media/id/{asset_id}")
+async def serve_media_by_id(asset_id: str, db: AsyncSession = Depends(get_db)):
+    """Fetch and stream image binary data directly from the database by asset ID."""
+    asset = await db.get(MediaAsset, asset_id)
+    if not asset or not asset.data_base64:
+        raise HTTPException(status_code=404, detail="Image asset not found in database")
+    
+    try:
+        img_bytes = base64.b64decode(asset.data_base64)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail="Failed to decode image data from database")
+
+    return Response(
+        content=img_bytes,
+        media_type=asset.mime_type,
+        headers={
+            "Cache-Control": "public, max-age=31536000, immutable",
+            "Content-Length": str(len(img_bytes)),
+        },
+    )
 
 
 @router.get("/media", response_model=List[MediaAssetRead])

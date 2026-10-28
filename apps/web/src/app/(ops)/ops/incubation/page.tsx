@@ -91,10 +91,10 @@ export default function IncubationEditorPage() {
           <div className="flex items-center gap-1.5 text-xs text-[#6e6e73] font-medium mb-1">
             <Link href="/ops" className="hover:text-[#0071e3]">Operations</Link>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-[#1d1d1f] font-semibold">Incubation & Ventures</span>
+            <span className="text-[#1d1d1f] font-semibold">Entrepreneurship & Ventures</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-[#1d1d1f] tracking-tight">
-            Hardware Incubation <span className="text-gradient-apple-blue">Center Editor</span>
+            Hardware Entrepreneurship <span className="text-gradient-apple-blue">Center Editor</span>
           </h1>
         </div>
 
@@ -106,12 +106,12 @@ export default function IncubationEditorPage() {
             </div>
           )}
           <Link
-            href="/incubation"
+            href="/entrepreneur"
             target="_blank"
             className="px-4 py-2.5 rounded-full bg-white hover:bg-[#e8e8ed] text-xs font-semibold text-[#1d1d1f] border border-[#e5e5ea] transition inline-flex items-center gap-1.5"
           >
             <ExternalLink className="w-3.5 h-3.5" />
-            <span>View Public Incubation</span>
+            <span>View Public Page</span>
           </Link>
           <button
             type="submit"

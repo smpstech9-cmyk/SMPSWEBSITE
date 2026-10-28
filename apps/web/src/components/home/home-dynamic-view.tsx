@@ -198,7 +198,7 @@ export function HomeDynamicView() {
       icon: Activity,
       badge: "Industry 5.0",
       features: ["Cobot High-Torque Drives", "Second-Life BESS Profiling", "Edge Anomaly Detection"],
-      link: "/incubation",
+      link: "/entrepreneur",
     },
     {
       id: "energy-storage",
@@ -288,9 +288,9 @@ export function HomeDynamicView() {
     },
     {
       id: "faq-4",
-      question: "Can hardware startups apply for incubation and laboratory access?",
-      answer: "Yes. Our Deep-Tech Incubation program provides founders with zero-capex access to multi-channel oscilloscopes, power grid simulators, battery cyclers, Design-for-Manufacturing (DFM) advisory, and institutional pilot testing. Applications are open year-round via our Incubation portal.",
-      category: "Incubation",
+      question: "Can hardware entrepreneurs apply for venture acceleration and laboratory access?",
+      answer: "Yes. Our Deep-Tech Entrepreneurship program provides founders with zero-capex access to multi-channel oscilloscopes, power grid simulators, battery cyclers, Design-for-Manufacturing (DFM) advisory, and institutional pilot testing. Applications are open year-round via our Entrepreneurship portal.",
+      category: "Entrepreneurship",
     },
     {
       id: "faq-5",
@@ -314,7 +314,7 @@ export function HomeDynamicView() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[550px] bg-gradient-to-b from-blue-500/[0.06] via-indigo-500/[0.03] to-transparent rounded-full blur-[120px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left Copy */}
             <div className="lg:col-span-7 space-y-7">
               {/* Facility Eyebrow Badge */}
@@ -374,9 +374,57 @@ export function HomeDynamicView() {
               </div>
             </div>
 
-            {/* Right Hero Hardware Display Card */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative rounded-[28px] overflow-hidden apple-card-elevated aspect-[4/3] group">
+            {/* Right Hero Hardware Display Column */}
+            <div className="lg:col-span-5 relative space-y-4">
+              {/* Government Recognition & Affiliation Banner - Parallel to "Pioneering Industrial" */}
+              <div className="p-3 sm:p-3.5 rounded-2xl bg-white/95 backdrop-blur-xl border border-[#e5e5ea] shadow-xs flex items-center justify-between gap-3">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse shrink-0" />
+                  <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#1d1d1f] whitespace-nowrap">
+                    Recognized By
+                  </span>
+                </div>
+                <div className="flex items-center gap-2.5 sm:gap-3.5 shrink-0">
+                  <div className="h-8 sm:h-9 flex items-center">
+                    <Image
+                      src="/logos/GOVT/Govt1.png"
+                      alt="Ministry of Communications - Government of India"
+                      width={120}
+                      height={40}
+                      unoptimized
+                      priority
+                      className="h-7 sm:h-8 w-auto object-contain transition-transform duration-200 hover:scale-105"
+                    />
+                  </div>
+                  <span className="w-px h-5 sm:h-6 bg-[#e5e5ea]" />
+                  <div className="h-8 sm:h-9 flex items-center">
+                    <Image
+                      src="/logos/GOVT/Govt2.png"
+                      alt="Department of Telecommunications (DoT) - India Telecom"
+                      width={40}
+                      height={40}
+                      unoptimized
+                      priority
+                      className="h-7 sm:h-8 w-auto object-contain transition-transform duration-200 hover:scale-105"
+                    />
+                  </div>
+                  <span className="w-px h-5 sm:h-6 bg-[#e5e5ea]" />
+                  <div className="h-8 sm:h-9 flex items-center">
+                    <Image
+                      src="/logos/GOVT/Govt3.png"
+                      alt="Telecom Center of Excellence (TCOE India)"
+                      width={40}
+                      height={40}
+                      unoptimized
+                      priority
+                      className="h-7 sm:h-8 w-auto object-contain transition-transform duration-200 hover:scale-105"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Hardware Image Card */}
+              <div className="relative rounded-[28px] overflow-hidden apple-card-elevated aspect-[4/3] group shadow-xl border border-black/[0.06]">
                 <Image
                   src="/images/products/purna-bess.jpg"
                   alt="PURNA BESS Grid-Scale Storage Facility at VTU-VRIF"
@@ -399,12 +447,6 @@ export function HomeDynamicView() {
                     Containerized multi-tier LFP energy storage with integrated thermal management engineered for sub-station microgrids.
                   </p>
                 </div>
-              </div>
-
-              {/* Floating Accreditations Pill */}
-              <div className="absolute -top-3.5 -right-3.5 px-4 py-1.5 rounded-full bg-[#0071e3] text-white text-xs font-semibold shadow-[0_4px_16px_rgba(0,113,227,0.35)] flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-blue-100" />
-                <span>VTU Center of Excellence</span>
               </div>
             </div>
           </div>

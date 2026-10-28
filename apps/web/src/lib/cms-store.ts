@@ -536,13 +536,13 @@ export const INITIAL_SITE_CONTENT: FullSiteContent = {
   events: [],
   careers: [],
   incubation: {
-    heroEyebrow: "Deep-Tech Hardware Incubation & Venture Launchpad",
-    heroTitle: "Empowering Hardware Entrepreneurs & Innovators",
+    heroEyebrow: "Deep-Tech Hardware Entrepreneurship & Venture Launchpad",
+    heroTitle: "Empowering Deep-Tech Hardware Entrepreneurs",
     heroSubtitle:
-      "We bridge the brutal 'hardware valley of death'. Operating from the VTU-VRIF-TCOE ecosystem, SMPS Tech Lab provides founders with laboratory test equipment, DFM engineering, regulatory certification guidance, and market access.",
-    facilityTitle: "Industrial Test Instruments at Your Fingertips",
+      "Bridging the brutal 'hardware valley of death'. Operating from the prestigious VTU-VRIF-TCOE ecosystem, SMPS Tech Lab provides hardware entrepreneurs and startup founders with zero-capex testbenches, DFM engineering, regulatory pre-compliance certification, and venture market access.",
+    facilityTitle: "Industrial Test Benches Built for Hardware Entrepreneurs",
     facilityDesc:
-      "Avoid spending millions of rupees on initial test equipment. Our facility provides founders with production-ready validation tools from day one.",
+      "Don't spend millions of rupees on initial test equipment. Our facility equips hardware entrepreneurs with multi-channel oscilloscopes, 1500V load banks, grid simulators, and thermal chambers from day one.",
     founderPerks: [
       "Workstation bays located inside the prestigious VTU-VRIF-TCOE Center",
       "Direct technical mentorship from veteran power electronics design engineers",

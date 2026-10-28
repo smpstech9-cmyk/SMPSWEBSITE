@@ -34,5 +34,6 @@ class MediaAsset(Base):
     file_url = Column(String(500), nullable=False, index=True)
     mime_type = Column(String(100), nullable=False)
     size_bytes = Column(Integer, nullable=False, default=0)
+    data_base64 = Column(Text, nullable=True)
 
     created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), nullable=False)

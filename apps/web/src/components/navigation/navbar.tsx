@@ -60,7 +60,7 @@ export function Navbar() {
   const navLinks = [
     { label: "Overview", href: "/" },
     { label: "R&D", href: "/rnd" },
-    { label: "Incubation", href: "/incubation" },
+    { label: "Entrepreneurship", href: "/entrepreneur" },
     { label: "Hardware Store", href: "/store" },
     { label: "VTU Internships", href: "/internships", hasDropdown: true },
     { label: "Events", href: "/events" },
@@ -87,26 +87,22 @@ export function Navbar() {
           )}
         </div>
       )}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between gap-3 sm:gap-6">
-        {/* Brand Emblem & Logo */}
-        <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group shrink-0" aria-label="SMPS Electric Control Home">
+      <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3 lg:gap-6">
+        {/* Brand Emblem & Logo - Large, Perfectly Centered */}
+        <Link href="/" className="flex items-center shrink-0 group" aria-label="SMPS Electric Control Home">
           <Image
             src="/logos/SMPS.png"
             alt="SMPS Electric - Think Beyond Smart Powertronics"
-            width={138}
-            height={50}
+            width={280}
+            height={88}
             priority
             unoptimized
-            className="h-8 sm:h-9 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+            className="h-10 sm:h-12 md:h-[52px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
           />
-          <div className="hidden sm:flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#f5f5f7] border border-[#e5e5ea] text-[10px] font-mono font-bold tracking-wider text-[#6e6e73] uppercase whitespace-nowrap">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse" />
-            <span>VTU LAB</span>
-          </div>
         </Link>
 
         {/* Desktop Navigation - Apple Light Minimalist Bar (Strictly Single Line) */}
-        <nav className="hidden lg:flex items-center gap-1 p-1 rounded-full bg-black/[0.03] border border-black/[0.04] shrink-0">
+        <nav className="hidden lg:flex items-center gap-0.5 p-1 rounded-full bg-black/[0.035] border border-black/[0.05] shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] shrink-0">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
 
@@ -120,10 +116,10 @@ export function Navbar() {
                 >
                   <Link
                     href={link.href}
-                    className={`whitespace-nowrap inline-flex items-center gap-1 px-3.5 py-1.5 rounded-full text-[13px] font-medium tracking-tight transition-all duration-200 ${
+                    className={`whitespace-nowrap inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-[12.5px] font-medium tracking-tight transition-all duration-200 ${
                       isActive || pathname.startsWith("/internships")
-                        ? "text-[#1d1d1f] bg-white shadow-sm border border-black/[0.06] font-semibold"
-                        : "text-[#6e6e73] hover:text-[#1d1d1f] hover:bg-black/[0.03]"
+                        ? "text-[#0071e3] bg-white shadow-xs border border-black/[0.07] font-bold"
+                        : "text-[#515154] hover:text-[#1d1d1f] hover:bg-black/[0.035]"
                     }`}
                   >
                     <span>{link.label}</span>
@@ -188,10 +184,10 @@ export function Navbar() {
               <Link
                 key={link.label}
                 href={link.href}
-                className={`whitespace-nowrap px-3.5 py-1.5 rounded-full text-[13px] font-medium tracking-tight transition-all duration-200 shrink-0 ${
+                className={`whitespace-nowrap px-3 py-1.5 rounded-full text-[12.5px] font-medium tracking-tight transition-all duration-200 shrink-0 ${
                   isActive
-                    ? "text-[#1d1d1f] bg-white shadow-sm border border-black/[0.06] font-semibold"
-                    : "text-[#6e6e73] hover:text-[#1d1d1f] hover:bg-black/[0.03]"
+                    ? "text-[#0071e3] bg-white shadow-xs border border-black/[0.07] font-bold"
+                    : "text-[#515154] hover:text-[#1d1d1f] hover:bg-black/[0.035]"
                 }`}
               >
                 {link.label}
@@ -201,11 +197,11 @@ export function Navbar() {
         </nav>
 
         {/* Right Action Controls (Strictly Single Line, never wraps) */}
-        <div className="hidden sm:flex items-center gap-2.5 shrink-0">
+        <div className="hidden sm:flex items-center gap-3 shrink-0">
           {/* Dedicated Corporate R&D Partnership CTA Pill */}
           <Link
             href="/partner"
-            className="whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#0071e3] hover:bg-[#0077ed] text-white text-[12px] font-semibold shadow-[0_2px_10px_rgba(0,113,227,0.3)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+            className="whitespace-nowrap shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#0071e3] hover:bg-[#0077ed] text-white text-[12.5px] font-bold shadow-[0_3px_12px_rgba(0,113,227,0.32)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
           >
             <Sparkles className="w-3.5 h-3.5 text-blue-100 flex-shrink-0" />
             <span className="whitespace-nowrap">Partner with R&D</span>
@@ -343,11 +339,11 @@ export function Navbar() {
             R&D
           </Link>
           <Link
-            href="/incubation"
+            href="/entrepreneur"
             onClick={() => setIsMobileMenuOpen(false)}
             className="block py-2 text-sm font-semibold text-[#1d1d1f]"
           >
-            Incubation & Startups
+            Entrepreneurship & Ventures
           </Link>
           <Link
             href="/store"

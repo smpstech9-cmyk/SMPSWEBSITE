@@ -59,6 +59,7 @@ export async function POST(request: NextRequest) {
           file_url: publicUrl,
           mime_type: file.type,
           size_bytes: buffer.length,
+          data_base64: buffer.toString("base64"),
         }),
       });
       if (dbRes.ok) {

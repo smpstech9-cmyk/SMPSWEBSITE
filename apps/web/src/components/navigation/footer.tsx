@@ -53,9 +53,9 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/incubation" className="hover:text-[#059669] transition flex items-center gap-1.5">
-                  Hardware Incubation
-                  <span className="text-[9px] font-bold text-[#059669] bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-100">Ventures</span>
+                <Link href="/entrepreneur" className="hover:text-[#059669] transition flex items-center gap-1.5">
+                  Entrepreneurship & Ventures
+                  <span className="text-[9px] font-bold text-[#059669] bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-100">Founders</span>
                 </Link>
               </li>
               <li>

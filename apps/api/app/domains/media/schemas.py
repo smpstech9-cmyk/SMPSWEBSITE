@@ -44,6 +44,7 @@ class MediaAssetCreate(BaseModel):
     file_url: str
     mime_type: str
     size_bytes: int = 0
+    data_base64: Optional[str] = None
 
 
 class MediaAssetRead(BaseModel):
