@@ -1,12 +1,12 @@
 import React from "react";
-import { EntrepreneurDynamicView } from "@/components/entrepreneur/entrepreneur-dynamic-view";
+import { IncubationDynamicView } from "@/components/incubation/incubation-dynamic-view";
 
 export const metadata = {
-  title: "Entrepreneurship & Hardware Ventures | SMPS Tech Lab",
+  title: "Hardware Incubation & Prototyping Laboratory | SMPS Tech Lab",
   description:
-    "Accelerating deep-tech hardware startups, technology transfer, and entrepreneurship at the VTU-VRIF-TCOE facility in Bengaluru.",
+    "Zero-capex hardware testbenches, prototyping facilities, and regulatory de-risking at the VTU-VRIF-TCOE facility in Bengaluru.",
 };
 
 export default function IncubationPage() {
-  return <EntrepreneurDynamicView />;
+  return <IncubationDynamicView />;
 }
