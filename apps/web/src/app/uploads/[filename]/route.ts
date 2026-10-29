@@ -3,7 +3,10 @@ import path from "path";
 import { existsSync } from "fs";
 import { readFile } from "fs/promises";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://smpswebsite.onrender.com";
+export const dynamic = "force-dynamic";
+
+const RAW_API = process.env.NEXT_PUBLIC_API_URL || "https://smpswebsite.onrender.com";
+const API_BASE = RAW_API.replace(/\/api\/v1\/?$/, "");
 
 export async function GET(
   request: NextRequest,

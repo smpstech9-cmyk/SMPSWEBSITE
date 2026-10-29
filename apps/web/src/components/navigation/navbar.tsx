@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -29,6 +29,13 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+
+  // Sliding Indicator Animation (Option 4: Floating Sliding Pill + Glowing Bottom Notch)
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0, opacity: 0 });
+  const [mounted, setMounted] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
+  const itemRefs = useRef<(HTMLElement | null)[]>([]);
 
   const internshipTracks = [
     {
@@ -71,6 +78,54 @@ export function Navbar() {
     { label: "Contact", href: "/contact" },
   ];
 
+  // Active index calculation based on route
+  const activeIndex = useMemo(() => {
+    const exact = navLinks.findIndex((link) => link.href === pathname);
+    if (exact !== -1) return exact;
+
+    const sub = navLinks.findIndex((link) => {
+      if (link.href === "/") return false;
+      return pathname.startsWith(link.href);
+    });
+    if (sub !== -1) return sub;
+
+    return 0;
+  }, [pathname, navLinks]);
+
+  const targetIndex = hoveredIndex !== null ? hoveredIndex : activeIndex;
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
+    const updateIndicator = () => {
+      const container = navRef.current;
+      const target = itemRefs.current[targetIndex];
+      if (!container || !target) return;
+
+      const containerRect = container.getBoundingClientRect();
+      const targetRect = target.getBoundingClientRect();
+
+      setIndicatorStyle({
+        left: targetRect.left - containerRect.left,
+        width: targetRect.width,
+        opacity: 1,
+      });
+    };
+
+    updateIndicator();
+    const raf = requestAnimationFrame(updateIndicator);
+    window.addEventListener("resize", updateIndicator);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", updateIndicator);
+    };
+  }, [targetIndex, mounted]);
+
   return (
     <header className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-2xl border-b border-black/[0.06] shadow-[0_2px_12px_rgba(0,0,0,0.03)] transition-all">
       {content.global.announcementBarEnabled && content.global.announcementText && (
@@ -101,32 +156,63 @@ export function Navbar() {
           />
         </Link>
 
-        {/* Desktop Navigation - Apple Light Minimalist Bar (Strictly Single Line) */}
-        <nav className="hidden lg:flex items-center gap-0.5 p-1 rounded-full bg-black/[0.035] border border-black/[0.05] shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] shrink-0">
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
+        {/* Desktop Navigation - Option 4 Sliding Floating Pill with Glowing Bottom Notch */}
+        <nav
+          ref={navRef}
+          onMouseLeave={() => setHoveredIndex(null)}
+          className="relative hidden lg:flex items-center gap-0.5 p-1 rounded-full bg-black/[0.035] border border-black/[0.05] shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] shrink-0"
+        >
+          {/* Sliding Pill & Glowing Bottom Notch (Option 4) */}
+          {mounted && (
+            <div
+              className={`absolute top-1 bottom-1 left-0 rounded-full bg-white shadow-[0_2px_10px_rgba(0,0,0,0.06)] border border-black/[0.06] pointer-events-none transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] flex items-end justify-center ${
+                indicatorStyle.opacity > 0 ? "opacity-100" : "opacity-0"
+              }`}
+              style={{
+                transform: `translateX(${indicatorStyle.left}px)`,
+                width: `${indicatorStyle.width}px`,
+              }}
+              aria-hidden="true"
+            >
+              {/* Glowing bottom notch indicator */}
+              <div className="mb-0.5 h-[2.5px] w-4.5 rounded-full bg-[#0071e3] shadow-[0_0_8px_rgba(0,113,227,0.55)] transition-all duration-300" />
+            </div>
+          )}
+
+          {navLinks.map((link, index) => {
+            const isRouteActive =
+              link.href === "/"
+                ? pathname === "/"
+                : pathname === link.href || pathname.startsWith(link.href);
+            const isCurrent = (hoveredIndex !== null ? hoveredIndex : activeIndex) === index;
 
             if (link.hasDropdown) {
               return (
                 <div
                   key={link.label}
                   className="relative shrink-0"
-                  onMouseEnter={() => setIsDropdownOpen(true)}
+                  onMouseEnter={() => {
+                    setHoveredIndex(index);
+                    setIsDropdownOpen(true);
+                  }}
                   onMouseLeave={() => setIsDropdownOpen(false)}
                 >
                   <Link
+                    ref={(el) => {
+                      itemRefs.current[index] = el;
+                    }}
                     href={link.href}
-                    className={`whitespace-nowrap inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-[12.5px] font-medium tracking-tight transition-all duration-200 ${
-                      isActive || pathname.startsWith("/internships")
-                        ? "text-[#0071e3] bg-white shadow-xs border border-black/[0.07] font-bold"
-                        : "text-[#515154] hover:text-[#1d1d1f] hover:bg-black/[0.035]"
-                    }`}
+                    className={`relative z-10 whitespace-nowrap inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-[12.5px] tracking-tight transition-colors duration-200 ${
+                      isCurrent
+                        ? "text-[#0071e3] font-bold"
+                        : "text-[#515154] hover:text-[#1d1d1f] font-medium"
+                    } ${!mounted && isRouteActive ? "bg-white shadow-xs border border-black/[0.07] font-bold text-[#0071e3]" : ""}`}
                   >
                     <span>{link.label}</span>
                     <ChevronDown
-                      className={`w-3 h-3 text-[#86868b] transition-transform duration-200 shrink-0 ${
-                        isDropdownOpen ? "rotate-180 text-[#1d1d1f]" : ""
-                      }`}
+                      className={`w-3 h-3 transition-transform duration-200 shrink-0 ${
+                        isCurrent ? "text-[#0071e3]" : "text-[#86868b]"
+                      } ${isDropdownOpen ? "rotate-180 text-[#1d1d1f]" : ""}`}
                     />
                   </Link>
 
@@ -183,12 +269,16 @@ export function Navbar() {
             return (
               <Link
                 key={link.label}
+                ref={(el) => {
+                  itemRefs.current[index] = el;
+                }}
                 href={link.href}
-                className={`whitespace-nowrap px-3 py-1.5 rounded-full text-[12.5px] font-medium tracking-tight transition-all duration-200 shrink-0 ${
-                  isActive
-                    ? "text-[#0071e3] bg-white shadow-xs border border-black/[0.07] font-bold"
-                    : "text-[#515154] hover:text-[#1d1d1f] hover:bg-black/[0.035]"
-                }`}
+                onMouseEnter={() => setHoveredIndex(index)}
+                className={`relative z-10 whitespace-nowrap px-3 py-1.5 rounded-full text-[12.5px] tracking-tight transition-colors duration-200 shrink-0 ${
+                  isCurrent
+                    ? "text-[#0071e3] font-bold"
+                    : "text-[#515154] hover:text-[#1d1d1f] font-medium"
+                } ${!mounted && isRouteActive ? "bg-white shadow-xs border border-black/[0.07] font-bold text-[#0071e3]" : ""}`}
               >
                 {link.label}
               </Link>

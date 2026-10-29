@@ -2,7 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
 import path from "path";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://smpswebsite.onrender.com";
+export const dynamic = "force-dynamic";
+
+const RAW_API = process.env.NEXT_PUBLIC_API_URL || "https://smpswebsite.onrender.com";
+const API_BASE = RAW_API.replace(/\/api\/v1\/?$/, "");
 
 export async function POST(request: NextRequest) {
   try {
@@ -29,7 +32,49 @@ export async function POST(request: NextRequest) {
     const buffer = Buffer.from(bytes);
     const base64Data = buffer.toString("base64");
 
-    // Generate safe, clean unique filename
+    // 1. Cloudinary Storage (25 GB Free Cloud Storage - Never Disappears)
+    const CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME;
+    const API_KEY = process.env.CLOUDINARY_API_KEY;
+    const API_SECRET = process.env.CLOUDINARY_API_SECRET;
+
+    if (CLOUD_NAME && API_KEY && API_SECRET) {
+      const timestamp = Math.round(Date.now() / 1000);
+      const toSign = `timestamp=${timestamp}${API_SECRET}`;
+      const signature = crypto.createHash("sha1").update(toSign).digest("hex");
+
+      const uploadBody = new URLSearchParams();
+      uploadBody.append("file", `data:${file.type};base64,${base64Data}`);
+      uploadBody.append("api_key", API_KEY);
+      uploadBody.append("timestamp", timestamp.toString());
+      uploadBody.append("signature", signature);
+
+      const cldRes = await fetch(
+        `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
+        {
+          method: "POST",
+          body: uploadBody,
+        }
+      );
+
+      const cldData = await cldRes.json();
+      if (!cldRes.ok || !cldData.secure_url) {
+        throw new Error(cldData.error?.message || "Cloudinary upload failed");
+      }
+
+      const publicUrl = cldData.secure_url;
+
+      return NextResponse.json({
+        success: true,
+        url: publicUrl,
+        fileName: file.name,
+        sizeBytes: buffer.length,
+        mimeType: file.type,
+        uploadedAt: new Date().toISOString(),
+        provider: "cloudinary",
+      });
+    }
+
+    // 2. Fallback to server/backend upload
     const ext = path.extname(file.name) || `.${file.type.split("/")[1] || "jpg"}`;
     const cleanExt = ext.toLowerCase().replace(/[^a-z0-9.]/g, "");
     const randomHash = crypto.randomBytes(8).toString("hex");

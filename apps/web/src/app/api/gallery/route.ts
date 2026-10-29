@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://smpswebsite.onrender.com";
+export const dynamic = "force-dynamic";
+
+const RAW_API = process.env.NEXT_PUBLIC_API_URL || "https://smpswebsite.onrender.com";
+const API_BASE = RAW_API.replace(/\/api\/v1\/?$/, "");
 
 export async function GET() {
   try {
