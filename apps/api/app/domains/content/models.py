@@ -11,7 +11,7 @@ class SiteContent(Base):
     key = Column(String(100), primary_key=True, index=True)
     data = Column(CompatibleJSON, nullable=False)
     updated_at = Column(
-        DateTime,
+        DateTime(timezone=True),
         default=lambda: datetime.now(timezone.utc),
         onupdate=lambda: datetime.now(timezone.utc),
         nullable=False,
