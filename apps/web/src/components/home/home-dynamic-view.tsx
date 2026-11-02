@@ -411,40 +411,53 @@ export function HomeDynamicView() {
                 />
               </div>
 
-              {/* Government Recognition & Affiliation Banner - Sliding Box */}
-              <div className="p-2 sm:p-2.5 rounded-2xl bg-white/95 backdrop-blur-xl border border-[#e5e5ea] shadow-xs flex items-center gap-2 sm:gap-3 overflow-hidden group">
-                {/* Left Badge: Fixed */}
-                <div className="flex items-center gap-1.5 shrink-0 pl-1.5 pr-2.5 py-0.5 border-r border-[#e5e5ea] z-10 bg-white/95">
-                  <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse shrink-0" />
-                  <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#1d1d1f] whitespace-nowrap">
-                    Recognized By
-                  </span>
+              {/* Government Recognition & Affiliation Banner - Sliding Box with Running Neon Light */}
+              <div className="relative w-full group">
+                {/* 1. Ambient Blurred Neon Underglow in Background */}
+                <div className="absolute -inset-2 rounded-2xl overflow-hidden blur-xl opacity-75 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none -z-10">
+                  <div className="absolute inset-[-150%] animate-neon-run bg-[conic-gradient(from_0deg,transparent_0deg_240deg,#0071e3_280deg,#06b6d4_320deg,#10b981_350deg,#ffffff_360deg)]" />
                 </div>
 
-                {/* Sliding Track Viewport with Edge Fade Gradients */}
-                <div className="relative flex-1 overflow-hidden min-w-0">
-                  {/* Left edge fade */}
-                  <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-3 sm:w-5 bg-gradient-to-r from-white to-transparent z-10" />
-                  {/* Right edge fade */}
-                  <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-3 sm:w-5 bg-gradient-to-l from-white to-transparent z-10" />
+                {/* 2. Perimeter Running Neon Light Beam */}
+                <div className="relative rounded-2xl p-[2px] overflow-hidden shadow-md">
+                  <div className="absolute inset-[-150%] animate-neon-run bg-[conic-gradient(from_0deg,transparent_0deg_240deg,#0071e3_280deg,#06b6d4_320deg,#10b981_350deg,#ffffff_360deg)] pointer-events-none" />
 
-                  {/* Infinite Sliding Logostrip (Strictly /logos/GOVT) */}
-                  <div className="animate-recognized-marquee flex items-center gap-3.5 sm:gap-5 py-0.5">
-                    {[...recognizedLogos, ...recognizedLogos].map((logo, idx) => (
-                      <div key={idx} className="flex items-center gap-3.5 sm:gap-5 shrink-0">
-                        <div className="h-6 sm:h-7 flex items-center shrink-0">
-                          <Image
-                            src={logo.src}
-                            alt={logo.name}
-                            width={logo.width}
-                            height={logo.height}
-                            unoptimized
-                            className={`${logo.className} transition-transform duration-200 hover:scale-110`}
-                          />
-                        </div>
-                        <span className="w-px h-4 sm:h-5 bg-[#e5e5ea] shrink-0" />
+                  {/* 3. Sliding Content Box */}
+                  <div className="relative rounded-[14px] bg-white/95 backdrop-blur-xl flex items-center gap-2 sm:gap-3 p-2 sm:p-2.5 overflow-hidden">
+                    {/* Left Badge: Fixed */}
+                    <div className="flex items-center gap-1.5 shrink-0 pl-1.5 pr-2.5 py-0.5 border-r border-[#e5e5ea] z-10 bg-white/95">
+                      <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse shrink-0" />
+                      <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#1d1d1f] whitespace-nowrap">
+                        Recognized By
+                      </span>
+                    </div>
+
+                    {/* Sliding Track Viewport with Edge Fade Gradients */}
+                    <div className="relative flex-1 overflow-hidden min-w-0">
+                      {/* Left edge fade */}
+                      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-3 sm:w-5 bg-gradient-to-r from-white to-transparent z-10" />
+                      {/* Right edge fade */}
+                      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-3 sm:w-5 bg-gradient-to-l from-white to-transparent z-10" />
+
+                      {/* Infinite Sliding Logostrip (Strictly /logos/GOVT) */}
+                      <div className="animate-recognized-marquee flex items-center gap-3.5 sm:gap-5 py-0.5">
+                        {[...recognizedLogos, ...recognizedLogos].map((logo, idx) => (
+                          <div key={idx} className="flex items-center gap-3.5 sm:gap-5 shrink-0">
+                            <div className="h-6 sm:h-7 flex items-center shrink-0">
+                              <Image
+                                src={logo.src}
+                                alt={logo.name}
+                                width={logo.width}
+                                height={logo.height}
+                                unoptimized
+                                className={`${logo.className} transition-transform duration-200 hover:scale-110`}
+                              />
+                            </div>
+                            <span className="w-px h-4 sm:h-5 bg-[#e5e5ea] shrink-0" />
+                          </div>
+                        ))}
                       </div>
-                    ))}
+                    </div>
                   </div>
                 </div>
               </div>
