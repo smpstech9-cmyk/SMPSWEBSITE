@@ -27,8 +27,11 @@ from app.domains.content.router import router as content_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    from app.core.init_db import init_db_and_seed
-    await init_db_and_seed()
+    try:
+        from app.core.init_db import init_db_and_seed
+        await init_db_and_seed()
+    except Exception as e:
+        print(f"Warning: Database startup init skipped (network/offline/sandbox): {e}")
     yield
 
 
