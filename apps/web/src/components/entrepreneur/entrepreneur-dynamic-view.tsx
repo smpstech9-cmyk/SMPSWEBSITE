@@ -28,6 +28,7 @@ import {
 } from "lucide-react";
 import { TubesBackground } from "@/components/ui/tubes-background";
 import { FAQAccordion, FAQItem } from "@/components/ui/faq-accordion";
+import { EntrepreneurNeonCard } from "./entrepreneur-neon-card";
 
 const ENTREPRENEUR_FAQS: FAQItem[] = [
   {
@@ -404,22 +405,22 @@ export function EntrepreneurDynamicView() {
 
             {/* High-Contrast Interactive Metrics Strip */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mt-12 w-full max-w-4xl pointer-events-auto">
-              <div className="p-4 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10 shadow-xl text-center">
+              <EntrepreneurNeonCard rounded="rounded-2xl" className="p-4 text-center justify-center">
                 <div className="text-2xl sm:text-3xl font-black text-[#38bdf8]">₹50L+</div>
                 <div className="text-xs font-semibold text-white/70 mt-0.5">Non-Dilutive Grants</div>
-              </div>
-              <div className="p-4 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10 shadow-xl text-center">
+              </EntrepreneurNeonCard>
+              <EntrepreneurNeonCard rounded="rounded-2xl" className="p-4 text-center justify-center">
                 <div className="text-2xl sm:text-3xl font-black text-[#34d399]">0%</div>
                 <div className="text-xs font-semibold text-white/70 mt-0.5">Founder Equity Taken</div>
-              </div>
-              <div className="p-4 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10 shadow-xl text-center">
+              </EntrepreneurNeonCard>
+              <EntrepreneurNeonCard rounded="rounded-2xl" className="p-4 text-center justify-center">
                 <div className="text-2xl sm:text-3xl font-black text-[#a855f7]">100%</div>
                 <div className="text-xs font-semibold text-white/70 mt-0.5">Founder IP Retained</div>
-              </div>
-              <div className="p-4 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10 shadow-xl text-center">
+              </EntrepreneurNeonCard>
+              <EntrepreneurNeonCard rounded="rounded-2xl" className="p-4 text-center justify-center">
                 <div className="text-2xl sm:text-3xl font-black text-white">50+</div>
                 <div className="text-xs font-semibold text-white/70 mt-0.5">Startups Mentored</div>
-              </div>
+              </EntrepreneurNeonCard>
             </div>
 
             {/* 3D Tubes Interactive Hint (matching the reference UI) */}
@@ -453,9 +454,10 @@ export function EntrepreneurDynamicView() {
             {ENTREPRENEUR_PILLARS.map((pillar) => {
               const Icon = pillar.icon;
               return (
-                <div
+                <EntrepreneurNeonCard
                   key={pillar.title}
-                  className="p-8 rounded-3xl bg-white/[0.03] backdrop-blur-md border border-white/10 hover:border-[#0071e3]/60 transition-all duration-300 flex flex-col justify-between group hover:bg-white/[0.05]"
+                  rounded="rounded-3xl"
+                  className="p-8 justify-between hover:bg-white/[0.04] transition-colors duration-300"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-6">
@@ -473,7 +475,7 @@ export function EntrepreneurDynamicView() {
                       {pillar.desc}
                     </p>
                   </div>
-                </div>
+                </EntrepreneurNeonCard>
               );
             })}
           </div>
@@ -499,9 +501,10 @@ export function EntrepreneurDynamicView() {
             {VENTURE_TRACKS.map((track) => {
               const Icon = track.icon;
               return (
-                <div
+                <EntrepreneurNeonCard
                   key={track.id}
-                  className="p-8 sm:p-10 rounded-3xl bg-white/[0.03] backdrop-blur-md border border-white/10 hover:border-emerald-500/40 transition duration-300 flex flex-col justify-between group"
+                  rounded="rounded-3xl"
+                  className="p-8 sm:p-10 justify-between"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-4">
@@ -543,7 +546,7 @@ export function EntrepreneurDynamicView() {
                       <ArrowRight className="w-3.5 h-3.5" />
                     </button>
                   </div>
-                </div>
+                </EntrepreneurNeonCard>
               );
             })}
           </div>
@@ -567,9 +570,10 @@ export function EntrepreneurDynamicView() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {VENTURE_ROADMAP.map((stage) => (
-              <div
+              <EntrepreneurNeonCard
                 key={stage.step}
-                className="p-7 rounded-3xl bg-white/[0.03] backdrop-blur-md border border-white/10 hover:border-purple-500/40 transition flex flex-col justify-between"
+                rounded="rounded-3xl"
+                className="p-7 justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
@@ -594,7 +598,7 @@ export function EntrepreneurDynamicView() {
                     ))}
                   </div>
                 </div>
-              </div>
+              </EntrepreneurNeonCard>
             ))}
           </div>
         </div>
@@ -617,9 +621,10 @@ export function EntrepreneurDynamicView() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {GRANT_SCHEMES.map((scheme) => (
-              <div
+              <EntrepreneurNeonCard
                 key={scheme.name}
-                className="p-8 rounded-3xl bg-white/[0.03] backdrop-blur-md border border-white/10 hover:border-emerald-500/40 transition space-y-4"
+                rounded="rounded-3xl"
+                className="p-8 space-y-4"
               >
                 <div className="flex items-center justify-between">
                   <span className="text-2xl font-black text-[#34d399]">{scheme.amount}</span>
@@ -641,30 +646,37 @@ export function EntrepreneurDynamicView() {
                   <CheckCircle2 className="w-4 h-4 text-[#34d399] flex-shrink-0" />
                   <span>{scheme.highlight}</span>
                 </div>
-              </div>
+              </EntrepreneurNeonCard>
             ))}
           </div>
 
           {/* Institutional Angel Syndicate Box */}
-          <div className="mt-8 p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-purple-950/30 to-blue-950/30 backdrop-blur-xl border border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="space-y-2">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 text-[#a855f7] border border-purple-500/20 text-xs font-semibold">
-                <Users className="w-3.5 h-3.5" /> Investor Demo Day
-              </div>
-              <h3 className="text-xl font-bold text-white">
-                Institutional Deep-Tech Angel Syndicate & VC Pitch Days
-              </h3>
-              <p className="text-xs sm:text-sm text-gray-300 max-w-2xl leading-relaxed">
-                Startups that validate commercial prototypes present directly to active deep-tech venture capitalists, institutional clean-tech angel networks, and family offices seeking high-defensibility physical tech investments.
-              </p>
-            </div>
-            <button
-              type="button"
-              onClick={() => handleOpenModal("Investor Demo Day")}
-              className="px-6 py-3.5 rounded-full bg-white hover:bg-gray-100 text-[#07070a] font-bold text-xs transition cursor-pointer whitespace-nowrap shadow-xl"
+          <div className="mt-8">
+            <EntrepreneurNeonCard
+              rounded="rounded-3xl"
+              className="p-8 sm:p-10 bg-gradient-to-r from-purple-950/30 to-blue-950/30"
             >
-              Request Pitch Review
-            </button>
+              <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div className="space-y-2">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 text-[#a855f7] border border-purple-500/20 text-xs font-semibold">
+                    <Users className="w-3.5 h-3.5" /> Investor Demo Day
+                  </div>
+                  <h3 className="text-xl font-bold text-white">
+                    Institutional Deep-Tech Angel Syndicate & VC Pitch Days
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-300 max-w-2xl leading-relaxed">
+                    Startups that validate commercial prototypes present directly to active deep-tech venture capitalists, institutional clean-tech angel networks, and family offices seeking high-defensibility physical tech investments.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => handleOpenModal("Investor Demo Day")}
+                  className="px-6 py-3.5 rounded-full bg-white hover:bg-gray-100 text-[#07070a] font-bold text-xs transition cursor-pointer whitespace-nowrap shadow-xl"
+                >
+                  Request Pitch Review
+                </button>
+              </div>
+            </EntrepreneurNeonCard>
           </div>
         </div>
       </section>
@@ -688,7 +700,11 @@ export function EntrepreneurDynamicView() {
             {TARGET_VERTICALS.map((track) => {
               const Icon = track.icon;
               return (
-                <div key={track.title} className="p-7 rounded-3xl bg-white/[0.03] backdrop-blur-md border border-white/10 hover:border-blue-500/40 transition">
+                <EntrepreneurNeonCard
+                  key={track.title}
+                  rounded="rounded-3xl"
+                  className="p-7"
+                >
                   <div className="flex items-center justify-between mb-4">
                     <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-[#34d399] border border-emerald-500/20 text-xs font-semibold uppercase tracking-wider">
                       {track.badge}
@@ -699,7 +715,7 @@ export function EntrepreneurDynamicView() {
                   </div>
                   <h4 className="text-base font-bold text-white">{track.title}</h4>
                   <p className="mt-2 text-xs text-gray-400 leading-relaxed font-normal">{track.desc}</p>
-                </div>
+                </EntrepreneurNeonCard>
               );
             })}
           </div>
@@ -752,7 +768,7 @@ export function EntrepreneurDynamicView() {
             </div>
 
             <div className="lg:col-span-6">
-              <div className="p-8 sm:p-10 rounded-3xl bg-white/[0.03] backdrop-blur-xl border border-white/10 space-y-6">
+              <EntrepreneurNeonCard rounded="rounded-3xl" className="p-8 sm:p-10 space-y-6">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 text-[#38bdf8] border border-blue-500/20 text-xs font-semibold">
                   <Scale className="w-4 h-4" /> 100% Founder-Friendly Model
                 </div>
@@ -773,7 +789,7 @@ export function EntrepreneurDynamicView() {
                     Direct procurement access to GaN/SiC semiconductors, rapid PCB fab, and high-precision testing gear.
                   </div>
                 </div>
-              </div>
+              </EntrepreneurNeonCard>
             </div>
           </div>
         </div>
@@ -796,20 +812,19 @@ export function EntrepreneurDynamicView() {
 
           <div className="max-w-4xl mx-auto space-y-4">
             {ENTREPRENEUR_FAQS.map((faq) => (
-              <details
-                key={faq.id}
-                className="group p-6 rounded-2xl bg-white/[0.03] backdrop-blur-md border border-white/10 hover:border-white/20 transition duration-200"
-              >
-                <summary className="font-bold text-sm sm:text-base text-white cursor-pointer list-none flex items-center justify-between">
-                  <span>{faq.question}</span>
-                  <span className="text-[#38bdf8] transition-transform duration-200 group-open:rotate-45 text-xl font-light">
-                    +
-                  </span>
-                </summary>
-                <p className="text-xs sm:text-sm text-gray-400 mt-4 leading-relaxed font-normal pt-4 border-t border-white/10">
-                  {faq.answer}
-                </p>
-              </details>
+              <EntrepreneurNeonCard key={faq.id} rounded="rounded-2xl">
+                <details className="group/faq p-6">
+                  <summary className="font-bold text-sm sm:text-base text-white cursor-pointer list-none flex items-center justify-between">
+                    <span>{faq.question}</span>
+                    <span className="text-[#38bdf8] transition-transform duration-200 group-open/faq:rotate-45 text-xl font-light">
+                      +
+                    </span>
+                  </summary>
+                  <p className="text-xs sm:text-sm text-gray-400 mt-4 leading-relaxed font-normal pt-4 border-t border-white/10">
+                    {faq.answer}
+                  </p>
+                </details>
+              </EntrepreneurNeonCard>
             ))}
           </div>
         </div>

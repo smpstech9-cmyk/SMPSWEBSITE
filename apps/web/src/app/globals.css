@@ -274,3 +274,8 @@ body {
   animation: neonRotate 6s linear infinite;
   will-change: transform;
 }
+
+.animate-neon-run-smooth {
+  animation: neonRotate 10s linear infinite;
+  will-change: transform;
+}
