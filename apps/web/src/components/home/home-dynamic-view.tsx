@@ -29,6 +29,7 @@ import {
 } from "lucide-react";
 import { useSiteContent } from "@/context/content-context";
 import { FAQAccordion, FAQItem } from "@/components/ui/faq-accordion";
+import { VerifiedCredentialsViewer } from "@/components/home/verified-credentials-viewer";
 
 export function HomeDynamicView() {
   const { content } = useSiteContent();
@@ -423,31 +424,8 @@ export function HomeDynamicView() {
                 </div>
               </div>
 
-              {/* Hardware Image Card */}
-              <div className="relative rounded-[28px] overflow-hidden apple-card-elevated aspect-[4/3] group shadow-xl border border-black/[0.06]">
-                <Image
-                  src="/images/products/purna-bess.jpg"
-                  alt="PURNA BESS Grid-Scale Storage Facility at VTU-VRIF"
-                  fill
-                  priority
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-
-                {/* Diagnostics Overlay Card */}
-                <div className="absolute bottom-5 left-5 right-5 p-4 rounded-2xl bg-white/95 backdrop-blur-2xl border border-white/40 shadow-xl">
-                  <div className="flex items-center justify-between text-xs pb-2 border-b border-gray-100">
-                    <span className="font-bold text-[#1d1d1f] flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#0071e3]" />
-                      PURNA BESS™ Commercial Unit
-                    </span>
-                    <span className="text-[#059669] font-mono text-[11px] font-bold">1500V Active</span>
-                  </div>
-                  <p className="text-xs text-[#6e6e73] mt-2 font-normal leading-relaxed">
-                    Containerized multi-tier LFP energy storage with integrated thermal management engineered for sub-station microgrids.
-                  </p>
-                </div>
-              </div>
+              {/* Verified Institutional Credentials & Protected Documents Viewer */}
+              <VerifiedCredentialsViewer />
             </div>
           </div>
         </div>
