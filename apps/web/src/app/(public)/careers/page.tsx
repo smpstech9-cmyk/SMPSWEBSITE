@@ -104,7 +104,7 @@ export default function CareersPage() {
                 <span className="text-gradient-apple-blue">That Powers the Nation</span>
               </h1>
               <p className="mt-4 text-base sm:text-lg text-[#6e6e73] max-w-2xl font-normal leading-relaxed">
-                Join our engineering team inside the prestigious VTU-VRIF-TCOE Center. We architect indigenous semiconductors, megawatt energy storage, and clean power grids.
+                Join our engineering team at SMPS Tech Lab. We architect indigenous semiconductors, megawatt energy storage, and clean power grids.
               </p>
             </div>
 
@@ -146,9 +146,9 @@ export default function CareersPage() {
             <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 text-[#059669] flex items-center justify-center mb-4">
               <Building2 className="w-5 h-5" />
             </div>
-            <h3 className="text-base font-bold text-[#1d1d1f]">VTU-VRIF Facility</h3>
+            <h3 className="text-base font-bold text-[#1d1d1f]">SMPS Tech Lab Facility</h3>
             <p className="mt-2 text-xs text-[#6e6e73] leading-relaxed">
-              Modern air-conditioned research bays located inside the VTU Telecom Center of Excellence Campus in Nagarbhavi.
+              Modern air-conditioned research bays located inside our Nagarbhavi engineering center.
             </p>
           </div>
 
@@ -175,7 +175,7 @@ export default function CareersPage() {
               </h2>
             </div>
             <span className="text-xs font-mono text-[#86868b]">
-              Location: VTU-VRIF Facility, Bengaluru
+              Location: SMPS Tech Lab, Bengaluru
             </span>
           </div>
 

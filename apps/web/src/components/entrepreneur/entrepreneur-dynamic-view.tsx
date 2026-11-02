@@ -34,7 +34,7 @@ const ENTREPRENEUR_FAQS: FAQItem[] = [
     id: "ent-faq-1",
     question: "Do you take equity in hardware startups participating in the Entrepreneurship Hub?",
     answer:
-      "No. SMPS Tech Lab and VTU-VRIF operate a strictly non-dilutive venture acceleration model. We take 0% equity and 0% warrants. Founders retain 100% full cap table ownership.",
+      "No. SMPS Tech Lab operates a strictly non-dilutive venture acceleration model. We take 0% equity and 0% warrants. Founders retain 100% full cap table ownership.",
     category: "Equity & Ownership",
   },
   {
@@ -60,9 +60,9 @@ const ENTREPRENEUR_FAQS: FAQItem[] = [
   },
   {
     id: "ent-faq-5",
-    question: "Are external, non-VTU founders and startups eligible to apply?",
+    question: "Who is eligible to apply for hardware venture incubation?",
     answer:
-      "Yes. While VTU faculty and alumni receive fast-track admission, any deep-tech hardware entrepreneur or startup team working in Power Electronics, EV Infrastructure, Energy Storage, Semiconductors, or Industrial IoT across India is eligible to apply.",
+      "Any deep-tech hardware entrepreneur or startup team working in Power Electronics, EV Infrastructure, Energy Storage, Semiconductors, or Industrial IoT across India is eligible to apply. VTU faculty and alumni also receive fast-track admission.",
     category: "Eligibility",
   },
   {
@@ -83,7 +83,7 @@ const VENTURE_TRACKS = [
     icon: GraduationCap,
     desc: "A dedicated 6-month pre-incubation program for engineering students and recent graduates. We help student innovators convert capstone research into market-viable products with seed grants, co-founder matchmaking, and company incorporation.",
     benefits: [
-      "Zero-capex prototyping bench inside VTU-VRIF Center",
+      "Zero-capex prototyping bench inside SMPS Tech Lab Center",
       "Assistance with Private Limited registration & DPIIT recognition",
       "Seed grant application support (NIDHI-PRAYAS up to ₹10L)",
       "Technical mentorship from practicing hardware architects",
@@ -363,7 +363,7 @@ export function EntrepreneurDynamicView() {
             {/* Top Eyebrow Tag */}
             <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 hover:bg-white/15 backdrop-blur-xl border border-white/20 text-[#38bdf8] text-xs font-bold tracking-wider uppercase pointer-events-auto cursor-default shadow-[0_0_20px_rgba(56,189,248,0.2)] mb-8 transition">
               <Rocket className="w-3.5 h-3.5 text-[#38bdf8]" />
-              <span>VTU-VRIF Innovation Hub • Venture Acceleration</span>
+              <span>SMPS Venture Launchpad • Deep-Tech Hardware Acceleration</span>
             </div>
 
             {/* Huge 3D Styled Title Overlay matching reference */}
@@ -378,7 +378,7 @@ export function EntrepreneurDynamicView() {
 
             {/* Subtitle & Mission Statement */}
             <p className="mt-8 text-base sm:text-xl text-white/85 max-w-2xl mx-auto leading-relaxed font-normal drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)] pointer-events-auto">
-              Accelerating India&apos;s next deep-tech hardware startups and academic spin-offs with <span className="font-bold text-white">₹50L+ non-dilutive grants</span>, zero-capex lab bays, and institutional enterprise off-take inside the <span className="text-[#38bdf8] font-semibold">VTU-VRIF Center</span>.
+              Accelerating India&apos;s next deep-tech hardware startups and spin-offs with <span className="font-bold text-white">₹50L+ non-dilutive grants</span>, zero-capex lab bays, and institutional enterprise off-take inside the <span className="text-[#38bdf8] font-semibold">SMPS Tech Lab Engineering Center</span>.
             </p>
 
             {/* Interactive CTAs */}
@@ -721,7 +721,7 @@ export function EntrepreneurDynamicView() {
                 Are you an engineering faculty researcher, post-doctoral scholar, or student team with a breakthrough patent or prototype in power electronics, silicon controllers, or electric mobility?
               </p>
               <p className="text-base text-gray-400 leading-relaxed font-normal">
-                SMPS Tech Lab and the VTU-VRIF-TCOE Center provide structured venture incubation, corporate spin-off frameworks, seed grant backing, and OEM commercialization agreements to take your academic invention into volume production.
+                SMPS Tech Lab provides structured hardware venture incubation, corporate spin-off frameworks, seed grant backing, and OEM commercialization agreements to take your academic invention into volume production.
               </p>
 
               <div className="space-y-2.5 pt-2">
@@ -735,7 +735,7 @@ export function EntrepreneurDynamicView() {
                 </div>
                 <div className="flex items-center gap-2.5 text-xs text-gray-300">
                   <CheckCircle2 className="w-4 h-4 text-[#34d399] flex-shrink-0" />
-                  <span>Full access to VTU testing labs, 1500V load bays, and environmental chambers</span>
+                  <span>Full access to SMPS testing bays, 1500V load banks, and environmental chambers</span>
                 </div>
               </div>
 
@@ -765,8 +765,8 @@ export function EntrepreneurDynamicView() {
                     We do not take equity from early-stage founders. You retain full control of your cap table.
                   </div>
                   <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5">
-                    <span className="font-bold text-white block mb-1">Authoritative VTU Certification</span>
-                    Startups operating in our ecosystem receive institutional backing from Visvesvaraya Technological University.
+                    <span className="font-bold text-white block mb-1">Authoritative Pre-Compliance & Validation</span>
+                    Startups operating in our ecosystem receive benchmark pre-compliance verification and engineering testing support.
                   </div>
                   <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5">
                     <span className="font-bold text-white block mb-1">Active Hardware Supply Chain</span>
@@ -889,7 +889,7 @@ export function EntrepreneurDynamicView() {
                   </span>
                 </div>
                 <h3 className="text-2xl font-black text-white tracking-tight">
-                  Pitch to SMPS Tech Lab & VTU-VRIF
+                  Pitch to SMPS Tech Lab Ventures
                 </h3>
                 <p className="text-xs text-gray-400 mt-1 mb-6">
                   Apply for non-dilutive grant acceleration, zero-capex workbench access, and institutional off-take.

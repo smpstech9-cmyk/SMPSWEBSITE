@@ -104,7 +104,7 @@ export default function EventsPage() {
         <div className="border-b border-[#e5e5ea] pb-12 mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#f5f5f7] border border-[#e5e5ea] text-xs font-semibold text-[#0071e3] tracking-wide mb-4 shadow-sm">
             <span className="telemetry-beacon w-2 h-2 rounded-full bg-[#0071e3]" />
-            VTU-VRIF Center Knowledge Sessions
+            SMPS Tech Lab Knowledge Sessions
           </div>
 
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
@@ -114,7 +114,7 @@ export default function EventsPage() {
                 <span className="text-gradient-apple-blue">Hardware Workshops</span>
               </h1>
               <p className="mt-4 text-base sm:text-lg text-[#6e6e73] max-w-2xl font-normal leading-relaxed">
-                Connect directly with power electronics researchers, state utility regulators, and silicon architects inside the VTU Telecom Center of Excellence facility in Bengaluru.
+                Connect directly with power electronics researchers, state utility regulators, and silicon architects inside the SMPS Tech Lab Engineering Center in Bengaluru.
               </p>
             </div>
 
@@ -476,7 +476,7 @@ export default function EventsPage() {
                     {isSubmitting ? "Generating Digital Pass..." : "Confirm Free Registration"}
                   </button>
                   <p className="text-[10px] text-center text-[#86868b] mt-2">
-                    Entry requires photo identification at the VTU-VRIF-TCOE security reception.
+                    Entry requires photo identification at the SMPS Tech Lab security reception.
                   </p>
                 </div>
               </form>

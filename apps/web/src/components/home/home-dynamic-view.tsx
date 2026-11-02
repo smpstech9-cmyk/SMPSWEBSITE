@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -10,10 +10,6 @@ import {
   Rocket,
   ShieldCheck,
   CheckCircle2,
-  Play,
-  Pause,
-  Volume2,
-  VolumeX,
   Briefcase,
   Sparkles,
   Layers,
@@ -29,32 +25,11 @@ import {
 } from "lucide-react";
 import { useSiteContent } from "@/context/content-context";
 import { FAQAccordion, FAQItem } from "@/components/ui/faq-accordion";
-import { VerifiedCredentialsViewer } from "@/components/home/verified-credentials-viewer";
+import { HeroVideoCard } from "@/components/home/hero-video-card";
 
 export function HomeDynamicView() {
   const { content } = useSiteContent();
   const { home } = content;
-
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(true);
-
-  const togglePlay = () => {
-    if (!videoRef.current) return;
-    if (isPlaying) {
-      videoRef.current.pause();
-      setIsPlaying(false);
-    } else {
-      videoRef.current.play().catch(() => {});
-      setIsPlaying(true);
-    }
-  };
-
-  const toggleMute = () => {
-    if (!videoRef.current) return;
-    videoRef.current.muted = !isMuted;
-    setIsMuted(!isMuted);
-  };
 
   const collaborationLogos = [
     { name: "Academic Collaboration 1", path: "/logos/collaboration/coll1.png" },
@@ -98,7 +73,7 @@ export function HomeDynamicView() {
       year: "2024",
       quarter: "Q1 - Q2",
       badge: "Institutional Foundation",
-      title: "Tri-Party MoU & VTU-VRIF-TCOE Facility Commissioning",
+      title: "SMPS Engineering Center Commissioning & Institutional MoU",
       desc: "Formal tripartite agreement signed between SMPS Electric Control Pvt Ltd, Visvesvaraya Technological University, and VTU Research & Innovation Foundation to establish the 5,000 sq.ft Power Electronics & CleanTech incubation bay in Bengaluru.",
       metrics: "5,000 sq.ft Lab Bay • High-Voltage Grid Simulator",
     },
@@ -271,8 +246,8 @@ export function HomeDynamicView() {
   const homeFAQs: FAQItem[] = [
     {
       id: "faq-1",
-      question: "What is SMPS Electric Control and its partnership with VTU?",
-      answer: "SMPS Electric Control Pvt Ltd is an enterprise power electronics, energy storage, and embedded silicon manufacturer. Operating directly inside the prestigious VTU-VRIF-TCOE (Visvesvaraya Technological University Research & Innovation Foundation) facility in Bengaluru, we conduct collaborative academic-industrial R&D, offer accredited engineering internships, and commercialize cutting-edge hardware.",
+      question: "What is SMPS Electric Control (SMPS Tech Lab™)?",
+      answer: "SMPS Electric Control Pvt Ltd (SMPS Tech Lab™) is a premier enterprise power electronics, energy storage, and industrial controller engineering firm. Operating state-of-the-art laboratory bays in Bengaluru, we conduct advanced R&D, offer VTU-accredited engineering internships, and manufacture breakthrough hardware.",
       category: "Organization",
     },
     {
@@ -301,6 +276,52 @@ export function HomeDynamicView() {
     },
   ];
 
+  // Government Recognition Logos for Sliding Hero Banner (Strictly from /logos/GOVT)
+  const recognizedLogos = [
+    {
+      name: "Ministry of Communications - Government of India",
+      src: "/logos/GOVT/Govt1.png",
+      width: 120,
+      height: 40,
+      className: "h-6 sm:h-7 w-auto object-contain",
+    },
+    {
+      name: "Department of Telecommunications (DoT) - India Telecom",
+      src: "/logos/GOVT/Govt2.png",
+      width: 40,
+      height: 40,
+      className: "h-6 sm:h-7 w-auto object-contain",
+    },
+    {
+      name: "Telecom Center of Excellence (TCOE India)",
+      src: "/logos/GOVT/Govt3.png",
+      width: 40,
+      height: 40,
+      className: "h-6 sm:h-7 w-auto object-contain",
+    },
+    {
+      name: "Ministry of Micro, Small and Medium Enterprises (MSME)",
+      src: "/logos/GOVT/Govt4.png",
+      width: 80,
+      height: 44,
+      className: "h-6 sm:h-7 w-auto object-contain",
+    },
+    {
+      name: "Government of Karnataka",
+      src: "/logos/GOVT/Govt5.jpg",
+      width: 55,
+      height: 40,
+      className: "h-6 sm:h-7 w-auto object-contain",
+    },
+    {
+      name: "DPIIT - Department for Promotion of Industry and Internal Trade",
+      src: "/logos/GOVT/Govt6.png",
+      width: 110,
+      height: 40,
+      className: "h-6 sm:h-7 w-auto object-contain",
+    },
+  ];
+
   // Dynamic Data Selectors with Live CMS Precedence
   const activeMilestones = home.milestones !== undefined ? home.milestones : collaborationMilestones;
   const activeDomainPillars = home.domains !== undefined ? home.domains : domainPillars;
@@ -310,14 +331,14 @@ export function HomeDynamicView() {
   return (
     <div className="w-full bg-white text-[#1d1d1f] overflow-hidden selection:bg-[#0071e3]/20 selection:text-[#0071e3]">
       {/* 1. CINEMATIC APPLE LIGHT HERO SECTION */}
-      <section className="relative pt-12 pb-20 lg:pt-20 lg:pb-32 overflow-hidden border-b border-black/[0.06]">
+      <section className="relative pt-2 pb-14 sm:pt-3 lg:pt-3 lg:pb-20 overflow-hidden border-b border-black/[0.06]">
         {/* Soft Ambient Radial Backlight */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[550px] bg-gradient-to-b from-blue-500/[0.06] via-indigo-500/[0.03] to-transparent rounded-full blur-[120px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
             {/* Left Copy */}
-            <div className="lg:col-span-7 space-y-7">
+            <div className="lg:col-span-6 space-y-5 sm:space-y-6">
               {/* Facility Eyebrow Badge */}
               <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#f5f5f7] border border-[#e5e5ea] text-xs font-medium tracking-wide shadow-sm">
                 <span className="telemetry-beacon w-2 h-2 rounded-full bg-[#10b981]" />
@@ -375,57 +396,61 @@ export function HomeDynamicView() {
               </div>
             </div>
 
-            {/* Right Hero Hardware Display Column */}
-            <div className="lg:col-span-5 relative space-y-4">
-              {/* Government Recognition & Affiliation Banner - Parallel to "Pioneering Industrial" */}
-              <div className="p-3 sm:p-3.5 rounded-2xl bg-white/95 backdrop-blur-xl border border-[#e5e5ea] shadow-xs flex items-center justify-between gap-3">
-                <div className="flex items-center gap-1.5">
+            {/* Right Hero Video Card Column */}
+            <div className="lg:col-span-6 relative space-y-2.5">
+              {/* SMPS Electric Enterprise Logo - Centered Directly Over Recognized By Banner */}
+              <div className="w-full flex items-center justify-center">
+                <Image
+                  src="/logos/SMPSele.png"
+                  alt="SMPS Electric Control Pvt Ltd"
+                  width={484}
+                  height={135}
+                  priority
+                  unoptimized
+                  className="h-11 sm:h-13 lg:h-14 w-auto max-w-[85%] object-contain mix-blend-multiply transition-transform duration-300 hover:scale-[1.02]"
+                />
+              </div>
+
+              {/* Government Recognition & Affiliation Banner - Sliding Box */}
+              <div className="p-2 sm:p-2.5 rounded-2xl bg-white/95 backdrop-blur-xl border border-[#e5e5ea] shadow-xs flex items-center gap-2 sm:gap-3 overflow-hidden group">
+                {/* Left Badge: Fixed */}
+                <div className="flex items-center gap-1.5 shrink-0 pl-1.5 pr-2.5 py-0.5 border-r border-[#e5e5ea] z-10 bg-white/95">
                   <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse shrink-0" />
                   <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#1d1d1f] whitespace-nowrap">
                     Recognized By
                   </span>
                 </div>
-                <div className="flex items-center gap-2.5 sm:gap-3.5 shrink-0">
-                  <div className="h-8 sm:h-9 flex items-center">
-                    <Image
-                      src="/logos/GOVT/Govt1.png"
-                      alt="Ministry of Communications - Government of India"
-                      width={120}
-                      height={40}
-                      unoptimized
-                      priority
-                      className="h-7 sm:h-8 w-auto object-contain transition-transform duration-200 hover:scale-105"
-                    />
-                  </div>
-                  <span className="w-px h-5 sm:h-6 bg-[#e5e5ea]" />
-                  <div className="h-8 sm:h-9 flex items-center">
-                    <Image
-                      src="/logos/GOVT/Govt2.png"
-                      alt="Department of Telecommunications (DoT) - India Telecom"
-                      width={40}
-                      height={40}
-                      unoptimized
-                      priority
-                      className="h-7 sm:h-8 w-auto object-contain transition-transform duration-200 hover:scale-105"
-                    />
-                  </div>
-                  <span className="w-px h-5 sm:h-6 bg-[#e5e5ea]" />
-                  <div className="h-8 sm:h-9 flex items-center">
-                    <Image
-                      src="/logos/GOVT/Govt3.png"
-                      alt="Telecom Center of Excellence (TCOE India)"
-                      width={40}
-                      height={40}
-                      unoptimized
-                      priority
-                      className="h-7 sm:h-8 w-auto object-contain transition-transform duration-200 hover:scale-105"
-                    />
+
+                {/* Sliding Track Viewport with Edge Fade Gradients */}
+                <div className="relative flex-1 overflow-hidden min-w-0">
+                  {/* Left edge fade */}
+                  <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-3 sm:w-5 bg-gradient-to-r from-white to-transparent z-10" />
+                  {/* Right edge fade */}
+                  <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-3 sm:w-5 bg-gradient-to-l from-white to-transparent z-10" />
+
+                  {/* Infinite Sliding Logostrip (Strictly /logos/GOVT) */}
+                  <div className="animate-recognized-marquee flex items-center gap-3.5 sm:gap-5 py-0.5">
+                    {[...recognizedLogos, ...recognizedLogos].map((logo, idx) => (
+                      <div key={idx} className="flex items-center gap-3.5 sm:gap-5 shrink-0">
+                        <div className="h-6 sm:h-7 flex items-center shrink-0">
+                          <Image
+                            src={logo.src}
+                            alt={logo.name}
+                            width={logo.width}
+                            height={logo.height}
+                            unoptimized
+                            className={`${logo.className} transition-transform duration-200 hover:scale-110`}
+                          />
+                        </div>
+                        <span className="w-px h-4 sm:h-5 bg-[#e5e5ea] shrink-0" />
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
 
-              {/* Verified Institutional Credentials & Protected Documents Viewer */}
-              <VerifiedCredentialsViewer />
+              {/* Video Showcase Card */}
+              <HeroVideoCard />
             </div>
           </div>
         </div>
@@ -444,7 +469,7 @@ export function HomeDynamicView() {
                 Upcoming Products & R&D in Progress
               </h2>
               <p className="text-base text-[#6e6e73] mt-3 max-w-2xl font-normal leading-relaxed">
-                Breakthrough hardware platforms currently undergoing high-voltage endurance trials and silicon verification inside the VTU-VRIF Center.
+                Breakthrough hardware platforms currently undergoing high-voltage endurance trials and silicon verification inside the SMPS Tech Lab Engineering Center.
               </p>
             </div>
             <Link
@@ -587,99 +612,7 @@ export function HomeDynamicView() {
         </div>
       </section>
 
-      {/* 4. CINEMA THEATER FACILITY VIDEO SHOWCASE */}
-      <section className="py-24 relative bg-[#fbfbfd] border-b border-black/[0.06] overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Left Description */}
-            <div className="lg:col-span-5 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 text-[#0071e3] border border-blue-100 text-xs font-bold uppercase tracking-wider">
-                <Play className="w-3.5 h-3.5 fill-current" />
-                Live Laboratory Walkthrough
-              </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1d1d1f] leading-tight tracking-tight">
-                Inside the VTU-VRIF Testing Bays
-              </h2>
-              <p className="text-sm sm:text-base text-[#6e6e73] leading-relaxed font-normal">
-                See our engineering team in action running thermal stress tests on high-voltage battery modules, validating GaN switching gate drivers, and prototyping automotive-grade CCU hardware in Bengaluru.
-              </p>
-
-              <div className="pt-2">
-                <Link
-                  href="/gallery"
-                  className="px-6 py-3 rounded-full bg-white hover:bg-gray-50 text-xs font-semibold text-[#1d1d1f] border border-[#e5e5ea] shadow-sm transition inline-flex items-center gap-2"
-                >
-                  <span>Explore Photo Gallery & Events</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            </div>
-
-            {/* Right Video Aspect Frame */}
-            <div className="lg:col-span-7">
-              <div className="relative rounded-[28px] overflow-hidden apple-card-elevated aspect-video bg-black shadow-2xl group border border-[#e5e5ea]">
-                <video
-                  ref={videoRef}
-                  src="/videos/video.mp4"
-                  poster="/images/hero-students.jpg"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  className="w-full h-full object-cover cursor-pointer"
-                  onClick={togglePlay}
-                  onPlay={() => setIsPlaying(true)}
-                  onPause={() => setIsPlaying(false)}
-                >
-                  <source src="/videos/video.mp4" type="video/mp4" />
-                  <source src="/logos/videos/video.mp4" type="video/mp4" />
-                  Your browser does not support HTML5 video streaming.
-                </video>
-
-                {/* Video Controls */}
-                <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      toggleMute();
-                    }}
-                    aria-label={isMuted ? "Unmute audio" : "Mute audio"}
-                    title={isMuted ? "Unmute audio" : "Mute audio"}
-                    className="p-2.5 rounded-full bg-black/50 hover:bg-black/80 text-white backdrop-blur-md transition border border-white/15 shadow-sm hover:scale-105 active:scale-95"
-                  >
-                    {isMuted ? (
-                      <VolumeX className="w-4 h-4 text-white" />
-                    ) : (
-                      <Volume2 className="w-4 h-4 text-emerald-400" />
-                    )}
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      togglePlay();
-                    }}
-                    aria-label={isPlaying ? "Pause video" : "Play video"}
-                    title={isPlaying ? "Pause video" : "Play video"}
-                    className="p-2.5 rounded-full bg-black/50 hover:bg-black/80 text-white backdrop-blur-md transition border border-white/15 shadow-sm hover:scale-105 active:scale-95"
-                  >
-                    {isPlaying ? (
-                      <Pause className="w-4 h-4 text-white" />
-                    ) : (
-                      <Play className="w-4 h-4 text-white fill-current" />
-                    )}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. PARTNERS, CLIENTS & ACADEMIC COLLABORATION WITH TIMELINE */}
+      {/* 4. PARTNERS, CLIENTS & ACADEMIC COLLABORATION WITH TIMELINE */}
       <section className="py-20 relative bg-white border-b border-black/[0.06]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           {/* Industry Partners */}
@@ -765,7 +698,7 @@ export function HomeDynamicView() {
                 </h3>
               </div>
               <p className="text-xs sm:text-sm text-[#6e6e73] max-w-md font-normal">
-                Conferring university credits, doctoral test access, and institutional certification under the VTU-VRIF ecosystem.
+                Conferring university academic credits and doctoral test access in technical collaboration with VTU.
               </p>
             </div>
 
@@ -786,7 +719,7 @@ export function HomeDynamicView() {
                   Institutional Roadmap
                 </span>
                 <h4 className="text-xl sm:text-2xl font-black text-[#1d1d1f]">
-                  VTU Collaboration Milestones & Chronology
+                  SMPS Technological Milestones & Chronology
                 </h4>
                 <p className="text-xs sm:text-sm text-[#6e6e73] mt-2">
                   A transparent timeline tracing the evolution from joint MoU establishment to commercial hardware manufacturing.
@@ -860,26 +793,26 @@ export function HomeDynamicView() {
         </div>
       </section>
 
-      {/* 6. FREQUENTLY ASKED QUESTIONS SECTION */}
+      {/* 5. FREQUENTLY ASKED QUESTIONS SECTION */}
       <section className="py-24 relative bg-[#fbfbfd] border-b border-black/[0.06]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FAQAccordion
             items={activeHomeFAQs}
             title="Frequently Asked Questions"
-            subtitle="Get clear answers regarding our VTU partnership, engineering internships, hardware certification, and incubation access."
+            subtitle="Get clear answers regarding SMPS Tech Lab, VTU engineering internships, hardware certification, and venture access."
             badge="Knowledge Base & FAQs"
             showCategories={true}
           />
         </div>
       </section>
 
-      {/* 7. DYNAMIC CALL-TO-ACTION BANNER */}
+      {/* 6. DYNAMIC CALL-TO-ACTION BANNER */}
       <section className="py-24 relative bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="p-8 sm:p-14 rounded-[32px] bg-gradient-to-r from-[#0071e3] via-[#0056b3] to-[#1e3a8a] text-white flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 shadow-[0_20px_50px_rgba(0,113,227,0.25)] relative overflow-hidden">
             <div className="max-w-2xl relative z-10">
               <span className="text-xs font-bold uppercase tracking-widest text-blue-200">
-                VTU-VRIF Center Opportunity
+                SMPS Tech Lab & VTU Internship Opportunity
               </span>
               <h3 className="text-2xl sm:text-4xl font-extrabold text-white mt-2 leading-tight tracking-tight">
                 {home.ctaTitle}

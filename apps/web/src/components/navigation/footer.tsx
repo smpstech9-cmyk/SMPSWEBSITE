@@ -22,12 +22,12 @@ export function Footer() {
             </Link>
 
             <p className="text-xs sm:text-sm text-[#6e6e73] leading-relaxed max-w-sm font-normal">
-              SMPS Electric Control Pvt Ltd corporate R&D and hardware incubation center operating inside the VTU-VRIF-TCOE Facility, Bengaluru. Pioneering high-power electronics, energy storage, and deep-tech ventures.
+              SMPS Electric Control Pvt Ltd (SMPS Tech Lab™) is a premier engineering enterprise pioneering advanced power electronics, grid-scale energy storage, and deep-tech hardware ventures in Bengaluru.
             </p>
 
             <div className="flex items-center gap-2 text-xs text-[#6e6e73]">
               <Building2 className="w-3.5 h-3.5 text-[#0071e3]" />
-              <span>VTU Telecom Center of Excellence Campus, Nagarbhavi</span>
+              <span>SMPS Tech Lab Engineering Center, Nagarbhavi, Bengaluru</span>
             </div>
 
             <p className="text-xs text-[#86868b] pt-2 font-mono">
@@ -157,7 +157,7 @@ export function Footer() {
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#0071e3] flex-shrink-0 mt-0.5" />
                 <span>
-                  VTU-VRIF-TCOE Building, Visvesvaraya Technological University Campus, Nagarbhavi, Bengaluru, Karnataka 560072
+                  SMPS Tech Lab, VTU-TCOE Building, Visvesvaraya Technological University Campus, Nagarbhavi, Bengaluru, Karnataka 560072
                 </span>
               </div>
               <div className="flex items-center gap-2.5">
@@ -185,7 +185,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#86868b]">
           <p>
-            VTU Recognized Corporate Center for Advanced Hardware Research & Incubation.
+            Premier Enterprise Center for Advanced Hardware Research, Power Electronics & Incubation.
           </p>
           <div className="flex items-center gap-6">
             <Link href="/ops" className="hover:text-[#0071e3] text-[#0071e3] font-semibold transition">

@@ -16,7 +16,7 @@ import {
 export const metadata = {
   title: "About SMPS Tech Lab | Power Electronics R&D, Innovation & Incubation",
   description:
-    "Learn about SMPS Electric Control Pvt Ltd and our R&D facility inside the VTU-VRIF-TCOE building, Bengaluru. Leading innovation in clean energy, power electronics, and hardware incubation.",
+    "Learn about SMPS Electric Control Pvt Ltd (SMPS Tech Lab™) and our premier power electronics R&D and engineering center in Bengaluru. Leading innovation in clean energy, power electronics, and hardware incubation.",
 };
 
 export default function AboutPage() {
@@ -43,7 +43,7 @@ export default function AboutPage() {
       cta: "Venture Incubation",
     },
     {
-      title: "VTU Talent Pipeline",
+      title: "VTU Internship Talent Pipeline",
       desc: "Cultivating elite engineers through immersive, hands-on internships inside real testing bays, working on actual high-voltage battery modules, gate drivers, and motor controllers.",
       icon: Award,
       link: "/internships",
@@ -53,8 +53,8 @@ export default function AboutPage() {
 
   const milestones = [
     {
-      year: "VTU-VRIF-TCOE",
-      title: "State R&D Center Established",
+      year: "Inaugural Bay",
+      title: "Engineering Center Commissioning",
       desc: "Established advanced power electronics lab inside the Visvesvaraya Technological University Research & Innovation Foundation campus in Bengaluru.",
     },
     {
@@ -86,13 +86,13 @@ export default function AboutPage() {
           </div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-[#0071e3] text-xs font-bold uppercase tracking-wider mb-4">
             <Building2 className="w-3.5 h-3.5" />
-            VTU-VRIF-TCOE Facility, Bengaluru
+            SMPS Tech Lab Engineering Center, Bengaluru
           </div>
           <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#1d1d1f] leading-tight">
             Pioneering Clean Power, Hardware Innovation & Deep-Tech Ventures
           </h1>
           <p className="mt-4 text-base sm:text-lg text-[#6e6e73] leading-relaxed font-normal">
-            <span className="font-semibold text-[#1d1d1f]">SMPS Electric Control Pvt Ltd</span> operates an enterprise-grade research, product development, and hardware incubation facility located inside the prestigious <span className="font-semibold text-[#1d1d1f]">VTU-VRIF-TCOE Building</span> in Bengaluru. We bridge the gap between academic breakthrough and mass-manufactured hardware deployment.
+            <span className="font-semibold text-[#1d1d1f]">SMPS Electric Control Pvt Ltd (SMPS Tech Lab™)</span> operates an enterprise-grade research, product development, and hardware incubation facility in Bengaluru. In technical synergy with <span className="font-semibold text-[#1d1d1f]">Visvesvaraya Technological University (VTU)</span>, we bridge the gap between academic breakthrough and mass-manufactured hardware deployment.
           </p>
         </div>
 
@@ -100,10 +100,10 @@ export default function AboutPage() {
         <div className="relative rounded-[32px] overflow-hidden bg-[#f5f5f7] border border-[#e5e5ea] p-8 sm:p-12 mb-16 shadow-sm">
           <div className="relative z-10 max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-[#0071e3] border border-blue-100 text-xs font-semibold mb-4">
-              <ShieldCheck className="w-3.5 h-3.5" /> Telecom Center of Excellence Campus
+              <ShieldCheck className="w-3.5 h-3.5" /> High-Voltage Engineering Bays
             </div>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[#1d1d1f]">
-              SMPS Tech Lab at VTU
+              SMPS Tech Lab Engineering Center
             </h2>
             <p className="mt-3 text-sm sm:text-base text-[#6e6e73] leading-relaxed font-normal">
               Equipped with Chroma regenerative grid simulators, high-frequency oscilloscopes, -40°C to +85°C thermal cycling chambers, and lithium battery impedance cyclers. We engineer industrial BESS, proprietary silicon, and high-power EV charging infrastructure.
@@ -231,8 +231,8 @@ export default function AboutPage() {
                 <img src="/logos/awards/aw%202.png" alt="Award 2" className="max-h-full max-w-full object-contain" />
               </div>
               <div>
-                <h4 className="text-sm font-bold text-[#1d1d1f]">VTU Industry-Academia Excellence</h4>
-                <p className="text-xs text-[#6e6e73] mt-1 font-normal">Operating benchmark hardware research laboratories within the VTU-VRIF center.</p>
+                <h4 className="text-sm font-bold text-[#1d1d1f]">Industry-Academia Excellence</h4>
+                <p className="text-xs text-[#6e6e73] mt-1 font-normal">Operating benchmark hardware research laboratories in technical collaboration with VTU.</p>
               </div>
             </div>
           </div>
@@ -269,7 +269,7 @@ export default function AboutPage() {
         <div className="p-8 sm:p-12 rounded-[32px] bg-gradient-to-r from-[#0071e3] via-[#0056b3] to-[#1e3a8a] text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-[0_20px_45px_rgba(0,113,227,0.25)]">
           <div>
             <h3 className="text-2xl font-bold text-white">Partner with SMPS Tech Lab</h3>
-            <p className="mt-1 text-sm text-blue-100 font-normal">Discuss custom R&D, startup incubation, or visit our facility at VTU-VRIF-TCOE.</p>
+            <p className="mt-1 text-sm text-blue-100 font-normal">Discuss custom R&D, startup incubation, or visit the SMPS Tech Lab engineering bays.</p>
           </div>
           <div className="flex items-center gap-3">
             <Link

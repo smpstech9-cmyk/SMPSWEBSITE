@@ -233,3 +233,24 @@ body {
   box-shadow: 0 12px 28px rgba(0, 113, 227, 0.14);
   border-color: rgba(0, 113, 227, 0.4);
 }
+
+/* Smooth Infinite Sliding Marquee for Recognized By Banner Box */
+@keyframes recognizedMarquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-recognized-marquee {
+  display: flex;
+  width: max-content;
+  animation: recognizedMarquee 20s linear infinite;
+  will-change: transform;
+}
+
+.animate-recognized-marquee:hover {
+  animation-play-state: paused;
+}

@@ -128,13 +128,13 @@ const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "vtu-lab-inauguration",
-    title: "Official VTU-VRIF-TCOE R&D Bay Inauguration",
+    title: "Official SMPS Tech Lab Engineering Bay Inauguration",
     category: "ceremonies",
     date: "January 2026",
-    location: "VTU Campus, Nagarbhavi, Bengaluru",
+    location: "SMPS Tech Lab, Nagarbhavi, Bengaluru",
     imageUrl: "/images/hero-students.jpg",
-    description: "Executive dignitaries, VTU Vice Chancellor, and industrial directors formally commissioning the high-voltage test bay and SaralaChip™ verification workbench.",
-    tags: ["Inauguration", "VTU-VRIF", "Facility Launch"],
+    description: "Executive dignitaries, university officials, and industrial directors formally commissioning the high-voltage test bay and SaralaChip™ verification workbench.",
+    tags: ["Inauguration", "SMPS Tech Lab", "Facility Launch"],
     attendeesCount: "250+ Dignitaries & Faculty",
   },
 ];
@@ -146,7 +146,7 @@ const EVENTS_SCHEDULE: EventItem[] = [
     category: "Industrial Conference",
     date: "November 14, 2026",
     time: "09:30 AM – 05:00 PM IST",
-    venue: "Main Auditorium, VTU-VRIF-TCOE Building, Bengaluru",
+    venue: "Main Auditorium, SMPS Tech Lab Engineering Center, Bengaluru",
     status: "upcoming",
     description: "Deep dive into 1500V LFP energy storage architectures, safety quarantine guidelines, and tariff arbitrage financial models for industrial plant managers.",
     speaker: "Er. Shiv Bhalke & Guest Panelists from BESCOM",
@@ -172,7 +172,7 @@ const EVENTS_SCHEDULE: EventItem[] = [
     category: "Technical Masterclass",
     date: "December 12, 2026",
     time: "02:00 PM – 06:00 PM IST",
-    venue: "Digital Simulation Bay, VTU Facility",
+    venue: "Digital Simulation Bay, SMPS Tech Lab",
     status: "upcoming",
     description: "Code walkthroughs of space vector PWM modulation, discrete anti-windup integrators, and real-time fault isolation on physical test benches.",
     speaker: "SMPS Silicon Research Team",
@@ -209,7 +209,7 @@ export default function GalleryEventsPage() {
                 imageUrl: d.image_url || d.imageUrl,
                 description: d.description,
                 tags: [d.category?.toUpperCase() || "GALLERY", "SMPS Tech Lab"],
-                attendeesCount: "VTU Facility",
+                attendeesCount: "SMPS Lab",
               }))
             );
             setDbLoaded(true);
@@ -290,7 +290,7 @@ export default function GalleryEventsPage() {
                 Experience the Innovation <span className="text-gradient-apple-blue">In Action</span>
               </h1>
               <p className="mt-3 text-base sm:text-lg text-[#6e6e73] max-w-2xl font-normal leading-relaxed">
-                Explore photo documentation of high-voltage testing sessions, national hardware hackathons, academic convocations, and upcoming clean-tech conferences inside the VTU facility.
+                Explore photo documentation of high-voltage testing sessions, national hardware hackathons, academic convocations, and upcoming clean-tech conferences inside the SMPS Tech Lab facility.
               </p>
             </div>
 
@@ -443,7 +443,7 @@ export default function GalleryEventsPage() {
 
                   {/* Card Footer */}
                   <div className="px-6 pb-5 pt-3 border-t border-[#e5e5ea] flex items-center justify-between text-xs text-[#86868b]">
-                    <span>{item.attendeesCount || "VTU R&D"}</span>
+                    <span>{item.attendeesCount || "SMPS Lab"}</span>
                     <span className="font-semibold text-[#0071e3] flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
                       Inspect &rarr;
                     </span>

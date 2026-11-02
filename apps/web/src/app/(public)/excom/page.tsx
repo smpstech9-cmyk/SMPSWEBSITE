@@ -129,7 +129,7 @@ export default function ExComPage() {
         <div className="border-b border-[#e5e5ea] pb-10 mb-12">
           <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#f5f5f7] border border-[#e5e5ea] text-xs font-medium tracking-wide shadow-sm mb-4">
             <span className="telemetry-beacon w-2 h-2 rounded-full bg-[#0071e3]" />
-            <span className="font-mono text-[#6e6e73]">VTU-VRIF-TCOE Joint Governance</span>
+            <span className="font-mono text-[#6e6e73]">SMPS Tech Lab Governance</span>
             <span className="text-[#86868b]">•</span>
             <span className="text-[#0071e3] font-semibold">ExCom Council</span>
           </div>
@@ -345,7 +345,7 @@ export default function ExComPage() {
               href="/about"
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#f5f5f7] hover:bg-[#e8e8ed] text-[#1d1d1f] border border-[#e5e5ea] rounded-full text-sm font-semibold transition"
             >
-              <span>Explore VTU-VRIF Facility</span>
+              <span>Explore SMPS Tech Lab Facility</span>
             </Link>
           </div>
         </section>

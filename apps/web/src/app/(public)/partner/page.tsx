@@ -126,7 +126,7 @@ export default function PartnerPage() {
           <div className="lg:col-span-5 space-y-6">
             <div className="p-8 rounded-3xl bg-[#f5f5f7] border border-[#e5e5ea]">
               <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0071e3] mb-3">
-                <Building2 className="w-4 h-4" /> VTU-VRIF-TCOE Campus Facility
+                <Building2 className="w-4 h-4" /> SMPS Tech Lab Engineering Facility
               </div>
               <h3 className="text-xl font-bold text-[#1d1d1f]">
                 Institutional Engagement Framework

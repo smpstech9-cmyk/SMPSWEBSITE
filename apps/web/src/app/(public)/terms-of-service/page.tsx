@@ -31,7 +31,7 @@ export default function TermsOfServicePage() {
           <section className="apple-card p-6 sm:p-8 bg-white border border-[#e5e5ea]">
             <h2 className="text-lg font-bold text-[#1d1d1f] mb-3">1. Scope of Service</h2>
             <p>
-              By accessing the digital portals or physical laboratory test benches of SMPS Electric Control Pvt Ltd (operating within the VTU-VRIF-TCOE Facility, Bengaluru), users and enterprises agree to adhere to all laboratory safety protocols, intellectual property guidelines, and statutory regulations.
+              By accessing the digital portals or physical laboratory test benches of SMPS Electric Control Pvt Ltd (SMPS Tech Lab™, Bengaluru), users and enterprises agree to adhere to all laboratory safety protocols, intellectual property guidelines, and statutory regulations.
             </p>
           </section>
 

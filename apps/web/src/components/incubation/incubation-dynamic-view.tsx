@@ -25,7 +25,7 @@ const DEFAULT_INCUBATION_FAQS: FAQItem[] = [
     id: "inc-faq-1",
     question: "Do you take equity in incubated hardware startups?",
     answer:
-      "No. SMPS Tech Lab and VTU-VRIF offer non-dilutive incubation support for early-stage student and academic founders. We provide zero-capex workbench access, testing instruments, and DFM mentorship without mandatory equity warrants.",
+      "No. SMPS Tech Lab offers non-dilutive incubation support for early-stage student and academic founders. We provide zero-capex workbench access, testing instruments, and DFM mentorship without mandatory equity warrants.",
     category: "Equity & Terms",
   },
   {
@@ -44,9 +44,9 @@ const DEFAULT_INCUBATION_FAQS: FAQItem[] = [
   },
   {
     id: "inc-faq-4",
-    question: "Are external non-VTU engineering founders eligible to apply?",
+    question: "Who is eligible to apply for hardware incubation?",
     answer:
-      "Yes. While VTU faculty and alumni receive fast-track admission, any deep-tech hardware startup working in CleanTech, Electric Mobility, Power Electronics, Semiconductors, or Industrial IoT across India is eligible to apply for cohort slots.",
+      "Any deep-tech hardware startup working in CleanTech, Electric Mobility, Power Electronics, Semiconductors, or Industrial IoT across India is eligible to apply for cohort slots. VTU researchers and engineering students also receive direct access.",
     category: "Eligibility",
   },
   {
@@ -59,7 +59,7 @@ const DEFAULT_INCUBATION_FAQS: FAQItem[] = [
 ];
 
 const DEFAULT_FOUNDER_PERKS = [
-  "Workstation bays located inside the prestigious VTU-VRIF-TCOE Center",
+  "Workstation bays located inside the state-of-the-art SMPS Tech Lab Center",
   "Direct technical mentorship from veteran power electronics design engineers",
   "Prototyping component library & discount hardware procurement",
   "Access to pilot manufacturing test runs and PCB assembly lines",
@@ -73,7 +73,7 @@ export function IncubationDynamicView() {
     heroEyebrow: "Deep-Tech Hardware Incubation & Venture Launchpad",
     heroTitle: "Empowering Hardware Entrepreneurs & Innovators",
     heroSubtitle:
-      "We bridge the brutal 'hardware valley of death'. Operating from the VTU-VRIF-TCOE ecosystem, SMPS Tech Lab provides founders with laboratory test equipment, DFM engineering, regulatory certification guidance, and market access.",
+      "We bridge the brutal 'hardware valley of death'. Operating from the SMPS Tech Lab engineering bays, we provide founders with laboratory test equipment, DFM engineering, regulatory certification guidance, and market access.",
     facilityTitle: "Industrial Test Instruments at Your Fingertips",
     facilityDesc:
       "Avoid spending millions of rupees on initial test equipment. Our facility provides founders with production-ready validation tools from day one.",
@@ -90,7 +90,7 @@ export function IncubationDynamicView() {
   const incubationPillars = [
     {
       title: "Lab Infrastructure & Rapid Prototyping",
-      desc: "Zero-capex access to multi-channel high-frequency oscilloscopes, grid simulators, battery cyclers, and environmental chambers inside VTU-VRIF-TCOE.",
+      desc: "Zero-capex access to multi-channel high-frequency oscilloscopes, grid simulators, battery cyclers, and environmental chambers inside the SMPS Tech Lab Center.",
       icon: Cpu,
     },
     {
@@ -155,7 +155,7 @@ export function IncubationDynamicView() {
 
               <p className="text-base sm:text-lg text-[#6e6e73] leading-relaxed font-normal max-w-2xl">
                 {inc.heroSubtitle ||
-                  "We bridge the brutal 'hardware valley of death'. Operating from the VTU-VRIF-TCOE ecosystem, SMPS Tech Lab provides founders with laboratory test equipment, DFM engineering, regulatory certification guidance, and market access."}
+                  "We bridge the brutal 'hardware valley of death'. Operating from the SMPS Tech Lab engineering bays, we provide founders with laboratory test equipment, DFM engineering, regulatory certification guidance, and market access."}
               </p>
 
               <div className="flex flex-wrap items-center gap-4 pt-2">
@@ -170,7 +170,7 @@ export function IncubationDynamicView() {
                   href="/about"
                   className="px-7 py-3.5 rounded-full bg-[#f5f5f7] hover:bg-[#e8e8ed] text-[#1d1d1f] font-semibold text-sm border border-[#e5e5ea] transition"
                 >
-                  Explore VTU-VRIF Center
+                  Explore SMPS Tech Lab
                 </Link>
               </div>
 
@@ -196,7 +196,7 @@ export function IncubationDynamicView() {
               <div className="relative rounded-[28px] overflow-hidden apple-card-elevated aspect-[4/3] group shadow-2xl border border-black/[0.08]">
                 <Image
                   src="/images/incubation-facility.jpg"
-                  alt="State-of-the-Art VTU-VRIF Hardware Incubation & Prototyping Laboratory"
+                  alt="State-of-the-Art SMPS Hardware Incubation & Prototyping Laboratory"
                   fill
                   priority
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -208,7 +208,7 @@ export function IncubationDynamicView() {
                   <div className="flex items-center justify-between text-xs pb-1.5 border-b border-gray-100">
                     <span className="font-bold text-[#1d1d1f] flex items-center gap-1.5">
                       <span className="w-2 h-2 rounded-full bg-[#059669] animate-pulse" />
-                      VTU-VRIF Incubation Wing
+                      SMPS Tech Lab Incubation Wing
                     </span>
                     <span className="text-[#059669] font-mono text-[11px] font-bold">Active Lab Bays</span>
                   </div>

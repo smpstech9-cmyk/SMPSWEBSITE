@@ -106,7 +106,7 @@ export default function StorePage() {
             stage: "In Stock & Available",
             imageUrl: "/images/products/saralachip.jpg",
             status: "Ready to Dispatch",
-            specs: ["Sub-2.5µs Hardware Protection", "Isolated High-Voltage Drivers", "VTU Curriculum SDK Included"],
+            specs: ["Sub-2.5µs Hardware Protection", "Isolated High-Voltage Drivers", "Engineering Curriculum & Firmware SDK Included"],
             availability: "Ready to Dispatch",
             link: "/store/saralachip-dev-board",
           },
@@ -125,13 +125,13 @@ export default function StorePage() {
           {
             id: "store-faq-2",
             question: "What is the status of Quantum BESS™ and SmartLink™?",
-            answer: "Quantum BESS™ and SmartLink™ are in active R&D validation inside the VTU-VRIF Center of Excellence. Early access evaluation units and technical datasheets are available upon request for qualifying industrial test partners.",
+            answer: "Quantum BESS™ and SmartLink™ are in active R&D validation inside the SMPS Tech Lab Engineering Center. Early access evaluation units and technical datasheets are available upon request for qualifying industrial test partners.",
             category: "Upcoming Products",
           },
           {
             id: "store-faq-3",
             question: "Are academic lab kits and SaralaChip™ modules available for universities?",
-            answer: "Yes. Educational institutions can procure bulk kits with specialized VTU laboratory manuals, firmware SDKs, and instructor onboarding packages directly from our hardware catalog.",
+            answer: "Yes. Educational institutions and engineering colleges can procure bulk kits with specialized laboratory manuals, firmware SDKs, and instructor onboarding packages directly from our hardware catalog.",
             category: "Academic",
           },
           {
@@ -385,7 +385,7 @@ export default function StorePage() {
             <div className="max-w-3xl space-y-3">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-[#0071e3] text-xs font-semibold">
                 <Sparkles className="w-3.5 h-3.5" />
-                VTU-VRIF-TCOE Hardware Prototyping & Energy Systems Lab
+                SMPS Tech Lab Hardware Prototyping & Energy Systems Lab
               </div>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1d1d1f] tracking-tight">
                 Enterprise Hardware & Modular Systems Showroom
@@ -625,7 +625,7 @@ export default function StorePage() {
                 Upcoming Products & R&D in Progress
               </h2>
               <p className="mt-2 text-sm text-[#6e6e73] max-w-2xl font-normal leading-relaxed">
-                Platforms currently undergoing thermal stress trials and firmware bring-up inside the VTU-VRIF Center of Excellence.
+                Platforms currently undergoing thermal stress trials and firmware bring-up inside the SMPS Tech Lab Engineering Center.
               </p>
             </div>
             <Link

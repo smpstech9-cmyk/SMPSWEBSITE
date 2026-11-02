@@ -116,7 +116,7 @@ export function RndDynamicView() {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#f5f5f7] border border-[#e5e5ea] text-[#0071e3] text-xs font-semibold tracking-wide uppercase mb-6 shadow-sm">
               <Building2 className="w-3.5 h-3.5" />
-              VTU-VRIF-TCOE Research & Development Facility
+              SMPS Tech Lab Advanced R&D Facility
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#1d1d1f] leading-[1.08]">
               {rnd.headline}

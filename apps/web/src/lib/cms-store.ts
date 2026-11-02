@@ -205,14 +205,14 @@ export interface FullSiteContent {
 
 export const INITIAL_SITE_CONTENT: FullSiteContent = {
   home: {
-    heroEyebrow: "VTU-VRIF-TCOE Accredited Center • Bengaluru",
+    heroEyebrow: "SMPS Tech Lab™ • Advanced Power Electronics & Clean Energy Center",
     heroTitleLine1: "Pioneering Industrial",
     heroTitleHighlight: "Power Electronics",
     heroTitleLine2: "& Clean Energy Storage",
     heroSubtitle:
-      "Advanced R&D testbenches, university-certified student research cohorts, and native high-efficiency power architectures built at the Visvesvaraya Technological University campus.",
+      "Advanced R&D testbenches, industry-recognized engineering cohorts, and native high-efficiency power architectures engineered in Bengaluru.",
     stats: [
-      { id: "stat-1", value: "1,450+", label: "VTU Scholars Trained", subtext: "Across 40+ affiliated engineering institutes" },
+      { id: "stat-1", value: "1,450+", label: "Engineers Trained", subtext: "Across 40+ engineering institutes & VTU colleges" },
       { id: "stat-2", value: "1500V", label: "DC Bus Test Capacity", subtext: "Regenerative grid simulator & high-bay" },
       { id: "stat-3", value: "100%", label: "Indigenous Hardware", subtext: "Designed, engineered & assembled in Karnataka" },
       { id: "stat-4", value: "94.5%", label: "Practical Lab Rigor", subtext: "Verifiable digital cryptographic credentials" },
@@ -249,7 +249,7 @@ export const INITIAL_SITE_CONTENT: FullSiteContent = {
         year: "2024",
         quarter: "Q1 - Q2",
         badge: "Institutional Foundation",
-        title: "Tri-Party MoU & VTU-VRIF-TCOE Facility Commissioning",
+        title: "SMPS Engineering Center Commissioning & Institutional MoU",
         desc: "Formal tripartite agreement signed between SMPS Electric Control Pvt Ltd, Visvesvaraya Technological University, and VTU Research & Innovation Foundation to establish the 5,000 sq.ft Power Electronics & CleanTech incubation bay in Bengaluru.",
         metrics: "5,000 sq.ft Lab Bay • High-Voltage Grid Simulator",
       },
@@ -412,8 +412,8 @@ export const INITIAL_SITE_CONTENT: FullSiteContent = {
     faqs: [
       {
         id: "faq-1",
-        question: "What is SMPS Electric Control and its partnership with VTU?",
-        answer: "SMPS Electric Control Pvt Ltd is an enterprise power electronics, energy storage, and embedded silicon manufacturer. Operating directly inside the prestigious VTU-VRIF-TCOE (Visvesvaraya Technological University Research & Innovation Foundation) facility in Bengaluru, we conduct collaborative academic-industrial R&D, offer accredited engineering internships, and commercialize cutting-edge hardware.",
+        question: "What is SMPS Electric Control (SMPS Tech Lab™)?",
+        answer: "SMPS Electric Control Pvt Ltd (SMPS Tech Lab™) is a premier enterprise power electronics, energy storage, and industrial controller engineering firm. Operating state-of-the-art laboratory bays in Bengaluru, we conduct advanced R&D, offer VTU-accredited engineering internships, and manufacture breakthrough hardware.",
         category: "Organization",
       },
       {
@@ -443,14 +443,14 @@ export const INITIAL_SITE_CONTENT: FullSiteContent = {
     ],
     ctaTitle: "Advance Your Engineering Career with Hands-On Hardware R&D",
     ctaSubtitle:
-      "Join the next batch of elite engineers mastering power converters, BMS firmware, and battery testing inside the VTU Telecom Center of Excellence.",
+      "Join the next batch of elite engineers mastering power converters, BMS firmware, and battery testing with SMPS Tech Lab and VTU accredited programs.",
     ctaPrimaryText: "Explore VTU Internships",
     ctaPrimaryLink: "/internships",
   },
   rnd: {
     headline: "Translational Hardware Research & Silicon Development",
     subheadline:
-      "Operating inside the VTU-VRIF-TCOE high-voltage test center, our research faculty and industrial fellows build patented solutions across power electronics, BMS algorithms, and wide-bandgap semiconductors.",
+      "Operating inside the advanced SMPS Tech Lab high-voltage engineering bays, our research engineers and industrial fellows build patented solutions across power electronics, BMS algorithms, and wide-bandgap semiconductors in technical collaboration with VTU.",
     bays: [
       {
         id: "bay-1",
@@ -539,12 +539,12 @@ export const INITIAL_SITE_CONTENT: FullSiteContent = {
     heroEyebrow: "Deep-Tech Hardware Entrepreneurship & Venture Launchpad",
     heroTitle: "Empowering Deep-Tech Hardware Entrepreneurs",
     heroSubtitle:
-      "Bridging the brutal 'hardware valley of death'. Operating from the prestigious VTU-VRIF-TCOE ecosystem, SMPS Tech Lab provides hardware entrepreneurs and startup founders with zero-capex testbenches, DFM engineering, regulatory pre-compliance certification, and venture market access.",
+      "Bridging the brutal 'hardware valley of death'. Operating from the advanced SMPS Tech Lab engineering bays, we provide hardware entrepreneurs and startup founders with zero-capex testbenches, DFM engineering, regulatory pre-compliance certification, and venture market access.",
     facilityTitle: "Industrial Test Benches Built for Hardware Entrepreneurs",
     facilityDesc:
       "Don't spend millions of rupees on initial test equipment. Our facility equips hardware entrepreneurs with multi-channel oscilloscopes, 1500V load banks, grid simulators, and thermal chambers from day one.",
     founderPerks: [
-      "Workstation bays located inside the prestigious VTU-VRIF-TCOE Center",
+      "Workstation bays located inside the state-of-the-art SMPS Tech Lab Center",
       "Direct technical mentorship from veteran power electronics design engineers",
       "Prototyping component library & discount hardware procurement",
       "Access to pilot manufacturing test runs and PCB assembly lines",
@@ -555,7 +555,7 @@ export const INITIAL_SITE_CONTENT: FullSiteContent = {
       {
         id: "inc-faq-1",
         question: "Do you take equity in incubated hardware startups?",
-        answer: "No. SMPS Tech Lab and VTU-VRIF offer non-dilutive incubation support for early-stage student and academic founders. We provide zero-capex workbench access, testing instruments, and DFM mentorship without mandatory equity warrants.",
+        answer: "No. SMPS Tech Lab offers non-dilutive incubation support for early-stage student and academic founders. We provide zero-capex workbench access, testing instruments, and DFM mentorship without mandatory equity warrants.",
         category: "Equity & Terms",
       },
       {
@@ -572,8 +572,8 @@ export const INITIAL_SITE_CONTENT: FullSiteContent = {
       },
       {
         id: "inc-faq-4",
-        question: "Are external non-VTU engineering founders eligible to apply?",
-        answer: "Yes. While VTU faculty and alumni receive fast-track admission, any deep-tech hardware startup working in CleanTech, Electric Mobility, Power Electronics, Semiconductors, or Industrial IoT across India is eligible to apply for cohort slots.",
+        question: "Who is eligible to apply for hardware incubation?",
+        answer: "Any deep-tech hardware startup working in CleanTech, Electric Mobility, Power Electronics, Semiconductors, or Industrial IoT across India is eligible to apply for cohort slots. VTU researchers and engineering students also receive direct access.",
         category: "Eligibility",
       },
       {
@@ -598,13 +598,13 @@ export const INITIAL_SITE_CONTENT: FullSiteContent = {
       {
         id: "store-faq-2",
         question: "What is the status of Quantum BESS™ and SmartLink™?",
-        answer: "Quantum BESS™ and SmartLink™ are in active R&D validation inside the VTU-VRIF Center of Excellence. Early access evaluation units and technical datasheets are available upon request for qualifying industrial test partners.",
+        answer: "Quantum BESS™ and SmartLink™ are in active R&D validation inside the SMPS Tech Lab Engineering Center. Early access evaluation units and technical datasheets are available upon request for qualifying industrial test partners.",
         category: "Upcoming Products",
       },
       {
         id: "store-faq-3",
         question: "Are academic lab kits and SaralaChip™ modules available for universities?",
-        answer: "Yes. Educational institutions can procure bulk kits with specialized VTU laboratory manuals, firmware SDKs, and instructor onboarding packages directly from our hardware catalog.",
+        answer: "Yes. Educational institutions and engineering colleges can procure bulk kits with specialized laboratory manuals, firmware SDKs, and instructor onboarding packages directly from our hardware catalog.",
         category: "Academic",
       },
       {
@@ -658,7 +658,7 @@ export const INITIAL_SITE_CONTENT: FullSiteContent = {
         specs: [
           "Sub-2.5µs Hardware Protection",
           "Isolated High-Voltage Drivers",
-          "VTU Curriculum SDK Included",
+          "Engineering Curriculum & Firmware SDK Included",
         ],
         availability: "Ready to Dispatch",
         link: "/store/saralachip-dev-board",
@@ -671,11 +671,11 @@ export const INITIAL_SITE_CONTENT: FullSiteContent = {
     announcementLink: "/internships",
     contactEmail: "info@smpstechlab.com",
     contactPhone: "+91 80 2318 4567",
-    facilityAddress: "VTU-VRIF-TCOE Center, Visvesvaraya Technological University Campus, Nagarbhavi, Bengaluru - 560072, Karnataka",
+    facilityAddress: "SMPS Tech Lab Engineering Center, VTU Campus, Nagarbhavi, Bengaluru - 560072, Karnataka",
   },
 };
 
-export const STORAGE_KEY = "smps_operations_cms_state_v4";
+export const STORAGE_KEY = "smps_operations_cms_state_v5";
 
 export function mergeWithDefaults(raw: any): FullSiteContent {
   if (!raw || typeof raw !== "object") return INITIAL_SITE_CONTENT;
