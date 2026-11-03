@@ -430,6 +430,13 @@ export function Navbar() {
             R&D
           </Link>
           <Link
+            href="/ip"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block py-2 text-sm font-semibold text-[#1d1d1f]"
+          >
+            IP & Patents
+          </Link>
+          <Link
             href="/entrepreneur"
             onClick={() => setIsMobileMenuOpen(false)}
             className="block py-2 text-sm font-semibold text-[#1d1d1f]"
