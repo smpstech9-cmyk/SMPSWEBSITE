@@ -84,8 +84,15 @@ export function IPSecureReaderModal({ ip, isOpen, onClose }: IPSecureReaderModal
         setZoomLevel(1);
         setLoadProgress("Connecting to authoritative SIPAIR repository...");
 
-        // Fetch document ArrayBuffer from internal secure API
-        const response = await fetch(`/api/ip/document/${ip.id}`);
+        // Fetch document directly via static CDN URL to bypass Vercel's 4.5MB Serverless function limit
+        const staticUrl = `/documents/IPs/drive-download-20261103T132506Z-1-001/${encodeURIComponent(ip.file)}`;
+        let response = await fetch(staticUrl);
+
+        if (!response.ok) {
+          // Fallback to API route if direct static path was not reached
+          response = await fetch(`/api/ip/document/${ip.id}`);
+        }
+
         if (!response.ok) {
           throw new Error(
             response.status === 404
@@ -95,9 +102,47 @@ export function IPSecureReaderModal({ ip, isOpen, onClose }: IPSecureReaderModal
         }
 
         if (isCancelled) return;
-        setLoadProgress("Extracting embedded schematics, topologies & tables...");
 
-        const arrayBuffer = await response.arrayBuffer();
+        // Stream arrayBuffer with real-time download progress for large 15MB-70MB documents
+        let arrayBuffer: ArrayBuffer;
+        const contentLength = response.headers.get("content-length");
+        const total = contentLength ? parseInt(contentLength, 10) : 0;
+
+        if (response.body && total > 0) {
+          setLoadProgress(`Downloading authentic document (0.0 MB / ${(total / 1048576).toFixed(1)} MB)...`);
+          const reader = response.body.getReader();
+          const chunks: Uint8Array[] = [];
+          let received = 0;
+
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            if (value) {
+              chunks.push(value);
+              received += value.length;
+              if (!isCancelled) {
+                const mbReceived = (received / 1048576).toFixed(1);
+                const mbTotal = (total / 1048576).toFixed(1);
+                const pct = Math.round((received / total) * 100);
+                setLoadProgress(`Downloading authentic document (${mbReceived} MB / ${mbTotal} MB • ${pct}%)...`);
+              }
+            }
+          }
+
+          const allChunks = new Uint8Array(received);
+          let position = 0;
+          for (const chunk of chunks) {
+            allChunks.set(chunk, position);
+            position += chunk.length;
+          }
+          arrayBuffer = allChunks.buffer;
+        } else {
+          setLoadProgress("Extracting embedded schematics, topologies & tables...");
+          arrayBuffer = await response.arrayBuffer();
+        }
+
+        if (isCancelled) return;
+        setLoadProgress("Extracting embedded schematics, topologies & tables...");
 
         if (isCancelled) return;
         setLoadProgress("Rendering authentic paginated document sheets...");
