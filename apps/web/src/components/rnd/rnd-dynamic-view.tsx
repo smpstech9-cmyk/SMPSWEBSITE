@@ -143,10 +143,16 @@ export function RndDynamicView() {
 
             {/* Impact Metric Chips */}
             <div className="mt-10 flex flex-wrap items-center gap-4 pt-6 border-t border-black/[0.06]">
-              <div className="p-3.5 px-5 rounded-2xl bg-[#f5f5f7] border border-[#e5e5ea]">
-                <div className="text-xl font-black text-[#1d1d1f]">{rnd.patentsCount}</div>
-                <div className="text-[11px] text-[#6e6e73] font-medium">Intellectual Property</div>
-              </div>
+              <Link
+                href="/ip"
+                className="p-3.5 px-5 rounded-2xl bg-[#f5f5f7] hover:bg-blue-50/60 border border-[#e5e5ea] hover:border-[#0071e3]/40 transition group cursor-pointer"
+              >
+                <div className="text-xl font-black text-[#1d1d1f] group-hover:text-[#0071e3] transition-colors flex items-center gap-1.5">
+                  <span>{rnd.patentsCount}</span>
+                  <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+                <div className="text-[11px] text-[#6e6e73] font-medium">Intellectual Property & Patents →</div>
+              </Link>
               <div className="p-3.5 px-5 rounded-2xl bg-[#f5f5f7] border border-[#e5e5ea]">
                 <div className="text-xl font-black text-emerald-600">{rnd.grantsAmount}</div>
                 <div className="text-[11px] text-[#6e6e73] font-medium">Research Investment</div>

@@ -67,6 +67,7 @@ export function Navbar() {
   const navLinks = [
     { label: "Overview", href: "/" },
     { label: "R&D", href: "/rnd" },
+    { label: "IP & Patents", href: "/ip" },
     { label: "Entrepreneurship", href: "/entrepreneur" },
     { label: "Hardware Store", href: "/store" },
     { label: "VTU Internships", href: "/internships", hasDropdown: true },
