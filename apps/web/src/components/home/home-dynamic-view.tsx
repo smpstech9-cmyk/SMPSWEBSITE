@@ -187,61 +187,6 @@ export function HomeDynamicView() {
     },
   ];
 
-  // Upcoming Products - R&D in Progress
-  const upcomingProducts = [
-    {
-      id: "quantum-bess",
-      name: "Quantum BESS™ 500kWh / 1MWh",
-      brand: "Quantum BESS™",
-      tagline: "Containerized Liquid-Cooled Industrial Energy Storage",
-      stage: "R&D in Progress • Validation Bay 3",
-      imageUrl: "/images/products/quantum-bess.jpg",
-      status: "Upcoming R&D",
-      specs: [
-        "1500V High-Density LFP Cell Chemistry",
-        "Dual-Circuit Active Liquid Thermal Management",
-        "Sub-Millisecond Grid Frequency Regulation",
-        "SmartLink™ Cloud & Modbus-TCP Telemetry",
-      ],
-      availability: "Pilot Trials: Q3 2027",
-      link: "/store",
-    },
-    {
-      id: "smartlink-gateway",
-      name: "SmartLink™ Industrial IoT & Grid Gateway",
-      brand: "SmartLink™",
-      tagline: "Rugged DIN-Rail Edge Controller & Telemetry Router",
-      stage: "R&D in Progress • Silicon Bring-Up",
-      imageUrl: "/images/products/smartlink-gateway.jpg",
-      status: "Upcoming R&D",
-      specs: [
-        "Triple 10/100 Ethernet + Dual RS485 Isolated Ports",
-        "Native CAN-FD 5.0Mbps Automotive Bus",
-        "Integrated 4G/5G Cellular & LoRa Sub-GHz Uplink",
-        "Embedded Linux RT-Preempt Deterministic Kernel",
-      ],
-      availability: "Evaluation Kits: Q1 2027",
-      link: "/store",
-    },
-    {
-      id: "saralachip-nextgen",
-      name: "SaralaChip™ Gen-2 DSP Silicon Controller",
-      brand: "SaralaChip™",
-      tagline: "Sub-Microsecond Space-Vector Power Silicon",
-      stage: "Active Evaluation & Store Available",
-      imageUrl: "/images/products/saralachip.jpg",
-      status: "Available in Lab & Store",
-      specs: [
-        "Sub-2.5µs Hardware Fault Interruption Logic",
-        "Hardware-Accelerated Clarke / Park Vector Math",
-        "Isolated Gate Driver Signal Conditioning",
-        "Open-Architecture Firmware C API & Python HIL",
-      ],
-      availability: "Immediate Dispatch & Lab Access",
-      link: "/store/saralachip-dev-board",
-    },
-  ];
-
   // Homepage FAQ Items
   const homeFAQs: FAQItem[] = [
     {
@@ -325,7 +270,7 @@ export function HomeDynamicView() {
   // Dynamic Data Selectors with Live CMS Precedence
   const activeMilestones = home.milestones !== undefined ? home.milestones : collaborationMilestones;
   const activeDomainPillars = home.domains !== undefined ? home.domains : domainPillars;
-  const activeUpcomingProducts = home.upcomingProducts !== undefined ? home.upcomingProducts : upcomingProducts;
+  const activeUpcomingProducts = home.upcomingProducts || [];
   const activeHomeFAQs = home.faqs !== undefined ? home.faqs : homeFAQs;
 
   return (
@@ -470,6 +415,7 @@ export function HomeDynamicView() {
       </section>
 
       {/* 2. UPCOMING PRODUCTS & R&D IN PROGRESS PORTFOLIO */}
+      {activeUpcomingProducts.length > 0 && (
       <section className="py-24 relative bg-[#fbfbfd] border-b border-black/[0.06]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
@@ -557,6 +503,7 @@ export function HomeDynamicView() {
           </div>
         </div>
       </section>
+      )}
 
       {/* 3. STRATEGIC DEEP-TECH DOMAINS INTEGRATION */}
       <section className="py-24 relative bg-white border-b border-black/[0.06]">

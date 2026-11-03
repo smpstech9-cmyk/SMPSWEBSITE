@@ -70,47 +70,7 @@ export default function StorePage() {
   const SHOW_HARDWARE_PRICES = content.hardware.showPricing;
   const HARDWARE_STORE_NOTICE = content.hardware.storeNotice;
 
-  const upcomingProductsList =
-    content.hardware.upcomingProducts && content.hardware.upcomingProducts.length > 0
-      ? content.hardware.upcomingProducts
-      : [
-          {
-            id: "quantum-bess",
-            name: "Quantum BESS™ 500kWh / 1MWh Container",
-            brand: "Quantum BESS™",
-            tagline: "Utility-scale 1500V LFP energy storage system engineered with active dual-circuit liquid cooling.",
-            stage: "R&D in Progress • Validation Bay 3",
-            imageUrl: "/images/products/quantum-bess.jpg",
-            status: "R&D in Progress",
-            specs: ["1500V DC Operating Voltage", "SmartLink™ Real-time Telemetry", "Dual Liquid Thermal Loop"],
-            availability: "Trials: Q3 2027",
-            link: "/store/quantum-bess-container",
-          },
-          {
-            id: "smartlink-gateway",
-            name: "SmartLink™ Industrial IoT Gateway",
-            brand: "SmartLink™",
-            tagline: "DIN-rail edge telemetry controller with triple Ethernet, isolated RS485, CAN-FD, and cellular 4G/5G.",
-            stage: "Silicon Bring-Up",
-            imageUrl: "/images/products/smartlink-gateway.jpg",
-            status: "Silicon Bring-Up",
-            specs: ["Triple 10/100 Ethernet + CAN-FD", "Embedded Linux RT-Preempt", "Sub-GHz LoRa & 4G/5G Uplink"],
-            availability: "Eval Kits: Q1 2027",
-            link: "/store/smartlink-iot-gateway",
-          },
-          {
-            id: "saralachip-dev",
-            name: "SaralaChip™ CCU Controller Module",
-            brand: "SaralaChip™",
-            tagline: "Sub-2.5µs hardware fault isolation digital signal controller with space-vector PWM math.",
-            stage: "In Stock & Available",
-            imageUrl: "/images/products/saralachip.jpg",
-            status: "Ready to Dispatch",
-            specs: ["Sub-2.5µs Hardware Protection", "Isolated High-Voltage Drivers", "Engineering Curriculum & Firmware SDK Included"],
-            availability: "Ready to Dispatch",
-            link: "/store/saralachip-dev-board",
-          },
-        ];
+  const upcomingProductsList = content.hardware.upcomingProducts || [];
 
   const storeFaqsList =
     content.hardware.storeFaqs && content.hardware.storeFaqs.length > 0
@@ -614,82 +574,84 @@ export default function StorePage() {
         )}
 
         {/* UPCOMING PRODUCTS - R&D IN PROGRESS SECTION */}
-        <section className="mt-24 pt-16 border-t border-[#e5e5ea]">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-            <div>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-[#059669] border border-emerald-100 text-xs font-bold uppercase tracking-wider mb-2">
-                <Sparkles className="w-3.5 h-3.5" />
-                Next-Gen Hardware Pipeline
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1d1d1f] tracking-tight">
-                Upcoming Products & R&D in Progress
-              </h2>
-              <p className="mt-2 text-sm text-[#6e6e73] max-w-2xl font-normal leading-relaxed">
-                Platforms currently undergoing thermal stress trials and firmware bring-up inside the SMPS Tech Lab Engineering Center.
-              </p>
-            </div>
-            <Link
-              href="/partner"
-              className="inline-flex items-center gap-2 text-xs font-semibold text-[#0071e3] hover:text-[#0056b3] transition"
-            >
-              <span>Join Pilot Testing Program</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {upcomingProductsList.map((prod) => (
-              <div
-                key={prod.id}
-                className="apple-card p-6 flex flex-col justify-between group hover:border-[#0071e3]/30 transition-all duration-300"
+        {upcomingProductsList.length > 0 && (
+          <section className="mt-24 pt-16 border-t border-[#e5e5ea]">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+              <div>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-[#059669] border border-emerald-100 text-xs font-bold uppercase tracking-wider mb-2">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  Next-Gen Hardware Pipeline
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1d1d1f] tracking-tight">
+                  Upcoming Products & R&D in Progress
+                </h2>
+                <p className="mt-2 text-sm text-[#6e6e73] max-w-2xl font-normal leading-relaxed">
+                  Platforms currently undergoing thermal stress trials and firmware bring-up inside the SMPS Tech Lab Engineering Center.
+                </p>
+              </div>
+              <Link
+                href="/partner"
+                className="inline-flex items-center gap-2 text-xs font-semibold text-[#0071e3] hover:text-[#0056b3] transition"
               >
-                <div>
-                  <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden bg-gray-100 mb-6 border border-black/[0.06]">
-                    <Image
-                      src={prod.imageUrl}
-                      alt={prod.name}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/95 backdrop-blur-md text-[#0071e3] border border-blue-100 shadow-sm">
-                      {prod.status}
+                <span>Join Pilot Testing Program</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {upcomingProductsList.map((prod) => (
+                <div
+                  key={prod.id}
+                  className="apple-card p-6 flex flex-col justify-between group hover:border-[#0071e3]/30 transition-all duration-300"
+                >
+                  <div>
+                    <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden bg-gray-100 mb-6 border border-black/[0.06]">
+                      <Image
+                        src={prod.imageUrl}
+                        alt={prod.name}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/95 backdrop-blur-md text-[#0071e3] border border-blue-100 shadow-sm">
+                        {prod.status}
+                      </div>
                     </div>
+
+                    <span className="text-[11px] font-bold text-[#0071e3] uppercase tracking-wider">
+                      {prod.brand}
+                    </span>
+                    <h3 className="text-xl font-bold text-[#1d1d1f] mt-1">
+                      {prod.name}
+                    </h3>
+                    <p className="text-xs text-[#6e6e73] mt-2 leading-relaxed">
+                      {prod.tagline}
+                    </p>
+
+                    <ul className="mt-4 space-y-1.5 text-xs text-[#1d1d1f]">
+                      {prod.specs.map((spec, idx) => (
+                        <li key={idx} className="flex items-center gap-2">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#0071e3] flex-shrink-0" />
+                          <span>{spec}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
 
-                  <span className="text-[11px] font-bold text-[#0071e3] uppercase tracking-wider">
-                    {prod.brand}
-                  </span>
-                  <h3 className="text-xl font-bold text-[#1d1d1f] mt-1">
-                    {prod.name}
-                  </h3>
-                  <p className="text-xs text-[#6e6e73] mt-2 leading-relaxed">
-                    {prod.tagline}
-                  </p>
-
-                  <ul className="mt-4 space-y-1.5 text-xs text-[#1d1d1f]">
-                    {prod.specs.map((spec, idx) => (
-                      <li key={idx} className="flex items-center gap-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#0071e3] flex-shrink-0" />
-                        <span>{spec}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="mt-6 pt-4 border-t border-black/[0.06] flex items-center justify-between">
+                    <span className="text-[11px] font-mono text-[#86868b]">{prod.availability}</span>
+                    <Link
+                      href={prod.link}
+                      className="text-xs font-bold text-[#0071e3] hover:text-[#0056b3] inline-flex items-center gap-1"
+                    >
+                      <span>View Details</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
                 </div>
-
-                <div className="mt-6 pt-4 border-t border-black/[0.06] flex items-center justify-between">
-                  <span className="text-[11px] font-mono text-[#86868b]">{prod.availability}</span>
-                  <Link
-                    href={prod.link}
-                    className="text-xs font-bold text-[#0071e3] hover:text-[#0056b3] inline-flex items-center gap-1"
-                  >
-                    <span>View Details</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* STORE & PROCUREMENT FAQS */}
         <section className="mt-24 pt-16 border-t border-[#e5e5ea]">
