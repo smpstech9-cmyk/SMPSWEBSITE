@@ -286,10 +286,62 @@ export function HomeDynamicView() {
     },
   ];
 
-  // Dynamic Data Selectors with Live CMS Precedence
+  // Permanent Next-Gen Upcoming Products (Hardcoded in Code)
+  const permanentUpcomingProducts = [
+    {
+      id: "prod-smartlink",
+      name: "SMARTLINK-20™",
+      tagline: "Next-gen telemetry controller for telecom towers & remote assets.",
+      brand: "Telecom Power",
+      status: "Field Trials in 40+ Sites",
+      stage: "Pilot Deployment",
+      availability: "Commercial Q2 2026",
+      specs: ["4G/5G Backhaul Telemetry", "Sub-10ms Fault Reporting", "RS485 / CAN Dual Bus"],
+      imageUrl: "/products/smartlink.png",
+      link: "/rnd",
+    },
+    {
+      id: "prod-quantum",
+      name: "Quantum BESS™",
+      tagline: "Utility-scale 1500V LFP energy storage system with active thermal management.",
+      brand: "Energy Storage",
+      status: "Commissioning Q2 2026",
+      stage: "Grid Pre-Compliance",
+      availability: "Enterprise Pre-Order",
+      specs: ["1500V DC Architecture", "Liquid Cooling Loop", "98.5% Round-Trip Efficiency"],
+      imageUrl: "/products/PuranaBess.png",
+      link: "/rnd",
+    },
+    {
+      id: "prod-quansgrid",
+      name: "QUANSGRID™",
+      tagline: "Bidirectional high-frequency grid-tie inverter platform.",
+      brand: "Power Conversion",
+      status: "Grid Interconnect Beta",
+      stage: "Certification Trials",
+      availability: "Pilot Partners Only",
+      specs: ["GaN/SiC Wide Bandgap", "Sub-2.5µs Anti-Islanding", "UL 1741-SA Compliant"],
+      imageUrl: "/products/quansgrid.png",
+      link: "/rnd",
+    },
+    {
+      id: "prod-saralachip",
+      name: "SARALA CHIP™",
+      tagline: "Custom digital signal controller for real-time power electronics.",
+      brand: "Embedded Silicon",
+      status: "Engineering Samples Ready",
+      stage: "Silicon Tapeout Bring-Up",
+      availability: "Developer SDK Q3 2026",
+      specs: ["Dual-Core 200MHz DSP", "High-Resolution PWM (150ps)", "Native CAN-FD & SPI"],
+      imageUrl: "/products/saralachip.png",
+      link: "/rnd",
+    },
+  ];
+
+  // Dynamic Data Selectors
   const activeMilestones = home.milestones !== undefined ? home.milestones : collaborationMilestones;
   const activeDomainPillars = home.domains !== undefined ? home.domains : domainPillars;
-  const activeUpcomingProducts = home.upcomingProducts || [];
+  const activeUpcomingProducts = permanentUpcomingProducts;
   const activeHomeFAQs = home.faqs !== undefined ? home.faqs : homeFAQs;
 
   return (
@@ -306,20 +358,22 @@ export function HomeDynamicView() {
               {/* Facility Eyebrow Badge */}
               <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#f5f5f7] border border-[#e5e5ea] text-xs font-medium tracking-wide shadow-sm">
                 <span className="telemetry-beacon w-2 h-2 rounded-full bg-[#10b981]" />
-                <span className="font-mono text-[#6e6e73]">{home.heroEyebrow}</span>
+                <span className="font-mono text-[#6e6e73]">
+                  VTU-VRIF-TCOE 6G Hub • R&D Center • Bengaluru
+                </span>
               </div>
 
               {/* Main Headline */}
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-[-0.035em] text-[#1d1d1f] leading-[1.05]">
-                {home.heroTitleLine1} <br />
+                A GOVERNANCE Powered by <br />
                 <span className="text-gradient-apple-blue font-black">
-                  {home.heroTitleLine2}
+                  Nex-Gen INNOVATION
                 </span>
               </h1>
 
               {/* Subtitle */}
               <p className="text-base sm:text-lg text-[#6e6e73] leading-relaxed max-w-2xl font-normal">
-                {home.heroSubtitle}
+                SMPS Tech Lab – a core research-driven technology and innovation division of SMPS Electric Control Pvt. Ltd. focused on DeepTech R&D, Artificial Intelligence, Quantum, Power Electronics, Telecom Technologies, Industrial Automation, Embedded Systems, and Advanced Product Engineering.
               </p>
 
               {/* CTA Button Group */}
@@ -346,9 +400,34 @@ export function HomeDynamicView() {
                 </Link>
               </div>
 
-              {/* Dynamic Metrics Ribbon */}
+              {/* Permanent Metrics Ribbon */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-black/[0.06] max-w-2xl">
-                {home.stats.map((stat) => (
+                {[
+                  {
+                    id: "stat-1",
+                    value: "16+",
+                    label: "Patents & IPs Filed",
+                    subtext: "Joint Filings with VTU-VRIF",
+                  },
+                  {
+                    id: "stat-2",
+                    value: "26+",
+                    label: "IIT Alumni on Board",
+                    subtext: "Founders, Advisors & Researchers",
+                  },
+                  {
+                    id: "stat-3",
+                    value: "200+",
+                    label: "Global Industry Experts",
+                    subtext: "Mentors, Scientists & Engineers",
+                  },
+                  {
+                    id: "stat-4",
+                    value: "1,700+",
+                    label: "DeepTech Scholars",
+                    subtext: "Trained in Hardware Engineering",
+                  },
+                ].map((stat) => (
                   <div key={stat.id} className="p-4 rounded-2xl bg-[#f5f5f7] border border-[#e5e5ea]">
                     <div className="text-2xl sm:text-3xl font-black text-[#1d1d1f] tracking-tight">
                       {stat.value}

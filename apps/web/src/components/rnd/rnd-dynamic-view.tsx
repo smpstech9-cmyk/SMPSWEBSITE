@@ -24,11 +24,127 @@ import {
   Atom,
   CheckCircle2,
 } from "lucide-react";
-import { useSiteContent } from "@/context/content-context";
 
 export function RndDynamicView() {
-  const { content } = useSiteContent();
-  const { rnd } = content;
+  const permanentRndBays = [
+    {
+      id: "bay-1",
+      name: "High-Voltage Power Electronics Bay",
+      focusArea: "Wide-Bandgap Semi",
+      description:
+        "Characterization of SiC/GaN wide-bandgap topologies up to 1500V DC and bidirectional regenerative power flows.",
+      equipment: [
+        "High-Voltage DC Power Supplies (1500V/100A)",
+        "High-Bandwidth 8-Channel Oscilloscopes",
+        "Custom Calorimetric Loss Test Jig",
+      ],
+      leadInvestigator: "POWER ELECTRONICS R&D TEAM",
+    },
+    {
+      id: "bay-2",
+      name: "Grid Simulation & Microgrid Bay",
+      focusArea: "Grid Integration",
+      description:
+        "Emulation of weak grids, microgrid synchronization, and fault-ride-through validation for central inverters.",
+      equipment: [
+        "Regenerative Grid Simulator (100kVA)",
+        "Dynamic Load Banks (R-L-C)",
+        "Power Quality Analyzers",
+      ],
+      leadInvestigator: "POWER ELECTRONICS R&D TEAM",
+    },
+    {
+      id: "bay-3",
+      name: "Advanced Battery Testing & Characterization Bay",
+      focusArea: "Energy Storage",
+      description:
+        "Electrochemical impedance spectroscopy, cell thermal runaway testing, and multi-chemistry cycle life characterization.",
+      equipment: [
+        "Multi-Channel Battery Cycler (5V/60A)",
+        "Environmental Thermal Chambers",
+        "Electrochemical Impedance Analyzer",
+      ],
+      leadInvestigator: "POWER ELECTRONICS R&D TEAM",
+    },
+    {
+      id: "bay-env-rel",
+      name: "Environmental & Reliability Bay",
+      focusArea: "Ruggedisation & Reliability",
+      description:
+        "Thermal, environmental and EMI pre-compliance validation of power and telecom hardware for demanding field and defence conditions.",
+      equipment: [
+        "Environmental Stress Chamber",
+        "EMI/EMC Pre-Compliance Setup",
+        "Thermal Imaging & Data Logging",
+      ],
+      leadInvestigator: "Reliability & Compliance Team",
+    },
+    {
+      id: "bay-renew-int",
+      name: "Renewable Integration & Industrial Energy Bay",
+      focusArea: "Oil & Gas • Renewable Energy",
+      description:
+        "Validation of solar-hybrid, microgrid and DC power systems for renewable plants and for oil and gas facilities, from remote wellhead and pipeline installations to process plants.",
+      equipment: [
+        "Programmable PV Array Simulator",
+        "DC Power Analyser",
+        "Hybrid Microgrid Test Rig",
+      ],
+      leadInvestigator: "Renewable & Industrial Energy R&D Team",
+    },
+    {
+      id: "bay-renew-ind",
+      name: "Renewable & Industrial Energy Systems",
+      focusArea: "Clean Energy • Industrial",
+      description:
+        "Solar-hybrid, microgrid and DC power architectures for renewable plants and oil and gas facilities, engineered for reliability in remote and demanding environments.",
+      equipment: [
+        "Solar-Hybrid Microgrids",
+        "Remote-Site DC Power Systems",
+        "Mobile Microgrid Solutions",
+      ],
+      leadInvestigator: "Renewable & Industrial Energy R&D Team",
+    },
+    {
+      id: "bay-embedded-sarala",
+      name: "Embedded Control & SARALA CHIP Bring-Up Bay",
+      focusArea: "Embedded & Silicon",
+      description:
+        "Silicon validation, firmware development, hardware-in-the-loop (HIL) testing, and control loop characterization for SARALA CHIP and embedded power controllers.",
+      equipment: [
+        "Real-time HIL Simulator",
+        "Digital Storage Oscilloscopes & Logic Analyzers",
+        "Automated Silicon Bring-Up & Test Fixture",
+      ],
+      leadInvestigator: "Embedded Systems R&D Team",
+    },
+    {
+      id: "bay-telecom-rf",
+      name: "5G/6G RF & Telecom Bay",
+      focusArea: "Telecom & 6G Hub",
+      description:
+        "RF characterisation, high-frequency signal integrity, conducted and radiated pre-compliance, and telecom DC power distribution testing for 5G/6G infrastructure.",
+      equipment: [
+        "Vector Network Analyser (up to 20 GHz)",
+        "Spectrum Analyser & Near-Field Probes",
+        "Telecom DC Power System Test Rack",
+      ],
+      leadInvestigator: "Telecom & RF Infrastructure Team",
+    },
+    {
+      id: "bay-vlsi-emu",
+      name: "VLSI Design & Emulation Bay",
+      focusArea: "VLSI & ASIC Design",
+      description:
+        "RTL verification, FPGA-based hardware emulation, gate-level timing analysis, and ASIC physical design exploration for domain-specific power management chips.",
+      equipment: [
+        "High-Capacity FPGA Emulation Platforms",
+        "EDA Verification & Synthesis Compute Cluster",
+        "Logic & Protocol Analysers",
+      ],
+      leadInvestigator: "VLSI & Silicon Architecture Team",
+    },
+  ];
 
   const domainPillars = [
     {
@@ -119,10 +235,10 @@ export function RndDynamicView() {
               SMPS Tech Lab Advanced R&D Facility
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#1d1d1f] leading-[1.08]">
-              {rnd.headline}
+              Translating Fundamental Power Physics into Commercial Hardware Platforms
             </h1>
             <p className="mt-6 text-base sm:text-lg text-[#6e6e73] leading-relaxed font-normal">
-              {rnd.subheadline}
+              Inside our 5,000 sq.ft engineering facility at VTU-VRIF Center, our researchers design, simulate, and stress-test wide-bandgap semiconductors, megawatt BESS, and microcontrollers.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -148,13 +264,13 @@ export function RndDynamicView() {
                 className="p-3.5 px-5 rounded-2xl bg-[#f5f5f7] hover:bg-blue-50/60 border border-[#e5e5ea] hover:border-[#0071e3]/40 transition group cursor-pointer"
               >
                 <div className="text-xl font-black text-[#1d1d1f] group-hover:text-[#0071e3] transition-colors flex items-center gap-1.5">
-                  <span>{rnd.patentsCount}</span>
+                  <span>16+ Provisional & Awarded Patents</span>
                   <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
                 <div className="text-[11px] text-[#6e6e73] font-medium">Intellectual Property & Patents →</div>
               </Link>
               <div className="p-3.5 px-5 rounded-2xl bg-[#f5f5f7] border border-[#e5e5ea]">
-                <div className="text-xl font-black text-emerald-600">{rnd.grantsAmount}</div>
+                <div className="text-xl font-black text-emerald-600">₹12 Cr+</div>
                 <div className="text-[11px] text-[#6e6e73] font-medium">Research Investment</div>
               </div>
               <div className="p-3.5 px-5 rounded-2xl bg-[#f5f5f7] border border-[#e5e5ea]">
@@ -182,7 +298,7 @@ export function RndDynamicView() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {rnd.bays.map((bay) => (
+            {permanentRndBays.map((bay) => (
               <div
                 key={bay.id}
                 className="apple-card p-8 rounded-[28px] flex flex-col justify-between space-y-6"

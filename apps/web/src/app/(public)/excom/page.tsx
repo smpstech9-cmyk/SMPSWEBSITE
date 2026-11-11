@@ -39,31 +39,110 @@ interface Member {
   colorScheme: string;
 }
 
-import { useSiteContent } from "@/context/content-context";
+const PERMANENT_EXCOM_MEMBERS: Member[] = [
+  {
+    id: "excom-ak",
+    name: "Mr. AMARESHWAR KARATAGI",
+    role: "Co-Founder | Chief Business Development Officer",
+    designation: "Managing Director, SMPS Electric Control Pvt Ltd",
+    department: "Executive Leadership",
+    qualifications: "B.E., Electronics & Communication Engineering, REVA U...",
+    avatarInitials: "AK",
+    bio: "Mr. Amareshwar Karatagi is a Co-Founder and the Chief Strategic Officer of SMPS Tech Lab, and the architect of its growth strategy. He also serves as Special Industrial Advisor to the VTU Research and Innovation Foundation (VRIF) and has held key advisory roles at Reva University and TCOE India.",
+    mandates: ["Strategic R&D Direction", "University Accreditation", "Joint Venture Partnerships"],
+    publications: ["Industrial Power Electronics Architecture"],
+    patentsHandled: ["High-Voltage Safety Architecture"],
+    contactEmail: "info@smpstechlab.com",
+    badge: "Executive Leadership",
+    colorScheme: "from-blue-600 to-indigo-700",
+  },
+  {
+    id: "excom-ars",
+    name: "Ms. A. R. Shalini",
+    role: "Chief Business Development Officer",
+    designation: "Director of Research, VTU-VRIF Center",
+    department: "Executive Leadership",
+    qualifications: "B.E., Information Science & Engineering • MBA",
+    avatarInitials: "S",
+    bio: "Ms. A. R. Shalini is the Chief Business Development Officer at SMPS Tech Lab, driving strategic growth, operational effectiveness, and ecosystem partnerships across technology initiatives.",
+    mandates: ["Academic Program Accreditations", "Curriculum Strategy", "Industry-University MoUs"],
+    publications: ["VTU DeepTech Curriculum Framework"],
+    patentsHandled: ["Academic Patent Pipeline"],
+    contactEmail: "info@smpstechlab.com",
+    badge: "Executive Leadership",
+    colorScheme: "from-blue-600 to-indigo-700",
+  },
+  {
+    id: "excom-sk",
+    name: "Dr. S. Khatua",
+    role: "Chief Technology Officer",
+    designation: "Principal Architect, Digital Control Systems",
+    department: "Executive Leadership",
+    qualifications: "PhD (Smart Grid), IIT",
+    avatarInitials: "K",
+    bio: "Dr. S. Khatua is the Chief Technology Officer and principal architect of technological innovation at SMPS Tech Lab. He leads breakthrough research, advanced engineering, and the technological vision of the organization.",
+    mandates: ["Hardware Silicon Architecture", "Power Inverter Topologies", "IEEE Research Leadership"],
+    publications: ["High-Frequency Planar Magnetics Optimization for 1500V Central Inverters (IEEE 2025)"],
+    patentsHandled: ["Fast-Transient Fault Interrupt System"],
+    contactEmail: "info@smpstechlab.com",
+    badge: "Executive Leadership",
+    colorScheme: "from-blue-600 to-indigo-700",
+  },
+  {
+    id: "excom-rj",
+    name: "Mr. Rushit Jani",
+    role: "Techno-Commercial Architect Intern",
+    designation: "Techno-Commercial Architect Intern",
+    department: "Executive Leadership",
+    qualifications: "B.Tech, Power & Embedded Electronics",
+    avatarInitials: "RJ",
+    bio: "Techno-Commercial Architect Intern contributing to deep-tech systems research, hardware-software integration, and market architecture.",
+    mandates: ["Hardware-Software Integration", "Techno-Commercial Evaluation", "Product Architecture"],
+    publications: ["Deep-Tech Hardware Acceleration Paradigms"],
+    patentsHandled: ["Modular Power Controller Architecture"],
+    contactEmail: "info@smpstechlab.com",
+    badge: "Executive Leadership",
+    colorScheme: "from-blue-600 to-indigo-700",
+  },
+  {
+    id: "excom-sp",
+    name: "Mr. Stavan Pandya",
+    role: "Techno-Commercial Architect Intern",
+    designation: "Techno-Commercial Architect Intern",
+    department: "Executive Leadership",
+    qualifications: "B.Tech, Electrical & Electronics",
+    avatarInitials: "SP",
+    bio: "Techno-Commercial Architect Intern contributing to hardware architectures, technology analytics, and advanced project engineering.",
+    mandates: ["Telemetry Analytics", "Hardware Characterization", "Technology Operations"],
+    publications: ["Predictive Maintenance Paradigms in Energy Storage"],
+    patentsHandled: ["Energy Telemetry Sensor Nodes"],
+    contactEmail: "info@smpstechlab.com",
+    badge: "Executive Leadership",
+    colorScheme: "from-blue-600 to-indigo-700",
+  },
+  {
+    id: "excom-sb",
+    name: "Mr. Shiva Bhalke",
+    role: "Technology & Digital Operations",
+    designation: "Techno-Commercial Architect Intern",
+    department: "Executive Leadership",
+    qualifications: "B.Tech, Computer & Systems Engineering",
+    avatarInitials: "SB",
+    bio: "Techno-Commercial Architect Intern contributing to digital platforms, technology operations, and innovation workflows.",
+    mandates: ["Digital Infrastructure Operations", "Full-Stack System Engineering", "Laboratory Automation"],
+    publications: ["Full-Stack Distributed Telemetry in Modern Microgrids"],
+    patentsHandled: ["Automated Grid Monitoring Nodes"],
+    contactEmail: "info@smpstechlab.com",
+    badge: "Executive Leadership",
+    colorScheme: "from-blue-600 to-indigo-700",
+  },
+];
 
 export default function ExComPage() {
-  const { content } = useSiteContent();
   const [selectedMember, setSelectedMember] = useState<Member | null>(null);
   const [activeDepartment, setActiveDepartment] = useState<string>("all");
 
-  const dynamicMembers: Member[] = content.excom.map((m) => ({
-    id: m.id,
-    name: m.name,
-    role: m.role,
-    designation: m.designation,
-    department: m.department,
-    qualifications: m.qualifications,
-    avatarInitials: m.name.split(" ").filter(w => !w.includes(".")).map(w => w[0]).join("").slice(0, 2) || "SB",
-    bio: m.bio,
-    mandates: ["Strategic R&D Direction", "University Accreditation"],
-    publications: ["Industrial Power Electronics Architecture"],
-    patentsHandled: ["High-Voltage Safety Architecture"],
-    contactEmail: m.email,
-    badge: "Executive Leadership",
-    colorScheme: "from-blue-600 to-indigo-700",
-  }));
-
-  const allMembers = dynamicMembers;
+  const allMembers = PERMANENT_EXCOM_MEMBERS;
 
   const filteredMembers = allMembers.filter((m) => {
     if (activeDepartment === "all") return true;
