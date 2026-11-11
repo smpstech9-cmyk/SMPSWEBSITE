@@ -39,39 +39,6 @@ interface Member {
   colorScheme: string;
 }
 
-const EXCOM_MEMBERS: Member[] = [];
-
-const STATUTORY_COUNCILS = [
-  {
-    name: "Academic & Curriculum Council",
-    cadence: "Quarterly Review",
-    chair: "Dr. K. S. Narayanaswamy",
-    description: "Evaluates syllabus relevance against modern power semiconductors (GaN, SiC), embeds VTU NEP-aligned guidelines, and audits laboratory workstation rubrics.",
-    icon: GraduationCap,
-  },
-  {
-    name: "Safety & High-Voltage Compliance Board",
-    cadence: "Bi-Weekly Audits",
-    chair: "Er. Shiv Bhalke",
-    description: "Enforces strict industrial protocol across 1500V DC testing bays, automated fire suppression, arc flash personal protective equipment, and battery quarantine safety.",
-    icon: ShieldCheck,
-  },
-  {
-    name: "Intellectual Property & Silicon Committee",
-    cadence: "Monthly Session",
-    chair: "Dr. Arvind R. Rao",
-    description: "Reviews indigenous patent filings, prior art disclosures, open-source firmware licensing, and university-industry co-ownership rights under VTU statutes.",
-    icon: Cpu,
-  },
-  {
-    name: "Hardware Incubation Screening Panel",
-    cadence: "Monthly Intake",
-    chair: "Suresh Shenoy",
-    description: "Interviews hardware founders, assesses technical feasibility, awards laboratory bench access, and authorizes subsidized fabrication resources.",
-    icon: Briefcase,
-  },
-];
-
 import { useSiteContent } from "@/context/content-context";
 
 export default function ExComPage() {
@@ -236,9 +203,12 @@ export default function ExComPage() {
                   <p className="text-xs font-semibold text-[#0071e3] mt-1">
                     {member.role}
                   </p>
-                  <p className="text-[11px] font-mono text-[#86868b] mt-0.5">
-                    {member.designation}
-                  </p>
+                  {member.designation &&
+                    member.designation.trim().toLowerCase() !== member.role.trim().toLowerCase() && (
+                      <p className="text-[11px] font-mono text-[#86868b] mt-0.5">
+                        {member.designation}
+                      </p>
+                    )}
 
                   <p className="text-xs text-[#6e6e73] mt-4 line-clamp-3 leading-relaxed font-normal">
                     {member.bio}
@@ -274,55 +244,6 @@ export default function ExComPage() {
             ))}
           </div>
         )}
-
-        {/* Statutory Governance Councils Section */}
-        <section className="mb-20">
-          <div className="max-w-2xl mb-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-[#059669] text-xs font-bold uppercase tracking-wider mb-2">
-              <ShieldCheck className="w-3.5 h-3.5" />
-              Statutory Governance Bodies
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1d1d1f] tracking-tight">
-              Oversight & Compliance Councils
-            </h2>
-            <p className="text-sm text-[#6e6e73] mt-2 font-normal leading-relaxed">
-              Standing institutional councils meeting on fixed bi-weekly and quarterly schedules to uphold lab safety, intellectual property integrity, and university academic standards.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {STATUTORY_COUNCILS.map((council, idx) => {
-              const Icon = council.icon;
-              return (
-                <div
-                  key={idx}
-                  className="p-6 sm:p-8 rounded-[28px] border border-[#e5e5ea] bg-[#fbfbfd] hover:bg-white transition-all shadow-sm flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="flex items-center justify-between gap-4 mb-4">
-                      <div className="w-10 h-10 rounded-2xl bg-white border border-[#e5e5ea] flex items-center justify-center text-[#0071e3] shadow-sm">
-                        <Icon className="w-5 h-5" />
-                      </div>
-                      <span className="text-[11px] font-mono font-bold px-3 py-1 rounded-full bg-[#f5f5f7] border border-[#e5e5ea] text-[#6e6e73]">
-                        {council.cadence}
-                      </span>
-                    </div>
-
-                    <h3 className="text-lg font-bold text-[#1d1d1f]">
-                      {council.name}
-                    </h3>
-                    <p className="text-xs text-[#0071e3] font-semibold mt-0.5">
-                      Chaired by {council.chair}
-                    </p>
-                    <p className="text-xs sm:text-sm text-[#6e6e73] mt-3 leading-relaxed font-normal">
-                      {council.description}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </section>
 
         {/* Governance Charter CTA Banner */}
         <section className="apple-card-elevated rounded-[32px] bg-gradient-to-br from-[#fbfbfd] via-white to-blue-50/40 border border-[#e5e5ea] p-8 sm:p-12 shadow-sm text-center max-w-3xl mx-auto">

@@ -22,6 +22,7 @@ import {
   Award,
   ChevronRight,
   ExternalLink,
+  Brain,
 } from "lucide-react";
 import { useSiteContent } from "@/context/content-context";
 import { FAQAccordion, FAQItem } from "@/components/ui/faq-accordion";
@@ -111,79 +112,97 @@ export function HomeDynamicView() {
     },
   ];
 
-  // Domain-Specific Strategic R&D Pillars
+  // Domain-Specific Strategic R&D Pillars (10 Core Verticals from Audit Specifications)
   const domainPillars = [
     {
-      id: "rnd-deeptech",
-      title: "R&D & DeepTech Innovation",
-      desc: "Translational research transforming fundamental physics into commercial-grade power electronics, active thermal cooling systems, and multi-physics simulations.",
-      icon: Rocket,
-      badge: "Foundation",
-      features: ["Thermal CFD Modeling", "Planar Magnetics", "Zero-Capex Prototyping"],
-      link: "/rnd",
+      id: "power-electronics",
+      title: "Power Electronics & Wide-Bandgap Systems",
+      desc: "GaN and SiC high-frequency power topologies, ultra-compact planar magnetics, and bidirectional regenerative architectures.",
+      icon: Zap,
+      badge: "Wide-Bandgap",
+      features: ["GaN/SiC Wide Bandgap", "Planar Magnetics", "99%+ Conversion Efficiency"],
+      link: "/rnd/power-electronics",
+    },
+    {
+      id: "energy-storage-bess",
+      title: "Energy Storage Systems (BESS)",
+      desc: "Utility-scale containerized 1500V LFP/Sodium-ion battery banks, active liquid cooling thermal loop, and bidirectional sub-millisecond PCS inverters.",
+      icon: BatteryCharging,
+      badge: "Clean Energy",
+      features: ["1500V Architecture", "Liquid Cooling Loop", "BMS Fire-Suppression Matrix"],
+      link: "/rnd/energy-storage-bess",
+    },
+    {
+      id: "telecom-6g",
+      title: "Telecom (5G & 6G Infrastructure)",
+      desc: "Sub-station DC distribution, ultra-high efficiency rectifier units, and remote power telemetry for next-gen 5G/6G cellular towers.",
+      icon: Radio,
+      badge: "Telecommunications",
+      features: ["98%+ Peak Efficiency", "Telecom Energy Routers", "SNMP & Remote Telemetry"],
+      link: "/rnd/telecom-6g",
     },
     {
       id: "embedded-systems",
       title: "Embedded Systems & DSP Firmware",
       desc: "Deterministic sub-microsecond control loops, CAN-FD / Modbus protocols, ISO 26262 functional safety, and real-time DSP microcontrollers.",
       icon: Cpu,
-      badge: "Core Architecture",
+      badge: "Micro-Architectures",
       features: ["Space Vector PWM", "Hardware HIL Testing", "CAN-FD Telemetry"],
-      link: "/rnd",
+      link: "/rnd/embedded-systems",
     },
     {
-      id: "vlsi-asic",
+      id: "vlsi-silicon",
       title: "VLSI & Digital ASIC / FPGA Design",
       desc: "Custom silicon architectures, RTL synthesis, high-speed FPGA gate arrays, and ASIC layout validation for the SaralaChip™ family.",
       icon: Layers,
       badge: "Silicon Engineering",
       features: ["RTL & Verilog Synthesis", "FPGA Hardware Emulators", "Tapeout Pre-Verification"],
-      link: "/rnd",
+      link: "/rnd/vlsi-silicon",
     },
     {
-      id: "defence-tech",
-      title: "Defence Technology & Rugged Systems",
-      desc: "Ruggedized high-altitude power converters, MIL-STD-810G vibration-tolerant packaging, and EMI/EMC shielded subsystems for defense communications.",
-      icon: ShieldCheck,
-      badge: "Strategic Defence",
-      features: ["MIL-STD Compliance", "Wide Ambient Range (-40°C to +75°C)", "Galvanic Isolation"],
-      link: "/partner",
+      id: "ai-ml",
+      title: "AI / ML & Intelligent Energy",
+      desc: "Edge-AI inference engines, automated power-factor correction, predictive battery thermal runaways, and neural-network load forecasting.",
+      icon: Brain,
+      badge: "Edge AI",
+      features: ["Edge Neural Networks", "Predictive SOH/SOC", "Self-Tuning Control Loops"],
+      link: "/rnd/ai-ml",
     },
     {
-      id: "telecom-5g-6g",
-      title: "Telecom (5G & 6G Infrastructure)",
-      desc: "Ultra-high efficiency rectifier units, intelligent remote power telemetry, and sub-station DC distribution for next-gen 5G/6G cellular towers.",
-      icon: Radio,
-      badge: "Telecommunications",
-      features: ["98%+ Peak Rectifier Efficiency", "Sub-Station Energy Routers", "Remote SNMP Telemetry"],
-      link: "/store",
-    },
-    {
-      id: "quantum-tech",
-      title: "Quantum Technology & Solid-State",
+      id: "quantum-technologies",
+      title: "Quantum Technologies",
       desc: "Ultra-low noise cryogenic power supplies, precision sub-nanovolt voltage references, and quantum sensor signal-conditioning interfaces.",
       icon: Atom,
       badge: "Next Frontier",
       features: ["Cryogenic Low-Noise Stages", "Sub-ppm Voltage References", "Quantum Telemetry"],
-      link: "/rnd",
+      link: "/rnd/quantum-technologies",
     },
     {
-      id: "industry-5",
-      title: "Industry 5.0 & Human-Centric Tech",
+      id: "defence-technology",
+      title: "Defence & Strategic Technology",
+      desc: "Ruggedized high-altitude power converters, MIL-STD-810G vibration-tolerant packaging, and EMI/EMC shielded subsystems for defense communications.",
+      icon: ShieldCheck,
+      badge: "Strategic Defence",
+      features: ["MIL-STD Compliance", "Wide Ambient Range (-40°C to +75°C)", "Galvanic Isolation"],
+      link: "/rnd/defence-technology",
+    },
+    {
+      id: "industry-5-0",
+      title: "Industry 5.0 & Smart Manufacturing",
       desc: "Collaborative robot (Cobot) actuator drives, intelligent microgrids, circular battery reuse, and edge predictive maintenance algorithms.",
       icon: Activity,
       badge: "Industry 5.0",
       features: ["Cobot High-Torque Drives", "Second-Life BESS Profiling", "Edge Anomaly Detection"],
-      link: "/entrepreneur",
+      link: "/rnd/industry-5-0",
     },
     {
-      id: "energy-storage",
-      title: "Energy Storage Systems (BESS)",
-      desc: "Utility-scale containerized 1500V LFP/Sodium-ion battery banks, active liquid cooling thermal loop, and bidirectional sub-millisecond PCS inverters.",
-      icon: BatteryCharging,
-      badge: "Clean Energy",
-      features: ["1500V Architecture", "Liquid Cooling Loop", "BMS Fire-Suppression Matrix"],
-      link: "/store",
+      id: "deeptech-innovation",
+      title: "R&D & DeepTech Innovation",
+      desc: "Translational research transforming fundamental physics into commercial-grade power electronics, active thermal cooling systems, and multi-physics simulations.",
+      icon: Rocket,
+      badge: "Foundation",
+      features: ["Thermal CFD Modeling", "Multi-Physics Prototyping", "Zero-Capex Prototyping"],
+      link: "/rnd/deeptech-innovation",
     },
   ];
 
@@ -245,14 +264,14 @@ export function HomeDynamicView() {
       className: "h-6 sm:h-7 w-auto object-contain",
     },
     {
-      name: "Ministry of Micro, Small and Medium Enterprises (MSME)",
+      name: "Visvesvaraya Technological University (VTU)",
       src: "/logos/GOVT/Govt4.png",
       width: 80,
       height: 44,
       className: "h-6 sm:h-7 w-auto object-contain",
     },
     {
-      name: "Government of Karnataka",
+      name: "VTU Research & Innovation Foundation (VRIF)",
       src: "/logos/GOVT/Govt5.jpg",
       width: 55,
       height: 40,
@@ -407,8 +426,16 @@ export function HomeDynamicView() {
                 </div>
               </div>
 
-              {/* Video Showcase Card */}
+              {/* Video Showcase Card & Walkthrough Description */}
               <HeroVideoCard />
+              <div className="pt-2 px-1">
+                <h3 className="text-sm sm:text-base font-bold text-[#1d1d1f] tracking-tight">
+                  Inside our R&D testing bays
+                </h3>
+                <p className="text-xs text-[#6e6e73] mt-1 leading-relaxed">
+                  This Is Where Tomorrow&apos;s Technology Takes Shape. From precision testing to advanced hardware prototyping, witness our engineers turning complex challenges into breakthrough solutions for India&apos;s digital infrastructure.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -440,7 +467,7 @@ export function HomeDynamicView() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {activeUpcomingProducts.map((prod) => (
               <div
                 key={prod.id}
@@ -521,9 +548,28 @@ export function HomeDynamicView() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
             {activeDomainPillars.map((domain) => {
-              const Icon = (domain as any).icon || Zap;
+              const domainIconsMap: Record<string, React.ElementType> = {
+                "power-electronics": Zap,
+                "energy-storage-bess": BatteryCharging,
+                "telecom-6g": Radio,
+                "embedded-systems": Cpu,
+                "vlsi-silicon": Layers,
+                "ai-ml": Brain,
+                "quantum-technologies": Atom,
+                "defence-technology": ShieldCheck,
+                "industry-5-0": Activity,
+                "deeptech-innovation": Rocket,
+                "rnd-deeptech": Rocket,
+                "vlsi-asic": Layers,
+                "defence-tech": ShieldCheck,
+                "telecom-5g-6g": Radio,
+                "quantum-tech": Atom,
+                "industry-5": Activity,
+                "energy-storage": BatteryCharging,
+              };
+              const Icon = (domain as any).icon || domainIconsMap[domain.id] || Zap;
               return (
                 <div
                   key={domain.id}

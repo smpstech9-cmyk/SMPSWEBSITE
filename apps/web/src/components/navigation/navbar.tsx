@@ -69,8 +69,8 @@ export function Navbar() {
     { label: "R&D", href: "/rnd" },
     { label: "IP & Patents", href: "/ip" },
     { label: "Entrepreneurship", href: "/entrepreneur" },
-    { label: "Hardware Store", href: "/store" },
-    { label: "VTU Internships", href: "/internships", hasDropdown: true },
+    { label: "Store", href: "/store" },
+    { label: "Internships", href: "/internships", hasDropdown: true },
     { label: "Events", href: "/events" },
     { label: "Gallery", href: "/gallery" },
     { label: "Careers", href: "/careers" },
@@ -143,7 +143,7 @@ export function Navbar() {
           )}
         </div>
       )}
-      <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3 lg:gap-6">
+      <div className="max-w-[1600px] w-full mx-auto px-3 sm:px-4 lg:px-6 h-18 sm:h-20 flex items-center justify-between gap-2 lg:gap-3 xl:gap-4">
         {/* Brand Emblem & Logo - Large, Perfectly Centered */}
         <Link href="/" className="flex items-center shrink-0 group" aria-label="SMPS Electric Control Home">
           <Image
@@ -153,7 +153,7 @@ export function Navbar() {
             height={88}
             priority
             unoptimized
-            className="h-10 sm:h-12 md:h-[52px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
+            className="h-9 sm:h-10 md:h-11 xl:h-[46px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
           />
         </Link>
 
@@ -161,7 +161,7 @@ export function Navbar() {
         <nav
           ref={navRef}
           onMouseLeave={() => setHoveredIndex(null)}
-          className="relative hidden lg:flex items-center gap-0.5 p-1 rounded-full bg-black/[0.035] border border-black/[0.05] shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] shrink-0"
+          className="relative hidden lg:flex items-center gap-0 xl:gap-0.5 p-1 rounded-full bg-black/[0.035] border border-black/[0.05] shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] shrink-0"
         >
           {/* Sliding Pill & Glowing Bottom Notch (Option 4) */}
           {mounted && (
@@ -203,7 +203,7 @@ export function Navbar() {
                       itemRefs.current[index] = el;
                     }}
                     href={link.href}
-                    className={`relative z-10 whitespace-nowrap inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-[12.5px] tracking-tight transition-colors duration-200 ${
+                    className={`relative z-10 whitespace-nowrap inline-flex items-center gap-1 px-2 lg:px-2.5 xl:px-3 py-1.5 rounded-full text-[11.5px] xl:text-[12.5px] tracking-tight transition-colors duration-200 ${
                       isCurrent
                         ? "text-[#0071e3] font-bold"
                         : "text-[#515154] hover:text-[#1d1d1f] font-medium"
@@ -275,7 +275,7 @@ export function Navbar() {
                 }}
                 href={link.href}
                 onMouseEnter={() => setHoveredIndex(index)}
-                className={`relative z-10 whitespace-nowrap px-3 py-1.5 rounded-full text-[12.5px] tracking-tight transition-colors duration-200 shrink-0 ${
+                className={`relative z-10 whitespace-nowrap px-2 lg:px-2.5 xl:px-3 py-1.5 rounded-full text-[11.5px] xl:text-[12.5px] tracking-tight transition-colors duration-200 shrink-0 ${
                   isCurrent
                     ? "text-[#0071e3] font-bold"
                     : "text-[#515154] hover:text-[#1d1d1f] font-medium"
@@ -288,11 +288,11 @@ export function Navbar() {
         </nav>
 
         {/* Right Action Controls (Strictly Single Line, never wraps) */}
-        <div className="hidden sm:flex items-center gap-3 shrink-0">
+        <div className="hidden sm:flex items-center gap-2 xl:gap-3 shrink-0">
           {/* Dedicated Corporate R&D Partnership CTA Pill */}
           <Link
             href="/partner"
-            className="whitespace-nowrap shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#0071e3] hover:bg-[#0077ed] text-white text-[12.5px] font-bold shadow-[0_3px_12px_rgba(0,113,227,0.32)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+            className="whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 xl:gap-2 px-3.5 sm:px-4 xl:px-5 py-2 sm:py-2.5 rounded-full bg-[#0071e3] hover:bg-[#0077ed] text-white text-[11.5px] sm:text-xs xl:text-[12.5px] font-bold shadow-[0_3px_12px_rgba(0,113,227,0.32)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
           >
             <Sparkles className="w-3.5 h-3.5 text-blue-100 flex-shrink-0" />
             <span className="whitespace-nowrap">Partner with R&D</span>

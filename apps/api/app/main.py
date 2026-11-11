@@ -67,6 +67,18 @@ app.include_router(content_router, prefix="/api/v1/content", tags=["content"])
 
 
 
+@app.get("/")
+async def root():
+    """Root status endpoint."""
+    return {
+        "status": "online",
+        "service": "SMPS Tech Lab Authoritative API",
+        "version": "1.0.0",
+        "docs": "/api/v1/docs",
+    }
+
+
+@app.get("/health")
 @app.get("/api/v1/health")
 async def health_check():
     """Health and readiness probe."""

@@ -53,7 +53,170 @@ interface Product {
   skus: SKU[];
 }
 
-const FALLBACK_PRODUCTS: Product[] = [];
+const FALLBACK_PRODUCTS: Product[] = [
+  {
+    id: "prod-1",
+    slug: "purna-bess-commercial",
+    name: "PURNA BESS™ Commercial Modular Storage",
+    brand_line: "SMPS CleanTech",
+    short_description: "Scalable 50 kWh to 1 MWh liquid-cooled LFP battery energy storage system.",
+    description: "Engineered for industrial peak shaving, demand response, and solar microgrid integration with 1500V architecture and CAN-FD real-time telemetry.",
+    primary_image_url: "/images/products/purna-bess.jpg",
+    is_published: true,
+    category: {
+      id: "cat-1",
+      name: "Battery Energy Storage Systems (BESS)",
+      slug: "bess",
+    },
+    skus: [
+      {
+        id: "sku-1",
+        sku_code: "SMPS-BESS-100KWH",
+        title: "100 kWh Industrial Modular Rack",
+        price_inr: 2850000,
+        hsn_code: "85076000",
+        tax_rate_percent: 18,
+        quantity_available: 4,
+        is_active: true,
+      },
+    ],
+  },
+  {
+    id: "prod-2",
+    slug: "quantum-bess-container",
+    name: "Quantum BESS™ 500 kWh / 1 MWh Container",
+    brand_line: "SMPS CleanTech",
+    short_description: "Utility-scale containerized liquid-cooled industrial energy storage system.",
+    description: "Features active liquid cooling loop, modular bidirectional PCS inverters, multi-stage fire suppression, and automated SCADA integration.",
+    primary_image_url: "/images/products/quantum-bess.jpg",
+    is_published: true,
+    category: {
+      id: "cat-1",
+      name: "Battery Energy Storage Systems (BESS)",
+      slug: "bess",
+    },
+    skus: [
+      {
+        id: "sku-2",
+        sku_code: "SMPS-QBESS-500KWH",
+        title: "500 kWh Utility Container",
+        price_inr: 12500000,
+        hsn_code: "85076000",
+        tax_rate_percent: 18,
+        quantity_available: 2,
+        is_active: true,
+      },
+    ],
+  },
+  {
+    id: "prod-3",
+    slug: "smartlink-industrial-gateway",
+    name: "SmartLink™ Industrial IoT & Grid Gateway",
+    brand_line: "SMPS Telemetry",
+    short_description: "Rugged DIN-rail edge telemetry router and long-range wireless bridge.",
+    description: "Carrier-grade hardware with dual CAN-FD, RS-485 Modbus, 4G/LTE, and high-throughput wireless mesh for power stations and microgrids.",
+    primary_image_url: "/images/products/smartlink-gateway.jpg",
+    is_published: true,
+    category: {
+      id: "cat-5",
+      name: "IoT & Robotics Development Kits",
+      slug: "iot-robotics",
+    },
+    skus: [
+      {
+        id: "sku-3",
+        sku_code: "SMPS-SLINK-GW20",
+        title: "SmartLink Gateway Pro",
+        price_inr: 45000,
+        hsn_code: "85176290",
+        tax_rate_percent: 18,
+        quantity_available: 25,
+        is_active: true,
+      },
+    ],
+  },
+  {
+    id: "prod-4",
+    slug: "swarnali-60kw-dc-fast-charger",
+    name: "Swarnali™ Dual-Gun 60kW DC Fast Charger",
+    brand_line: "SMPS E-Mobility",
+    short_description: "Commercial high-power EV charging station with OCPP 2.0.1 compliance.",
+    description: "Dual CCS2 guns with dynamic power sharing, RFID authentication, 96% peak conversion efficiency, and IP55 weatherized enclosure.",
+    primary_image_url: "/images/products/swarnali-ev-charger.jpg",
+    is_published: true,
+    category: {
+      id: "cat-4",
+      name: "EV Fast Chargers & Telecom SMPS",
+      slug: "ev-telecom-power",
+    },
+    skus: [
+      {
+        id: "sku-4",
+        sku_code: "SMPS-EV-60KW-DC",
+        title: "60 kW Dual-Gun Fast Charger",
+        price_inr: 750000,
+        hsn_code: "85044090",
+        tax_rate_percent: 18,
+        quantity_available: 6,
+        is_active: true,
+      },
+    ],
+  },
+  {
+    id: "prod-5",
+    slug: "saralachip-dev-board",
+    name: "SaralaChip™ CCU DSP Development Board",
+    brand_line: "SMPS Silicon",
+    short_description: "Real-time DSP controller board for resonant power conversion and motor drive.",
+    description: "Sub-microsecond fault protection, dual isolated CAN-FD channels, GaN/SiC optimized gate driver interfaces, and comprehensive C SDK.",
+    primary_image_url: "/images/products/saralachip.jpg",
+    is_published: true,
+    category: {
+      id: "cat-3",
+      name: "Semiconductors & CCU Controllers",
+      slug: "semiconductors",
+    },
+    skus: [
+      {
+        id: "sku-5",
+        sku_code: "SMPS-SARALA-EVB1",
+        title: "SaralaChip Evaluation Kit",
+        price_inr: 18500,
+        hsn_code: "85423100",
+        tax_rate_percent: 18,
+        quantity_available: 50,
+        is_active: true,
+      },
+    ],
+  },
+  {
+    id: "prod-6",
+    slug: "smps-iot-embedded-kit",
+    name: "SMPS IoT & Embedded Robotics Kit",
+    brand_line: "SMPS Education",
+    short_description: "VTU-accredited engineering student lab development and sensor suite.",
+    description: "Includes microcontroller development board, multi-sensor shield, LCD/OLED display, motor drivers, and hands-on laboratory workbook.",
+    primary_image_url: "/images/products/iot-kit.jpg",
+    is_published: true,
+    category: {
+      id: "cat-5",
+      name: "IoT & Robotics Development Kits",
+      slug: "iot-robotics",
+    },
+    skus: [
+      {
+        id: "sku-6",
+        sku_code: "SMPS-EDU-IOTK1",
+        title: "Academic Hardware Student Kit",
+        price_inr: 4999,
+        hsn_code: "90230000",
+        tax_rate_percent: 18,
+        quantity_available: 120,
+        is_active: true,
+      },
+    ],
+  },
+];
 
 const CATEGORY_TABS = [
   { label: "All Hardware", slug: "all", icon: Layers },
@@ -70,7 +233,10 @@ export default function StorePage() {
   const SHOW_HARDWARE_PRICES = content.hardware.showPricing;
   const HARDWARE_STORE_NOTICE = content.hardware.storeNotice;
 
-  const upcomingProductsList = content.hardware.upcomingProducts || [];
+  const upcomingProductsList =
+    content.hardware.upcomingProducts && content.hardware.upcomingProducts.length > 0
+      ? content.hardware.upcomingProducts
+      : content.home.upcomingProducts || [];
 
   const storeFaqsList =
     content.hardware.storeFaqs && content.hardware.storeFaqs.length > 0
@@ -116,14 +282,12 @@ export default function StorePage() {
         const res = await fetch("/api/v1/store/products", { cache: "no-store" });
         if (res.ok) {
           const data = await res.json();
-          if (Array.isArray(data)) {
+          if (Array.isArray(data) && data.length > 0) {
             setProducts(data);
           }
-        } else {
-          setProducts([]);
         }
       } catch {
-        setProducts([]);
+        // Retain fallback products if network or backend is unreachable
       }
     }
     loadCatalog();
@@ -598,7 +762,7 @@ export default function StorePage() {
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {upcomingProductsList.map((prod) => (
                 <div
                   key={prod.id}

@@ -50,9 +50,6 @@ export function ContentProvider({ children }: { children: React.ReactNode }) {
         if (typeof window !== "undefined") {
           localStorage.setItem(STORAGE_KEY, JSON.stringify(dbContent));
         }
-      } else {
-        // If database is empty, seed it with initial authentic content
-        saveSiteContentToDatabase(localContent).catch(console.error);
       }
     });
 

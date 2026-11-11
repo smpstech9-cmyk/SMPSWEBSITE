@@ -47,7 +47,7 @@ export default function RnDEditorPage() {
       name: "New Research Laboratory Bay",
       focusArea: "High-Frequency Conversion & Thermal Dissipation",
       equipment: ["Precision Power Quality Analyzer", "High-Bandwidth Current Probe"],
-      leadInvestigator: "Dr. Faculty Lead",
+      leadInvestigator: "POWER ELECTRONICS R&D TEAM",
       description: "Dedicated experimental bay investigating novel magnetics and topology efficiency curves.",
     };
     setForm((prev) => ({ ...prev, bays: [...prev.bays, newBay] }));
