@@ -297,6 +297,44 @@ export function RndDynamicView() {
             </p>
           </div>
 
+          {/* Mainframe & Computing Infrastructure Showcase */}
+          <div className="mb-14 rounded-3xl overflow-hidden border border-[#e5e5ea] bg-white shadow-sm grid grid-cols-1 lg:grid-cols-12 items-center">
+            <div className="lg:col-span-7 relative h-72 sm:h-96 w-full bg-[#0a0a0f] overflow-hidden">
+              <Image
+                src="/images/incubation-facility.jpg"
+                alt="SMPS Tech Lab Mainframe Computing & Power Emulator Rack"
+                fill
+                className="object-cover opacity-90 hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-white/10 lg:to-white pointer-events-none" />
+              <div className="absolute top-4 left-4 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md text-white text-[11px] font-mono flex items-center gap-2 border border-white/10">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span>HIL Mainframe Grid Rack Active</span>
+              </div>
+            </div>
+            <div className="lg:col-span-5 p-8 sm:p-10 space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-[#0071e3] text-xs font-bold uppercase tracking-wider">
+                <Cpu className="w-3.5 h-3.5" /> High-Performance Mainframe
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#1d1d1f] tracking-tight">
+                Real-Time Hardware-in-the-Loop Mainframe
+              </h3>
+              <p className="text-xs sm:text-sm text-[#6e6e73] leading-relaxed font-normal">
+                Equipped with custom FPGA hardware emulators, high-throughput DSP signal processors, and sub-nanosecond transient loggers to stress-test 1500V power electronics and SARALA CHIP controllers.
+              </p>
+              <div className="grid grid-cols-2 gap-3 pt-2">
+                <div className="p-3 rounded-xl bg-[#f5f5f7] border border-[#e5e5ea]">
+                  <span className="text-lg font-black text-[#1d1d1f] block">&lt;2.5µs</span>
+                  <span className="text-[10px] text-[#6e6e73] font-medium">Fault Isolation Latency</span>
+                </div>
+                <div className="p-3 rounded-xl bg-[#f5f5f7] border border-[#e5e5ea]">
+                  <span className="text-lg font-black text-[#0071e3] block">1500V DC</span>
+                  <span className="text-[10px] text-[#6e6e73] font-medium">Continuous Emulation</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {permanentRndBays.map((bay) => (
               <div

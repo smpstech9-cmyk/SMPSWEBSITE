@@ -157,16 +157,16 @@ export function Footer() {
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#0071e3] flex-shrink-0 mt-0.5" />
                 <span>
-                  SMPS Tech Lab, VTU-TCOE Building, Visvesvaraya Technological University Campus, Nagarbhavi, Bengaluru, Karnataka 560072
+                  Ground Floor, VTU-VRIF-TCOE Building, 1st Main, RHCS Layout, Annapoorneshwari Nagar, Nagarbhavi, Bengaluru – 560091, Karnataka, India.
                 </span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#0071e3] flex-shrink-0" />
-                <span>+91 98450 12345 / 080-23456789</span>
+                <span>+91 9035874229 | 8792779563</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-[#0071e3] flex-shrink-0" />
-                <span className="font-mono text-[#1d1d1f]">contact@smpstechlab.com</span>
+                <span className="font-mono text-[#1d1d1f]">smpstechlab@gmail.com</span>
               </div>
             </div>
 

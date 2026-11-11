@@ -29,7 +29,7 @@ import { useSiteContent } from "@/context/content-context";
 interface EventItem {
   id: string;
   title: string;
-  category: "symposia" | "workshops" | "hackathons" | "past";
+  category: "symposia" | "workshops" | "hackathons" | "ideation" | "masterclasses" | "past";
   badge: string;
   date: string;
   time: string;
@@ -40,6 +40,9 @@ interface EventItem {
   agenda: string[];
   capacity: string;
   seatsLeft?: string;
+  complimentaryPasses?: string;
+  mediaUrl?: string;
+  brochureUrl?: string;
   registrationOpen: boolean;
   featured?: boolean;
 }
@@ -58,6 +61,7 @@ export default function EventsPage() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [organization, setOrganization] = useState("");
+  const [passType, setPassType] = useState("Complimentary Academic Pass");
   const [registrationSuccess, setRegistrationSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -262,7 +266,9 @@ export default function EventsPage() {
                   { id: "all", label: "All Sessions" },
                   { id: "symposia", label: "Academic Symposia" },
                   { id: "workshops", label: "Hands-on Workshops" },
+                  { id: "ideation", label: "Ideation & Innovation" },
                   { id: "hackathons", label: "Hackathons & Sprints" },
+                  { id: "masterclasses", label: "Technical Masterclasses" },
                   { id: "past", label: "Past Archives" },
                 ].map((tab) => (
                   <button
@@ -338,7 +344,7 @@ export default function EventsPage() {
                         onClick={() => handleOpenRegistration(evt)}
                         className="px-4 py-2 rounded-full bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs font-semibold shadow-sm transition inline-flex items-center gap-1.5"
                       >
-                        <span>RSVP / Register</span>
+                        <span>Reserve Delegate Pass</span>
                         <ArrowRight className="w-3.5 h-3.5" />
                       </button>
                     ) : (
@@ -454,6 +460,21 @@ export default function EventsPage() {
 
                   <div>
                     <label className="block text-xs font-bold text-[#1d1d1f] mb-1">
+                      Delegate Pass Type *
+                    </label>
+                    <select
+                      value={passType}
+                      onChange={(e) => setPassType(e.target.value)}
+                      className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-xs text-[#1d1d1f] bg-white focus:outline-none focus:border-[#0071e3]"
+                    >
+                      <option value="Complimentary Academic Pass">Complimentary Academic Pass (Student / Faculty)</option>
+                      <option value="Industry Delegate Pass">Industry Delegate Pass (Corporate / R&D)</option>
+                      <option value="VIP Executive Pass">VIP Executive Pass (Council / Keynote Guest)</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-[#1d1d1f] mb-1">
                       College / Company / Organization *
                     </label>
                     <input
@@ -467,13 +488,17 @@ export default function EventsPage() {
                   </div>
                 </div>
 
+                <div className="p-3 rounded-xl bg-blue-50/70 border border-blue-100 text-[11px] text-[#6e6e73] leading-relaxed">
+                  <span className="font-semibold text-[#0071e3]">Confirmation Delivery:</span> Official digital delegate pass will be sent to your registered email, and attendee registration is logged automatically with the SMPS operations desk at <strong className="text-[#1d1d1f]">smpstechlab@gmail.com</strong>.
+                </div>
+
                 <div className="pt-3">
                   <button
                     type="submit"
                     disabled={isSubmitting}
                     className="w-full py-3.5 rounded-full bg-[#0071e3] hover:bg-[#0077ed] text-white font-semibold text-xs shadow-md transition disabled:opacity-50"
                   >
-                    {isSubmitting ? "Generating Digital Pass..." : "Confirm Free Registration"}
+                    {isSubmitting ? "Generating Digital Pass..." : "Reserve Delegate Pass Now"}
                   </button>
                   <p className="text-[10px] text-center text-[#86868b] mt-2">
                     Entry requires photo identification at the SMPS Tech Lab security reception.

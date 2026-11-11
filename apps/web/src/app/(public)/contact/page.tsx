@@ -66,7 +66,7 @@ export default function ContactPage() {
                 <Phone className="w-6 h-6" />
               </div>
               <div>
-                <h3 className="text-base font-bold text-[#1d1d1f]">+91 98450 12345</h3>
+                <h3 className="text-base font-bold text-[#1d1d1f]">+91 9035874229 | 8792779563</h3>
                 <p className="text-xs text-[#6e6e73] mt-0.5">Mon - Sat: 9:00 AM - 6:00 PM IST</p>
                 <p className="text-xs text-[#0071e3] font-semibold mt-2">Voice & WhatsApp Support Available</p>
               </div>
@@ -78,7 +78,7 @@ export default function ContactPage() {
                 <Mail className="w-6 h-6" />
               </div>
               <div>
-                <h3 className="text-base font-bold text-[#1d1d1f]">contact@smpstechlab.com</h3>
+                <h3 className="text-base font-bold text-[#1d1d1f]">smpstechlab@gmail.com</h3>
                 <p className="text-xs text-[#6e6e73] mt-0.5">We respond within 24 business hours.</p>
                 <p className="text-xs text-[#0071e3] font-semibold mt-2">Direct Lab Coordinator Inbox</p>
               </div>
@@ -92,10 +92,24 @@ export default function ContactPage() {
               <div>
                 <h3 className="text-base font-bold text-[#1d1d1f]">Bengaluru R&D Center</h3>
                 <p className="text-xs text-[#6e6e73] mt-0.5 leading-relaxed font-normal">
-                  SMPS Electric Control Pvt Ltd, VTU-VRIF-TCOE Building, Visvesvaraya Technological University Campus, Nagarbhavi, Bengaluru - 560072
+                  Ground Floor, VTU-VRIF-TCOE Building, 1st Main, RHCS Layout, Annapoorneshwari Nagar, Nagarbhavi, Bengaluru – 560091, Karnataka, India.
                 </p>
                 <p className="text-xs text-[#6e6e73] font-medium mt-2">Campus lab visits scheduled by appointment</p>
               </div>
+            </div>
+
+            {/* Integrated Google Map Embed */}
+            <div className="apple-card p-2 rounded-2xl overflow-hidden border border-[#e5e5ea] shadow-sm">
+              <iframe
+                title="SMPS Tech Lab Location"
+                src="https://maps.google.com/maps?q=VTU-VRIF-TCOE+Building,+1st+Main,+RHCS+Layout,+Annapoorneshwari+Nagar,+Nagarbhavi,+Bengaluru+560091&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="220"
+                style={{ border: 0, borderRadius: "12px" }}
+                allowFullScreen={false}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
 
             {/* Corporate Partnership Banner */}

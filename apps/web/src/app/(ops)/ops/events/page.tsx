@@ -33,7 +33,7 @@ export default function OpsEventsPage() {
 
   // New Event Form State
   const [newTitle, setNewTitle] = useState("");
-  const [newCategory, setNewCategory] = useState<"symposia" | "workshops" | "hackathons" | "past">("workshops");
+  const [newCategory, setNewCategory] = useState<"symposia" | "workshops" | "hackathons" | "ideation" | "masterclasses" | "past">("workshops");
   const [newBadge, setNewBadge] = useState("Technical Workshop");
   const [newDate, setNewDate] = useState("15 January 2027");
   const [newTime, setNewTime] = useState("10:00 AM – 04:30 PM IST");
@@ -41,8 +41,12 @@ export default function OpsEventsPage() {
   const [newSpeaker, setNewSpeaker] = useState("SMPS Engineering Team");
   const [newSpeakerRole, setNewSpeakerRole] = useState("Lead Systems Architect");
   const [newDescription, setNewDescription] = useState("");
+  const [newAgendaText, setNewAgendaText] = useState("09:30 AM – Welcome & Laboratory Orientation\n11:00 AM – Hands-On Engineering Trial\n03:30 PM – Q&A with Senior Mentors");
   const [newCapacity, setNewCapacity] = useState("50 Engineers");
   const [newSeatsLeft, setNewSeatsLeft] = useState("15 Seats Remaining");
+  const [newComplimentaryPasses, setNewComplimentaryPasses] = useState("20 Complimentary University Passes");
+  const [newBrochureUrl, setNewBrochureUrl] = useState("");
+  const [newMediaUrl, setNewMediaUrl] = useState("");
   const [newRegistrationOpen, setNewRegistrationOpen] = useState(true);
 
   const handleSaveAll = (e: React.FormEvent) => {
@@ -79,9 +83,15 @@ export default function OpsEventsPage() {
       speaker: newSpeaker.trim(),
       speakerRole: newSpeakerRole.trim(),
       description: newDescription.trim() || "Technical session hosted at VTU-VRIF Center.",
-      agenda: ["09:30 AM – Welcome & Laboratory Orientation", "11:00 AM – Hands-On Engineering Trial", "03:30 PM – Q&A with Senior Mentors"],
+      agenda: newAgendaText
+        .split("\n")
+        .map((s) => s.trim())
+        .filter(Boolean),
       capacity: newCapacity.trim() || "50 Attendees",
       seatsLeft: newSeatsLeft.trim() || "Open",
+      complimentaryPasses: newComplimentaryPasses.trim() || "Available",
+      brochureUrl: newBrochureUrl.trim() || undefined,
+      mediaUrl: newMediaUrl.trim() || undefined,
       registrationOpen: newRegistrationOpen,
       featured: false,
     };
@@ -186,7 +196,9 @@ export default function OpsEventsPage() {
               >
                 <option value="symposia">Academic Symposia</option>
                 <option value="workshops">Hands-on Workshop</option>
+                <option value="ideation">Ideation & Innovation</option>
                 <option value="hackathons">Hackathon & Sprint</option>
+                <option value="masterclasses">Technical Masterclasses</option>
                 <option value="past">Past / Archived Session</option>
               </select>
             </div>
@@ -253,6 +265,61 @@ export default function OpsEventsPage() {
                 placeholder="e.g. Senior Power Systems Architect"
                 value={newSpeakerRole}
                 onChange={(e) => setNewSpeakerRole(e.target.value)}
+                className="w-full px-3.5 py-2 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-[#0071e3]"
+              />
+            </div>
+
+            <div className="sm:col-span-2">
+              <label className="block text-xs font-bold text-[#1d1d1f] mb-1">Technical Agenda (one topic per line)</label>
+              <textarea
+                rows={3}
+                placeholder="09:30 AM – Welcome & Orientation&#10;11:00 AM – Hands-On Bring-Up Lab&#10;03:30 PM – Architecture Q&A"
+                value={newAgendaText}
+                onChange={(e) => setNewAgendaText(e.target.value)}
+                className="w-full px-3.5 py-2 rounded-xl border border-gray-200 text-xs font-mono focus:outline-none focus:border-[#0071e3]"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold text-[#1d1d1f] mb-1">Brochure Download URL / PDF Path</label>
+              <input
+                type="text"
+                placeholder="e.g. /logos/pdf/SMPS TECH LAB LLP MSME.pdf"
+                value={newBrochureUrl}
+                onChange={(e) => setNewBrochureUrl(e.target.value)}
+                className="w-full px-3.5 py-2 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-[#0071e3]"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold text-[#1d1d1f] mb-1">Event Showcase Media / Video URL</label>
+              <input
+                type="text"
+                placeholder="e.g. /logos/videos/video.mp4"
+                value={newMediaUrl}
+                onChange={(e) => setNewMediaUrl(e.target.value)}
+                className="w-full px-3.5 py-2 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-[#0071e3]"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold text-[#1d1d1f] mb-1">Seats Remaining Notice</label>
+              <input
+                type="text"
+                placeholder="e.g. 15 Seats Remaining"
+                value={newSeatsLeft}
+                onChange={(e) => setNewSeatsLeft(e.target.value)}
+                className="w-full px-3.5 py-2 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-[#0071e3]"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold text-[#1d1d1f] mb-1">Complimentary Academic Passes Quota</label>
+              <input
+                type="text"
+                placeholder="e.g. 20 Complimentary Passes Available"
+                value={newComplimentaryPasses}
+                onChange={(e) => setNewComplimentaryPasses(e.target.value)}
                 className="w-full px-3.5 py-2 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-[#0071e3]"
               />
             </div>

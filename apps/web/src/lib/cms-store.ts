@@ -134,7 +134,7 @@ export interface ExComMemberItem {
 export interface CMS_EventItem {
   id: string;
   title: string;
-  category: "symposia" | "workshops" | "hackathons" | "past";
+  category: "symposia" | "workshops" | "hackathons" | "ideation" | "masterclasses" | "past";
   badge: string;
   date: string;
   time: string;
@@ -145,6 +145,9 @@ export interface CMS_EventItem {
   agenda: string[];
   capacity: string;
   seatsLeft?: string;
+  complimentaryPasses?: string;
+  brochureUrl?: string;
+  mediaUrl?: string;
   registrationOpen: boolean;
   featured?: boolean;
 }

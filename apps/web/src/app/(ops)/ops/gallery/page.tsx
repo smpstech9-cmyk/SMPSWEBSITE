@@ -278,8 +278,11 @@ export default function GalleryEditorPage() {
               >
                 <option value="labs">R&D Testing Bays</option>
                 <option value="events">Conferences & Summits</option>
+                <option value="ideation">Ideation & Design Thinking</option>
+                <option value="hardware">Hardware & Silicon Demos</option>
                 <option value="ceremonies">Convocation Ceremonies</option>
                 <option value="students">Student Lab Work</option>
+                <option value="industrial">Industrial & Govt Visits</option>
               </select>
             </div>
           </div>

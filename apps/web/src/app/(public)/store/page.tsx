@@ -44,6 +44,7 @@ interface Product {
   short_description: string;
   description: string;
   primary_image_url?: string | null;
+  indiamart_url?: string | null;
   is_published: boolean;
   category?: {
     id: string;
@@ -62,6 +63,7 @@ const FALLBACK_PRODUCTS: Product[] = [
     short_description: "Scalable 50 kWh to 1 MWh liquid-cooled LFP battery energy storage system.",
     description: "Engineered for industrial peak shaving, demand response, and solar microgrid integration with 1500V architecture and CAN-FD real-time telemetry.",
     primary_image_url: "/images/products/purna-bess.jpg",
+    indiamart_url: "https://www.indiamart.com/smpselectriccontrol/",
     is_published: true,
     category: {
       id: "cat-1",
@@ -116,6 +118,7 @@ const FALLBACK_PRODUCTS: Product[] = [
     short_description: "Rugged DIN-rail edge telemetry router and long-range wireless bridge.",
     description: "Carrier-grade hardware with dual CAN-FD, RS-485 Modbus, 4G/LTE, and high-throughput wireless mesh for power stations and microgrids.",
     primary_image_url: "/images/products/smartlink-gateway.jpg",
+    indiamart_url: "https://www.indiamart.com/smpselectriccontrol/",
     is_published: true,
     category: {
       id: "cat-5",
@@ -143,6 +146,7 @@ const FALLBACK_PRODUCTS: Product[] = [
     short_description: "Commercial high-power EV charging station with OCPP 2.0.1 compliance.",
     description: "Dual CCS2 guns with dynamic power sharing, RFID authentication, 96% peak conversion efficiency, and IP55 weatherized enclosure.",
     primary_image_url: "/images/products/swarnali-ev-charger.jpg",
+    indiamart_url: "https://www.indiamart.com/smpselectriccontrol/",
     is_published: true,
     category: {
       id: "cat-4",
@@ -170,6 +174,7 @@ const FALLBACK_PRODUCTS: Product[] = [
     short_description: "Real-time DSP controller board for resonant power conversion and motor drive.",
     description: "Sub-microsecond fault protection, dual isolated CAN-FD channels, GaN/SiC optimized gate driver interfaces, and comprehensive C SDK.",
     primary_image_url: "/images/products/saralachip.jpg",
+    indiamart_url: "https://www.indiamart.com/smpselectriccontrol/",
     is_published: true,
     category: {
       id: "cat-3",
@@ -197,6 +202,7 @@ const FALLBACK_PRODUCTS: Product[] = [
     short_description: "VTU-accredited engineering student lab development and sensor suite.",
     description: "Includes microcontroller development board, multi-sensor shield, LCD/OLED display, motor drivers, and hands-on laboratory workbook.",
     primary_image_url: "/images/products/iot-kit.jpg",
+    indiamart_url: "https://www.indiamart.com/smpselectriccontrol/",
     is_published: true,
     category: {
       id: "cat-5",
@@ -274,6 +280,7 @@ export default function StorePage() {
   const [priceFilter, setPriceFilter] = useState<"all" | "under5k" | "5k-50k" | "industrial">("all");
   const [inStockOnly, setInStockOnly] = useState(false);
   const [sortBy, setSortBy] = useState<"featured" | "price-asc" | "price-desc" | "stock">("featured");
+  const [selectedIndiaMartProduct, setSelectedIndiaMartProduct] = useState<Product | null>(null);
 
   // Fetch live products from backend
   useEffect(() => {
@@ -723,17 +730,92 @@ export default function StorePage() {
                       )}
                     </div>
 
-                    <Link
-                      href={`/store/${product.slug}`}
-                      className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs sm:text-sm font-semibold transition shadow-[0_4px_14px_rgba(0,113,227,0.3)] group/btn"
-                    >
-                      <span>{IS_HARDWARE_ORDERING_ENABLED ? "Configure" : "View Details & Specs"}</span>
-                      <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform" />
-                    </Link>
+                    <div className="flex items-center gap-2">
+                      {product.indiamart_url && (
+                        <button
+                          type="button"
+                          onClick={() => setSelectedIndiaMartProduct(product)}
+                          className="px-3 py-2 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xs font-bold border border-emerald-200 transition flex items-center gap-1 shadow-2xs cursor-pointer"
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                          <span>IndiaMART</span>
+                        </button>
+                      )}
+
+                      <Link
+                        href={`/store/${product.slug}`}
+                        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs sm:text-sm font-semibold transition shadow-[0_4px_14px_rgba(0,113,227,0.3)] group/btn"
+                      >
+                        <span>{IS_HARDWARE_ORDERING_ENABLED ? "Configure" : "Specs"}</span>
+                        <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
+                      </Link>
+                    </div>
                   </div>
                 </article>
               );
             })}
+          </div>
+        )}
+
+        {/* IndiaMART Procurement Modal Popup */}
+        {selectedIndiaMartProduct && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
+            <div className="relative w-full max-w-lg bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-[#e5e5ea] space-y-5">
+              <button
+                type="button"
+                onClick={() => setSelectedIndiaMartProduct(null)}
+                className="absolute top-5 right-5 p-2 rounded-full bg-gray-100 text-gray-500 hover:text-gray-900 transition"
+              >
+                <X className="w-4 h-4" />
+              </button>
+
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-200 shadow-sm font-bold text-sm">
+                  IM
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-600 block">
+                    Verified IndiaMART Partner
+                  </span>
+                  <h3 className="text-lg font-extrabold text-[#1d1d1f]">
+                    Procure via IndiaMART
+                  </h3>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-[#f5f5f7] border border-[#e5e5ea] space-y-2">
+                <div className="text-xs font-bold text-[#1d1d1f]">{selectedIndiaMartProduct.name}</div>
+                <div className="text-[11px] text-[#6e6e73] leading-relaxed">
+                  {selectedIndiaMartProduct.short_description}
+                </div>
+                <div className="text-[10px] text-[#0071e3] font-semibold">
+                  Seller: SMPS Electric Control Pvt Ltd • GST & ISO Certified
+                </div>
+              </div>
+
+              <p className="text-xs text-[#6e6e73] leading-relaxed">
+                You are proceeding to our verified IndiaMART catalog to request institutional price quotations, bulk supply availability, and direct dispatch agreements.
+              </p>
+
+              <div className="flex items-center justify-end gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={() => setSelectedIndiaMartProduct(null)}
+                  className="px-5 py-2.5 rounded-full text-xs font-semibold text-[#6e6e73] hover:text-[#1d1d1f] transition"
+                >
+                  Cancel
+                </button>
+                <a
+                  href={selectedIndiaMartProduct.indiamart_url || "https://www.indiamart.com/smpselectriccontrol/"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition shadow-md inline-flex items-center gap-1.5"
+                >
+                  <span>Open IndiaMART Listing</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
           </div>
         )}
 

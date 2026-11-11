@@ -25,6 +25,8 @@ import {
   ChevronRight,
   Factory,
   Compass,
+  Sprout,
+  HeartPulse,
 } from "lucide-react";
 import { TubesBackground } from "@/components/ui/tubes-background";
 import { FAQAccordion, FAQItem } from "@/components/ui/faq-accordion";
@@ -307,6 +309,24 @@ const TARGET_VERTICALS = [
     desc: "Brushless DC (BLDC) motor drivers, field-oriented control (FOC) algorithms, and warehouse automation controllers.",
     badge: "Robotics",
     icon: Target,
+  },
+  {
+    title: "Agritech & Precision Farming",
+    desc: "IoT smart irrigation power systems, solar agrivoltaic inverters, automated soil telemetry, and rural microgrids aligned with MITK & GSSS incubation initiatives.",
+    badge: "MITK & GSSS Aligned",
+    icon: Sprout,
+  },
+  {
+    title: "Marine Technology & Subsea Systems",
+    desc: "Subsea battery pods, ruggedized corrosion-resistant power converters, autonomous underwater vehicle (AUV) telemetry, and harbor clean-power microgrids.",
+    badge: "Marine Tech",
+    icon: Compass,
+  },
+  {
+    title: "Healthcare & Medical Instrumentation",
+    desc: "Defibrillator pulse generators, ultra-low-leakage medical isolation power supplies, and portable diagnostic device battery power management.",
+    badge: "MedTech Hardware",
+    icon: HeartPulse,
   },
 ];
 

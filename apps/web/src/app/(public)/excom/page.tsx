@@ -28,6 +28,7 @@ interface Member {
   role: string;
   designation: string;
   department: string;
+  category: "management" | "employees" | "advisory";
   qualifications: string;
   avatarInitials: string;
   bio: string;
@@ -40,12 +41,14 @@ interface Member {
 }
 
 const PERMANENT_EXCOM_MEMBERS: Member[] = [
+  // 1. Management Members (Minds behind Mission)
   {
     id: "excom-ak",
     name: "Mr. AMARESHWAR KARATAGI",
     role: "Co-Founder | Chief Business Development Officer",
     designation: "Managing Director, SMPS Electric Control Pvt Ltd",
-    department: "Executive Leadership",
+    department: "Management",
+    category: "management",
     qualifications: "B.E., Electronics & Communication Engineering, REVA U...",
     avatarInitials: "AK",
     bio: "Mr. Amareshwar Karatagi is a Co-Founder and the Chief Strategic Officer of SMPS Tech Lab, and the architect of its growth strategy. He also serves as Special Industrial Advisor to the VTU Research and Innovation Foundation (VRIF) and has held key advisory roles at Reva University and TCOE India.",
@@ -53,7 +56,7 @@ const PERMANENT_EXCOM_MEMBERS: Member[] = [
     publications: ["Industrial Power Electronics Architecture"],
     patentsHandled: ["High-Voltage Safety Architecture"],
     contactEmail: "info@smpstechlab.com",
-    badge: "Executive Leadership",
+    badge: "Minds behind Mission",
     colorScheme: "from-blue-600 to-indigo-700",
   },
   {
@@ -61,7 +64,8 @@ const PERMANENT_EXCOM_MEMBERS: Member[] = [
     name: "Ms. A. R. Shalini",
     role: "Chief Business Development Officer",
     designation: "Director of Research, VTU-VRIF Center",
-    department: "Executive Leadership",
+    department: "Management",
+    category: "management",
     qualifications: "B.E., Information Science & Engineering • MBA",
     avatarInitials: "S",
     bio: "Ms. A. R. Shalini is the Chief Business Development Officer at SMPS Tech Lab, driving strategic growth, operational effectiveness, and ecosystem partnerships across technology initiatives.",
@@ -69,7 +73,7 @@ const PERMANENT_EXCOM_MEMBERS: Member[] = [
     publications: ["VTU DeepTech Curriculum Framework"],
     patentsHandled: ["Academic Patent Pipeline"],
     contactEmail: "info@smpstechlab.com",
-    badge: "Executive Leadership",
+    badge: "Minds behind Mission",
     colorScheme: "from-blue-600 to-indigo-700",
   },
   {
@@ -77,7 +81,8 @@ const PERMANENT_EXCOM_MEMBERS: Member[] = [
     name: "Dr. S. Khatua",
     role: "Chief Technology Officer",
     designation: "Principal Architect, Digital Control Systems",
-    department: "Executive Leadership",
+    department: "Management",
+    category: "management",
     qualifications: "PhD (Smart Grid), IIT",
     avatarInitials: "K",
     bio: "Dr. S. Khatua is the Chief Technology Officer and principal architect of technological innovation at SMPS Tech Lab. He leads breakthrough research, advanced engineering, and the technological vision of the organization.",
@@ -85,15 +90,18 @@ const PERMANENT_EXCOM_MEMBERS: Member[] = [
     publications: ["High-Frequency Planar Magnetics Optimization for 1500V Central Inverters (IEEE 2025)"],
     patentsHandled: ["Fast-Transient Fault Interrupt System"],
     contactEmail: "info@smpstechlab.com",
-    badge: "Executive Leadership",
+    badge: "Minds behind Mission",
     colorScheme: "from-blue-600 to-indigo-700",
   },
+
+  // 2. Employees (Team Members)
   {
     id: "excom-rj",
     name: "Mr. Rushit Jani",
     role: "Techno-Commercial Architect Intern",
     designation: "Techno-Commercial Architect Intern",
-    department: "Executive Leadership",
+    department: "Core Engineering Team",
+    category: "employees",
     qualifications: "B.Tech, Power & Embedded Electronics",
     avatarInitials: "RJ",
     bio: "Techno-Commercial Architect Intern contributing to deep-tech systems research, hardware-software integration, and market architecture.",
@@ -101,15 +109,16 @@ const PERMANENT_EXCOM_MEMBERS: Member[] = [
     publications: ["Deep-Tech Hardware Acceleration Paradigms"],
     patentsHandled: ["Modular Power Controller Architecture"],
     contactEmail: "info@smpstechlab.com",
-    badge: "Executive Leadership",
-    colorScheme: "from-blue-600 to-indigo-700",
+    badge: "Team Member",
+    colorScheme: "from-emerald-600 to-teal-700",
   },
   {
     id: "excom-sp",
     name: "Mr. Stavan Pandya",
     role: "Techno-Commercial Architect Intern",
     designation: "Techno-Commercial Architect Intern",
-    department: "Executive Leadership",
+    department: "Core Engineering Team",
+    category: "employees",
     qualifications: "B.Tech, Electrical & Electronics",
     avatarInitials: "SP",
     bio: "Techno-Commercial Architect Intern contributing to hardware architectures, technology analytics, and advanced project engineering.",
@@ -117,15 +126,16 @@ const PERMANENT_EXCOM_MEMBERS: Member[] = [
     publications: ["Predictive Maintenance Paradigms in Energy Storage"],
     patentsHandled: ["Energy Telemetry Sensor Nodes"],
     contactEmail: "info@smpstechlab.com",
-    badge: "Executive Leadership",
-    colorScheme: "from-blue-600 to-indigo-700",
+    badge: "Team Member",
+    colorScheme: "from-emerald-600 to-teal-700",
   },
   {
     id: "excom-sb",
     name: "Mr. Shiva Bhalke",
     role: "Technology & Digital Operations",
     designation: "Techno-Commercial Architect Intern",
-    department: "Executive Leadership",
+    department: "Digital Operations",
+    category: "employees",
     qualifications: "B.Tech, Computer & Systems Engineering",
     avatarInitials: "SB",
     bio: "Techno-Commercial Architect Intern contributing to digital platforms, technology operations, and innovation workflows.",
@@ -133,23 +143,20 @@ const PERMANENT_EXCOM_MEMBERS: Member[] = [
     publications: ["Full-Stack Distributed Telemetry in Modern Microgrids"],
     patentsHandled: ["Automated Grid Monitoring Nodes"],
     contactEmail: "info@smpstechlab.com",
-    badge: "Executive Leadership",
-    colorScheme: "from-blue-600 to-indigo-700",
+    badge: "Team Member",
+    colorScheme: "from-emerald-600 to-teal-700",
   },
 ];
 
 export default function ExComPage() {
   const [selectedMember, setSelectedMember] = useState<Member | null>(null);
-  const [activeDepartment, setActiveDepartment] = useState<string>("all");
+  const [activeCategory, setActiveCategory] = useState<string>("all");
 
   const allMembers = PERMANENT_EXCOM_MEMBERS;
 
   const filteredMembers = allMembers.filter((m) => {
-    if (activeDepartment === "all") return true;
-    if (activeDepartment === "leadership") return m.badge === "Executive Leadership";
-    if (activeDepartment === "academic") return m.badge === "Academic Board" || m.badge === "Talent Development";
-    if (activeDepartment === "scientific") return m.badge === "Scientific Review" || m.badge === "Industrial Operations";
-    return true;
+    if (activeCategory === "all") return true;
+    return m.category === activeCategory;
   });
 
   return (
@@ -213,15 +220,14 @@ export default function ExComPage() {
         <div className="flex items-center gap-2 overflow-x-auto pb-4 no-scrollbar border-b border-[#e5e5ea] mb-10">
           {[
             { id: "all", label: "All Committee Members" },
-            { id: "leadership", label: "Executive Leadership" },
-            { id: "academic", label: "Academic & University Board" },
-            { id: "scientific", label: "Scientific & Operations" },
+            { id: "management", label: "Management Members (Minds behind Mission)" },
+            { id: "employees", label: "Employees (Team Members)" },
           ].map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setActiveDepartment(tab.id)}
+              onClick={() => setActiveCategory(tab.id)}
               className={`px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
-                activeDepartment === tab.id
+                activeCategory === tab.id
                   ? "bg-[#0071e3] text-white shadow-sm"
                   : "bg-[#f5f5f7] hover:bg-[#e8e8ed] text-[#6e6e73] hover:text-[#1d1d1f] border border-[#e5e5ea]"
               }`}

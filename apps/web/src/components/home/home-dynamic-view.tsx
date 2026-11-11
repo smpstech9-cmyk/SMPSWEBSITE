@@ -284,6 +284,13 @@ export function HomeDynamicView() {
       height: 40,
       className: "h-6 sm:h-7 w-auto object-contain",
     },
+    {
+      name: "Indian Army - Ministry of Defence",
+      src: "/logos/GOVT/indian-army.svg",
+      width: 140,
+      height: 40,
+      className: "h-6 sm:h-7 w-auto object-contain",
+    },
   ];
 
   // Permanent Next-Gen Upcoming Products (Hardcoded in Code)

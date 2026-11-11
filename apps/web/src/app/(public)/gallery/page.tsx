@@ -331,8 +331,11 @@ export default function GalleryEventsPage() {
                 { id: "all", label: "All Highlights" },
                 { id: "labs", label: "Lab Prototyping Bays" },
                 { id: "events", label: "Hackathons & Symposia" },
+                { id: "ideation", label: "Ideation & Design Thinking" },
+                { id: "hardware", label: "Hardware & Silicon Demos" },
                 { id: "ceremonies", label: "Inaugurations & MoUs" },
                 { id: "students", label: "Student Convocations" },
+                { id: "industrial", label: "Industrial & Govt Visits" },
               ].map((cat) => (
                 <button
                   key={cat.id}
