@@ -17,7 +17,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { useSiteContent } from "@/context/content-context";
-import { InternshipTrackItem } from "@/lib/cms-store";
+import { InternshipTrackItem, INITIAL_SITE_CONTENT } from "@/lib/cms-store";
 
 export default function InternshipsPage() {
   const { content } = useSiteContent();
@@ -36,26 +36,61 @@ export default function InternshipsPage() {
     { label: "Cloud Computing", icon: Cloud },
   ];
 
-  const dynamicPrograms = (content.internships || []).map((track: InternshipTrackItem) => ({
-    slug: track.slug,
-    title: track.title,
-    domain: track.domain,
-    duration: track.duration,
-    mode: track.mode,
-    price: track.price || "₹6,500",
-    gradient: "from-blue-600 to-indigo-700",
-    description: track.description,
-    targetBranches: ["ECE", "EEE", "TE"],
-    icon: Cpu,
-    isActive: track.isActive,
-  }));
+  const trackList =
+    content.internships && content.internships.length > 0
+      ? content.internships
+      : INITIAL_SITE_CONTENT.internships;
+
+  const dynamicPrograms = trackList.map((track: InternshipTrackItem) => {
+    // If slug accidentally contains a URL (e.g. pasted into slug field in ops portal), clean it
+    const rawSlug = track.slug || "";
+    const isUrlInSlug =
+      rawSlug.startsWith("http://") ||
+      rawSlug.startsWith("https://") ||
+      rawSlug.startsWith("http:/") ||
+      rawSlug.startsWith("https:/");
+
+    const externalUrl = isUrlInSlug
+      ? rawSlug.replace(/^https?:\/+/i, "https://")
+      : track.applyPortalUrl && (track.applyPortalUrl.startsWith("http://") || track.applyPortalUrl.startsWith("https://"))
+      ? track.applyPortalUrl
+      : null;
+
+    const cleanSlug = isUrlInSlug
+      ? rawSlug
+          .replace(/^https?:\/+[^\/]+\/(internships\/)?/i, "")
+          .toLowerCase()
+          .replace(/[^a-z0-9_-]/g, "-")
+          .replace(/^-+|-+$/g, "") || `track-${track.id}`
+      : rawSlug;
+
+    return {
+      id: track.id,
+      slug: cleanSlug,
+      externalUrl,
+      title: track.title,
+      domain: track.domain,
+      duration: track.duration,
+      mode: track.mode,
+      price: track.price || "₹6,500",
+      gradient: "from-blue-600 to-indigo-700",
+      description: track.description,
+      targetBranches: ["ECE", "EEE", "TE"],
+      icon: Cpu,
+      isActive: track.isActive,
+      applyPortalUrl: track.applyPortalUrl || "",
+    };
+  });
 
   const allPrograms = dynamicPrograms;
 
   const filteredPrograms = allPrograms.filter((p) => {
-    const matchesDomain = selectedDomain === "All Domains" || p.domain === selectedDomain;
-    const matchesSearch = p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          p.description.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesDomain =
+      selectedDomain === "All Domains" ||
+      p.domain.toLowerCase().includes(selectedDomain.toLowerCase());
+    const matchesSearch =
+      p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.description.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesDomain && matchesSearch;
   });
 
@@ -236,15 +271,41 @@ export default function InternshipsPage() {
                           </div>
 
                           <div className="mt-6 pt-4 border-t border-[#e5e5ea] flex items-center justify-between">
-                            <Link
-                              href={`/internships/${prog.slug}`}
-                              className="text-xs font-semibold text-[#0071e3] hover:text-[#0077ed] transition inline-flex items-center gap-1.5 group-hover:translate-x-0.5"
-                            >
-                              View Details <ArrowRight className="w-3.5 h-3.5" />
-                            </Link>
-                            <span className="text-[11px] text-[#059669] font-medium bg-emerald-50 border border-emerald-100 px-2.5 py-0.5 rounded-full">
-                              Admissions Open
-                            </span>
+                            {prog.externalUrl ? (
+                              <a
+                                href={prog.externalUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-xs font-semibold text-[#0071e3] hover:text-[#0077ed] transition inline-flex items-center gap-1.5 group-hover:translate-x-0.5"
+                              >
+                                View Details <ArrowRight className="w-3.5 h-3.5" />
+                              </a>
+                            ) : (
+                              <Link
+                                href={`/internships/${prog.slug}`}
+                                className="text-xs font-semibold text-[#0071e3] hover:text-[#0077ed] transition inline-flex items-center gap-1.5 group-hover:translate-x-0.5"
+                              >
+                                View Details <ArrowRight className="w-3.5 h-3.5" />
+                              </Link>
+                            )}
+
+                            {prog.externalUrl ? (
+                              <a
+                                href={prog.externalUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-[11px] text-[#059669] font-medium bg-emerald-50 hover:bg-emerald-100 border border-emerald-100 px-2.5 py-0.5 rounded-full transition cursor-pointer"
+                              >
+                                Admissions Open &rarr;
+                              </a>
+                            ) : (
+                              <Link
+                                href={`/internships/${prog.slug}`}
+                                className="text-[11px] text-[#059669] font-medium bg-emerald-50 hover:bg-emerald-100 border border-emerald-100 px-2.5 py-0.5 rounded-full transition"
+                              >
+                                Admissions Open
+                              </Link>
+                            )}
                           </div>
                         </div>
                       </div>

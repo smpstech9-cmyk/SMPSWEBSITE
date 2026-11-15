@@ -17,17 +17,23 @@ import {
   Laptop,
 } from "lucide-react";
 import { useSiteContent } from "@/context/content-context";
-import { InternshipTrackItem } from "@/lib/cms-store";
+import { InternshipTrackItem, INITIAL_SITE_CONTENT } from "@/lib/cms-store";
 
 export default function InternshipsEditorPage() {
   const { content, updateSection } = useSiteContent();
-  const [tracks, setTracks] = useState<InternshipTrackItem[]>(content.internships || []);
+  const [tracks, setTracks] = useState<InternshipTrackItem[]>(
+    content.internships && content.internships.length > 0
+      ? content.internships
+      : INITIAL_SITE_CONTENT.internships
+  );
   const [savedSuccess, setSavedSuccess] = useState(false);
   const [isAddingTrack, setIsAddingTrack] = useState(false);
 
   useEffect(() => {
-    if (content.internships) {
+    if (content.internships && content.internships.length > 0) {
       setTracks(content.internships);
+    } else {
+      setTracks(INITIAL_SITE_CONTENT.internships);
     }
   }, [content.internships]);
 
@@ -72,7 +78,27 @@ export default function InternshipsEditorPage() {
     e.preventDefault();
     if (!newTitle.trim()) return;
 
-    const slug = newSlug.trim() || newTitle.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+    let slug = newSlug.trim() || newTitle.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+    let applyUrl = newApplyUrl.trim();
+
+    // Auto-sanitize if a full URL was accidentally pasted into the slug input
+    if (
+      slug.startsWith("http://") ||
+      slug.startsWith("https://") ||
+      slug.startsWith("http:/") ||
+      slug.startsWith("https:/")
+    ) {
+      if (!applyUrl) {
+        applyUrl = slug.replace(/^https?:\/+/i, "https://");
+      }
+      slug =
+        slug
+          .replace(/^https?:\/+[^\/]+\/(internships\/)?/i, "")
+          .toLowerCase()
+          .replace(/[^a-z0-9_-]/g, "-")
+          .replace(/^-+|-+$/g, "") || `track-${Date.now()}`;
+    }
+
     const newTrack: InternshipTrackItem = {
       id: `int-${Date.now()}`,
       title: newTitle.trim(),
@@ -83,7 +109,7 @@ export default function InternshipsEditorPage() {
       level: newLevel.trim(),
       price: newPrice.trim() || "₹6,500",
       description: newDesc.trim() || "Comprehensive engineering laboratory internship accredited by VTU-VRIF Center.",
-      applyPortalUrl: newApplyUrl.trim(),
+      applyPortalUrl: applyUrl,
       isActive: true,
       upcomingBatchDate: newBatchDate.trim(),
     };

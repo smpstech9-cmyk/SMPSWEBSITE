@@ -20,16 +20,33 @@ import {
 import { ApplicationModal } from "@/components/internships/application-modal";
 import { Batch } from "@/types";
 import { useSiteContent } from "@/context/content-context";
+import { INITIAL_SITE_CONTENT } from "@/lib/cms-store";
 
 export default function InternshipDetailPage() {
   const params = useParams();
   const slug = (params?.slug as string) || "vtu-power-electronics-smps";
   const { content } = useSiteContent();
 
+  // If a URL was accidentally used as a sub-path, immediately redirect to external destination
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      const path = decodeURIComponent(window.location.pathname);
+      const match = path.match(/\/internships\/(https?:\/+(.+))/i);
+      if (match) {
+        const fullUrl = "https://" + match[2].replace(/^\/+/, "");
+        window.location.replace(fullUrl);
+      }
+    }
+  }, []);
+
   const [activeTab, setActiveTab] = useState<"overview" | "syllabus" | "outcomes" | "eligibility" | "faqs">("overview");
   const [isApplyModalOpen, setIsApplyModalOpen] = useState<boolean>(false);
 
-  const matchedTrack = content.internships.find((i) => i.slug === slug || i.id === slug);
+  const allTracks =
+    content.internships && content.internships.length > 0
+      ? content.internships
+      : INITIAL_SITE_CONTENT.internships;
+  const matchedTrack = allTracks.find((i) => i.slug === slug || i.id === slug);
   const effectiveApplyUrl = matchedTrack?.applyPortalUrl || "";
 
   // Available batches for this program

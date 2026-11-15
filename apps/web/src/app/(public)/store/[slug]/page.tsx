@@ -23,39 +23,9 @@ import {
   Clock,
 } from "lucide-react";
 import { useSiteContent } from "@/context/content-context";
+import { PRODUCT_CATALOG, type Product, type SKU } from "@/lib/products-data";
 
-interface SKU {
-  id: string;
-  sku_code: string;
-  title: string;
-  price_inr: string | number;
-  hsn_code: string;
-  tax_rate_percent: string | number;
-  weight_kg?: number | null;
-  quantity_available: number;
-  is_active: boolean;
-}
-
-interface Product {
-  id: string;
-  slug: string;
-  name: string;
-  brand_line: string;
-  short_description: string;
-  description: string;
-  primary_image_url?: string | null;
-  datasheet_url?: string | null;
-  specifications_json?: Record<string, any>;
-  is_published: boolean;
-  category?: {
-    id: string;
-    name: string;
-    slug: string;
-  };
-  skus: SKU[];
-}
-
-const CATALOG_DATA: Record<string, Product> = {};
+const CATALOG_DATA: Record<string, Product> = PRODUCT_CATALOG;
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -75,8 +45,12 @@ export default function ProductDetailPage() {
   const [activeTab, setActiveTab] = useState<"specs" | "description" | "warranty">("specs");
   const [cartSuccessNotice, setCartSuccessNotice] = useState(false);
 
-  // Fetch live product from API
+  // Use local catalogue data immediately; only fallback to remote if unknown
   useEffect(() => {
+    if (CATALOG_DATA[slug]) {
+      setProduct(CATALOG_DATA[slug]);
+      return;
+    }
     async function fetchDetail() {
       try {
         const res = await fetch(`/api/v1/store/products/${slug}`);
@@ -433,32 +407,54 @@ export default function ProductDetailPage() {
                       Direct online purchasing for this hardware unit is temporarily disabled while manufacturing allocations and logistics are calibrated. All engineering specifications, schematic pinouts, and test parameters remain openly accessible below.
                     </p>
 
-                    <div className="pt-2 flex flex-col sm:flex-row gap-3">
-                      <Link
-                        href={`/contact?subject=Technical%20Inquiry:%20${encodeURIComponent(product.name)}%20(${activeSku.sku_code})`}
-                        className="flex-1 flex items-center justify-center gap-2 px-6 py-3.5 bg-[#0071e3] hover:bg-[#0077ed] text-white rounded-full text-xs sm:text-sm font-semibold shadow-sm transition"
-                      >
-                        <FileText className="w-4 h-4" />
-                        <span>{HARDWARE_STORE_NOTICE.inquiryButtonText}</span>
-                      </Link>
-
-                      {basePrice > 50000 ? (
-                        <Link
-                          href={`/partner?proposal=bess`}
-                          className="flex items-center justify-center gap-2 px-6 py-3.5 bg-[#f5f5f7] hover:bg-[#e8e8ed] text-[#1d1d1f] border border-[#e5e5ea] rounded-full text-xs sm:text-sm font-semibold transition"
-                        >
-                          Enterprise Proposal
-                        </Link>
-                      ) : product.datasheet_url ? (
+                    <div className="pt-2 space-y-2.5">
+                      {product.indiamart_url && (
                         <a
-                          href={product.datasheet_url}
+                          href={product.indiamart_url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center justify-center gap-2 px-6 py-3.5 bg-[#f5f5f7] hover:bg-[#e8e8ed] text-[#1d1d1f] border border-[#e5e5ea] rounded-full text-xs sm:text-sm font-semibold transition"
+                          className="w-full flex items-center justify-center gap-2.5 px-6 py-3.5 bg-emerald-600 hover:bg-emerald-700 active:scale-[0.99] text-white rounded-xl text-sm font-semibold shadow-sm transition"
                         >
-                          View Datasheet
+                          <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                          <span>Buy on IndiaMART</span>
+                          <ArrowRight className="w-4 h-4" />
                         </a>
-                      ) : null}
+                      )}
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        <Link
+                          href={`/contact?subject=Technical%20Inquiry:%20${encodeURIComponent(product.name)}%20(${activeSku.sku_code})`}
+                          className="flex items-center justify-center gap-2 px-4 py-3 bg-[#0071e3] hover:bg-[#0077ed] text-white rounded-xl text-xs sm:text-sm font-semibold shadow-sm transition text-center"
+                        >
+                          <FileText className="w-4 h-4 shrink-0" />
+                          <span>Technical Quotation</span>
+                        </Link>
+
+                        {basePrice > 50000 ? (
+                          <Link
+                            href={`/partner?proposal=bess`}
+                            className="flex items-center justify-center gap-2 px-4 py-3 bg-[#f5f5f7] hover:bg-[#e8e8ed] text-[#1d1d1f] border border-[#e5e5ea] rounded-xl text-xs sm:text-sm font-semibold transition text-center"
+                          >
+                            <span>Enterprise Proposal</span>
+                          </Link>
+                        ) : product.datasheet_url ? (
+                          <a
+                            href={product.datasheet_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-center gap-2 px-4 py-3 bg-[#f5f5f7] hover:bg-[#e8e8ed] text-[#1d1d1f] border border-[#e5e5ea] rounded-xl text-xs sm:text-sm font-semibold transition text-center"
+                          >
+                            <span>View Datasheet</span>
+                          </a>
+                        ) : (
+                          <Link
+                            href="/contact"
+                            className="flex items-center justify-center gap-2 px-4 py-3 bg-[#f5f5f7] hover:bg-[#e8e8ed] text-[#1d1d1f] border border-[#e5e5ea] rounded-xl text-xs sm:text-sm font-semibold transition text-center"
+                          >
+                            <span>Lab Consultation</span>
+                          </Link>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
