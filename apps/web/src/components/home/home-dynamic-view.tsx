@@ -47,25 +47,25 @@ export function HomeDynamicView() {
   ];
 
   const clientLogos = [
-    { name: "Bharat Electronics Limited", path: "/logos/clients/client-1.png" },
-    { name: "Vodafone Idea (Vi)", path: "/logos/clients/client-2.png" },
-    { name: "Huawei Enterprise", path: "/logos/clients/client-3.png" },
-    { name: "KEC International", path: "/logos/clients/client-4.png" },
-    { name: "EC Power Solutions", path: "/logos/clients/client-5.png" },
-    { name: "Adventz Group", path: "/logos/clients/client-6.png" },
+    { name: "Reliance Jio", path: "/logos/clients/client-14.png" },
+    { name: "Bharat Electronics Limited (BEL)", path: "/logos/clients/client-1.png" },
     { name: "BSNL Telecom", path: "/logos/clients/client-7.png" },
     { name: "Larsen & Toubro (L&T)", path: "/logos/clients/client-8.png" },
     { name: "Indian Oil Corporation", path: "/logos/clients/client-9.png" },
     { name: "TowerVision Infrastructure", path: "/logos/clients/client-10.png" },
-    { name: "PP Group", path: "/logos/clients/client-11.png" },
+    { name: "BP (British Petroleum)", path: "/logos/clients/client-11.png" },
     { name: "ACME Solar Power", path: "/logos/clients/client-12.png" },
-    { name: "Industrial Partner 13", path: "/logos/clients/client-13.png" },
-    { name: "Industrial Partner 14", path: "/logos/clients/client-14.png" },
-    { name: "Industrial Partner 15", path: "/logos/clients/client-15.png" },
-    { name: "Industrial Partner 16", path: "/logos/clients/client-16.png" },
-    { name: "Industrial Partner 17", path: "/logos/clients/client-17.png" },
-    { name: "Industrial Partner 18", path: "/logos/clients/client-18.png" },
-    { name: "Industrial Partner 19", path: "/logos/clients/client-19.png" },
+    { name: "BSES", path: "/logos/clients/client-13.png" },
+    { name: "Reliance Communications", path: "/logos/clients/client-15.png" },
+    { name: "Tata Group", path: "/logos/clients/client-16.png" },
+    { name: "Indian Railways", path: "/logos/clients/client-17.png" },
+    { name: "GAIL (India) Limited", path: "/logos/clients/client-18.png" },
+    { name: "Indian Army", path: "/logos/clients/indian-army.png" },
+    { name: "Ericsson", path: "/logos/clients/client-19.png" },
+    { name: "KEC International", path: "/logos/clients/client-4.png" },
+    { name: "Adventz Group", path: "/logos/clients/client-6.png" },
+    { name: "Huawei Enterprise", path: "/logos/clients/client-3.png" },
+    { name: "Vodafone Idea (Vi)", path: "/logos/clients/client-2.png" },
   ];
 
   // Collaboration Timeline Milestones
@@ -75,8 +75,8 @@ export function HomeDynamicView() {
       quarter: "Q1 - Q2",
       badge: "Institutional Foundation",
       title: "SMPS Engineering Center Commissioning & Institutional MoU",
-      desc: "Formal tripartite agreement signed between SMPS Electric Control Pvt Ltd, Visvesvaraya Technological University, and VTU Research & Innovation Foundation to establish the 5,000 sq.ft Power Electronics & CleanTech incubation bay in Bengaluru.",
-      metrics: "5,000 sq.ft Lab Bay • High-Voltage Grid Simulator",
+      desc: "Formal tripartite agreement signed between SMPS Electric Control Pvt Ltd, Visvesvaraya Technological University, and VTU Research & Innovation Foundation to establish the 1 Lakh sq.ft Power Electronics & CleanTech incubation bay in Bengaluru.",
+      metrics: "1 Lakh sq.ft Lab Bay • High-Voltage Grid Simulator",
     },
     {
       year: "2024 - 2025",
@@ -298,14 +298,13 @@ export function HomeDynamicView() {
     {
       id: "prod-smartlink",
       name: "SMARTLINK-20™",
-      tagline: "Next-gen telemetry controller for telecom towers & remote assets.",
+      tagline: "20 km Long-Range Intelligent Wireless Ethernet Bridge.",
       brand: "Telecom Power",
       status: "Field Trials in 40+ Sites",
       stage: "Pilot Deployment",
       availability: "Commercial Q2 2026",
       specs: ["4G/5G Backhaul Telemetry", "Sub-10ms Fault Reporting", "RS485 / CAN Dual Bus"],
-      imageUrl: "/products/smartlink.png",
-      link: "/rnd",
+      imageUrl: "/images/products/smartlink-20.jpg",
     },
     {
       id: "prod-quantum",
@@ -316,32 +315,29 @@ export function HomeDynamicView() {
       stage: "Grid Pre-Compliance",
       availability: "Enterprise Pre-Order",
       specs: ["1500V DC Architecture", "Liquid Cooling Loop", "98.5% Round-Trip Efficiency"],
-      imageUrl: "/products/PuranaBess.png",
-      link: "/rnd",
+      imageUrl: "/images/products/quantum-bess.jpg",
     },
     {
       id: "prod-quansgrid",
       name: "QUANSGRID™",
-      tagline: "Bidirectional high-frequency grid-tie inverter platform.",
+      tagline: "Quantum AI Enabled Smart Grid & BESS PWR Management Platform.",
       brand: "Power Conversion",
       status: "Grid Interconnect Beta",
       stage: "Certification Trials",
       availability: "Pilot Partners Only",
       specs: ["GaN/SiC Wide Bandgap", "Sub-2.5µs Anti-Islanding", "UL 1741-SA Compliant"],
-      imageUrl: "/products/quansgrid.png",
-      link: "/rnd",
+      imageUrl: "/images/products/quansgrid.jpg",
     },
     {
       id: "prod-saralachip",
       name: "SARALA CHIP™",
-      tagline: "Custom digital signal controller for real-time power electronics.",
+      tagline: "SaralaChip™ Gen-2 DSP Silicon Controller for real-time power electronics.",
       brand: "Embedded Silicon",
       status: "Engineering Samples Ready",
       stage: "Silicon Tapeout Bring-Up",
       availability: "Developer SDK Q3 2026",
       specs: ["Dual-Core 200MHz DSP", "High-Resolution PWM (150ps)", "Native CAN-FD & SPI"],
-      imageUrl: "/products/saralachip.png",
-      link: "/rnd",
+      imageUrl: "/images/products/saralachip-chip.jpg",
     },
   ];
 
@@ -559,26 +555,28 @@ export function HomeDynamicView() {
                 key={prod.id}
                 className="apple-card p-6 flex flex-col justify-between group relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
               >
-                <div>
-                  <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden bg-gray-100 mb-6 border border-black/[0.06]">
+                <div className="flex flex-col flex-1">
+                  {/* Image Frame with Aspect 4:3 & object-contain so products never get cropped */}
+                  <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-[#f8f9fb] mb-5 border border-black/[0.06] flex items-center justify-center p-2.5">
                     <Image
                       src={prod.imageUrl}
                       alt={prod.name}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      className="object-contain group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/95 backdrop-blur-md text-[#1d1d1f] shadow-sm border border-black/[0.06]">
+                    <div className="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/95 backdrop-blur-md text-[#1d1d1f] shadow-xs border border-black/[0.06]">
                       {prod.status}
                     </div>
                   </div>
 
-                  <span className="text-xs font-bold text-[#0071e3] uppercase tracking-wider">
+                  <span className="text-xs font-bold text-[#0071e3] uppercase tracking-wider block">
                     {prod.brand}
                   </span>
-                  <h3 className="text-xl font-extrabold text-[#1d1d1f] mt-1 leading-snug">
+                  <h3 className="text-xl font-extrabold text-[#1d1d1f] mt-1 leading-snug line-clamp-1 h-7 flex items-center">
                     {prod.name}
                   </h3>
-                  <p className="text-xs text-[#6e6e73] font-medium mt-1">
+                  <p className="text-xs text-[#6e6e73] font-medium mt-1.5 line-clamp-2 min-h-[36px] leading-relaxed">
                     {prod.tagline}
                   </p>
 
@@ -589,27 +587,23 @@ export function HomeDynamicView() {
                     </span>
                   </div>
 
-                  <ul className="mt-5 space-y-2">
+                  <ul className="mt-5 space-y-2.5 flex-1">
                     {prod.specs.map((spec, idx) => (
                       <li key={idx} className="text-xs text-[#6e6e73] flex items-start gap-2">
                         <CheckCircle2 className="w-3.5 h-3.5 text-[#0071e3] flex-shrink-0 mt-0.5" />
-                        <span>{spec}</span>
+                        <span className="line-clamp-1">{spec}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="mt-8 pt-5 border-t border-black/[0.06] flex items-center justify-between">
-                  <span className="text-[11px] font-semibold text-[#86868b]">
+                <div className="mt-6 pt-4 border-t border-black/[0.06] flex items-center justify-between">
+                  <span className="text-[11px] font-medium text-[#86868b]">
+                    Target Deployment
+                  </span>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#f5f5f7] border border-black/[0.04] text-xs font-semibold text-[#1d1d1f]">
                     {prod.availability}
                   </span>
-                  <Link
-                    href={prod.link}
-                    className="inline-flex items-center gap-1 text-xs font-bold text-[#0071e3] hover:text-[#0056b3] transition"
-                  >
-                    <span>Details</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
                 </div>
               </div>
             ))}

@@ -253,8 +253,8 @@ export const INITIAL_SITE_CONTENT: FullSiteContent = {
         quarter: "Q1 - Q2",
         badge: "Institutional Foundation",
         title: "SMPS Engineering Center Commissioning & Institutional MoU",
-        desc: "Formal tripartite agreement signed between SMPS Electric Control Pvt Ltd, Visvesvaraya Technological University, and VTU Research & Innovation Foundation to establish the 5,000 sq.ft Power Electronics & CleanTech incubation bay in Bengaluru.",
-        metrics: "5,000 sq.ft Lab Bay • High-Voltage Grid Simulator",
+        desc: "Formal tripartite agreement signed between SMPS Electric Control Pvt Ltd, Visvesvaraya Technological University, and VTU Research & Innovation Foundation to establish the 1 Lakh sq.ft Power Electronics & CleanTech incubation bay in Bengaluru.",
+        metrics: "1 Lakh sq.ft Lab Bay • High-Voltage Grid Simulator",
       },
       {
         id: "ms-2",
@@ -382,7 +382,7 @@ export const INITIAL_SITE_CONTENT: FullSiteContent = {
         brand: "SMARTLINK™",
         tagline: "Carrier-Grade Long-Range 20km Wireless Fibre Extension",
         stage: "Pilot Trials • VTU 6G Hub Bay",
-        imageUrl: "/images/products/smartlink-gateway.jpg",
+        imageUrl: "/images/products/smartlink-20.jpg",
         status: "Upcoming R&D",
         specs: [
           "Carrier-grade 20 km wireless fibre extension",
@@ -414,7 +414,7 @@ export const INITIAL_SITE_CONTENT: FullSiteContent = {
         brand: "QUANSGRID™",
         tagline: "Quantum-AI Smart Grid & BESS Management Platform",
         stage: "Algorithmic Validation • Dispatch Bay",
-        imageUrl: "/images/products/purna-bess.jpg",
+        imageUrl: "/images/products/quansgrid.jpg",
         status: "Upcoming R&D",
         specs: [
           "Seven-layer architecture with Quantum dispatch engine",
@@ -675,7 +675,7 @@ export const INITIAL_SITE_CONTENT: FullSiteContent = {
     heroEyebrow: "Deep-Tech Hardware Entrepreneurship & Venture Launchpad",
     heroTitle: "Empowering Deep-Tech Hardware Entrepreneurs",
     heroSubtitle:
-      "Bridging the brutal 'hardware valley of death'. Operating from the advanced SMPS Tech Lab engineering bays, we provide hardware entrepreneurs and startup founders with zero-capex testbenches, DFM engineering, regulatory pre-compliance certification, and venture market access.",
+      "Bridging the brutal 'hardware valley of attrition'. Operating from the advanced SMPS Tech Lab engineering bays, we provide hardware entrepreneurs and startup founders with zero-capex testbenches, DFM engineering, regulatory pre-compliance certification, and venture market access.",
     facilityTitle: "Industrial Test Benches Built for Hardware Entrepreneurs",
     facilityDesc:
       "Don't spend millions of rupees on initial test equipment. Our facility equips hardware entrepreneurs with multi-channel oscilloscopes, 1500V load banks, grid simulators, and thermal chambers from day one.",

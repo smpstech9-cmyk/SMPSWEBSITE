@@ -99,7 +99,7 @@ const VENTURE_TRACKS = [
     tagline: "16-Week Intensive Scale Track",
     badge: "Early-Stage Startups",
     icon: Rocket,
-    desc: "A rigorous acceleration track for incorporated hardware ventures with a working proof-of-concept. Designed to bridge the brutal hardware valley of death through DFM engineering, regulatory de-risking, and commercial customer off-take.",
+    desc: "A rigorous acceleration track for incorporated hardware ventures with a working proof-of-concept. Designed to bridge the brutal hardware valley of attrition through DFM engineering, regulatory de-risking, and commercial customer off-take.",
     benefits: [
       "BOM optimization & tier-1 semiconductor procurement",
       "Pre-compliance EMI/EMC & environmental stress testing",
@@ -463,10 +463,10 @@ export function EntrepreneurDynamicView() {
               The Hardware Founder Dilemma
             </span>
             <h2 className="text-3xl sm:text-5xl font-black text-white mt-2 tracking-tight">
-              Bridging the Hardware Valley of Death
+              Bridging the Hardware Valley of Attrition
             </h2>
             <p className="text-base text-gray-400 mt-3 leading-relaxed font-normal">
-              Software startups build code in days; hardware startups face brutal capital barriers: multi-million rupee test equipment, manufacturing minimums, tough regulatory approvals, and protracted enterprise sales cycles. We systematically eliminate every bottleneck.
+              Software startups can ship a product in days. Hardware founders face a steeper climb: costly test equipment, manufacturing minimums, demanding regulatory approvals and long enterprise sales cycles. At SMPS Tech Lab, we help founders cross that gap with access to a working R&amp;D lab, engineering mentorship, incubation support and a network across government, industry and academia.
             </p>
           </div>
 

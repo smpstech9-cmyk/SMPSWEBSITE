@@ -73,7 +73,7 @@ export function IncubationDynamicView() {
     heroEyebrow: "Deep-Tech Hardware Incubation & Venture Launchpad",
     heroTitle: "Empowering Hardware Entrepreneurs & Innovators",
     heroSubtitle:
-      "We bridge the brutal 'hardware valley of death'. Operating from the SMPS Tech Lab engineering bays, we provide founders with laboratory test equipment, DFM engineering, regulatory certification guidance, and market access.",
+      "We bridge the brutal 'hardware valley of attrition'. Operating from the SMPS Tech Lab engineering bays, we provide founders with laboratory test equipment, DFM engineering, regulatory certification guidance, and market access.",
     facilityTitle: "Industrial Test Instruments at Your Fingertips",
     facilityDesc:
       "Avoid spending millions of rupees on initial test equipment. Our facility provides founders with production-ready validation tools from day one.",
@@ -155,7 +155,7 @@ export function IncubationDynamicView() {
 
               <p className="text-base sm:text-lg text-[#6e6e73] leading-relaxed font-normal max-w-2xl">
                 {inc.heroSubtitle ||
-                  "We bridge the brutal 'hardware valley of death'. Operating from the SMPS Tech Lab engineering bays, we provide founders with laboratory test equipment, DFM engineering, regulatory certification guidance, and market access."}
+                  "We bridge the brutal 'hardware valley of attrition'. Operating from the SMPS Tech Lab engineering bays, we provide founders with laboratory test equipment, DFM engineering, regulatory certification guidance, and market access."}
               </p>
 
               <div className="flex flex-wrap items-center gap-4 pt-2">

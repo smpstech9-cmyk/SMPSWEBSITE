@@ -447,11 +447,11 @@ export default function StorePage() {
                   key={product.id}
                   className="group bg-white rounded-[28px] border border-[#e5e5ea] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-xl hover:border-[#0071e3]/40 transition-all duration-300 flex flex-col justify-between"
                 >
-                  <div>
-                    {/* Product Image Frame */}
+                  <div className="flex-1 flex flex-col">
+                    {/* Product Image Frame - Framed Aspect Ratio with full contain */}
                     <Link
                       href={`/store/${product.slug}`}
-                      className="block relative w-full h-56 bg-[#f5f5f7] overflow-hidden cursor-pointer"
+                      className="block relative w-full aspect-[4/3] bg-gradient-to-b from-[#fbfbfd] to-[#f4f4f7] overflow-hidden cursor-pointer p-5 border-b border-black/[0.04] flex items-center justify-center"
                     >
                       {product.primary_image_url ? (
                         <Image
@@ -459,7 +459,7 @@ export default function StorePage() {
                           alt={product.name}
                           fill
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          className="object-contain p-2.5 group-hover:scale-105 transition-transform duration-500 drop-shadow-xs"
                         />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center text-[#86868b]">
@@ -468,7 +468,7 @@ export default function StorePage() {
                       )}
 
                       {/* Stock Pill Badge */}
-                      <div className="absolute top-3 right-3">
+                      <div className="absolute top-3.5 right-3.5 z-10">
                         {totalStock > 5 ? (
                           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-600/90 text-white text-[11px] font-semibold backdrop-blur-sm shadow-sm">
                             <CheckCircle2 className="w-3 h-3" />
@@ -487,38 +487,44 @@ export default function StorePage() {
                       </div>
 
                       {/* Brand Line Chip */}
-                      <div className="absolute bottom-3 left-3">
+                      <div className="absolute bottom-3 left-3.5 z-10">
                         <span className="px-3 py-1 rounded-full bg-black/75 backdrop-blur-sm text-white text-[11px] font-medium tracking-wide">
                           {product.brand_line}
                         </span>
                       </div>
                     </Link>
 
-                    {/* Card Content Body */}
-                    <div className="p-6">
+                    {/* Card Content Body - Vertically Uniform Grid Alignment */}
+                    <div className="p-6 flex-1 flex flex-col">
                       <div className="text-[11px] font-semibold uppercase tracking-wider text-[#0071e3] mb-1.5">
                         {product.category?.name || "Hardware"}
                       </div>
                       <Link href={`/store/${product.slug}`} className="block">
-                        <h2 className="text-lg font-bold text-[#1d1d1f] group-hover:text-[#0071e3] transition line-clamp-1 hover:underline">
+                        <h2 className="text-base sm:text-lg font-bold text-[#1d1d1f] group-hover:text-[#0071e3] transition line-clamp-2 hover:underline min-h-[3.25rem] leading-snug">
                           {product.name}
                         </h2>
                       </Link>
-                      <p className="mt-2 text-xs sm:text-sm text-[#6e6e73] line-clamp-2 leading-relaxed font-normal">
+                      <p className="mt-2 text-xs sm:text-sm text-[#6e6e73] line-clamp-2 leading-relaxed font-normal min-h-[2.5rem]">
                         {product.short_description}
                       </p>
 
-                      {/* SKU Count notice */}
-                      {hasMultipleSkus && (
-                        <div className="mt-3.5 inline-block px-3 py-1 rounded-full text-[11px] font-medium bg-blue-50 text-[#0071e3] border border-blue-100">
-                          {product.skus.length} Configurations Available
-                        </div>
-                      )}
+                      {/* Configurations Badge with guaranteed alignment */}
+                      <div className="mt-4 min-h-[1.75rem] flex items-center">
+                        {hasMultipleSkus ? (
+                          <div className="inline-block px-3 py-1 rounded-full text-[11px] font-medium bg-blue-50 text-[#0071e3] border border-blue-100">
+                            {product.skus.length} Configurations Available
+                          </div>
+                        ) : (
+                          <div className="inline-block px-3 py-1 text-[11px] font-medium text-transparent select-none">
+                            Single Configuration
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
 
-                  {/* Card Footer / Pricing & CTA */}
-                  <div className="px-6 pb-6 pt-3 border-t border-[#e5e5ea] flex items-center justify-between">
+                  {/* Card Footer / Pricing & CTA - Pinned to bottom of all cards */}
+                  <div className="px-6 pb-6 pt-4 border-t border-[#e5e5ea] flex items-center justify-between mt-auto bg-white">
                     <div>
                       {SHOW_HARDWARE_PRICES ? (
                         <>
@@ -661,15 +667,15 @@ export default function StorePage() {
                   key={prod.id}
                   className="apple-card p-6 flex flex-col justify-between group hover:border-[#0071e3]/30 transition-all duration-300"
                 >
-                  <div>
-                    <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden bg-gray-100 mb-6 border border-black/[0.06]">
+                  <div className="flex-1 flex flex-col">
+                    <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-b from-[#fbfbfd] to-[#f4f4f7] mb-6 border border-black/[0.06] flex items-center justify-center p-3">
                       <Image
                         src={prod.imageUrl}
                         alt={prod.name}
                         fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="object-contain p-2 group-hover:scale-105 transition-transform duration-500 drop-shadow-xs"
                       />
-                      <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/95 backdrop-blur-md text-[#0071e3] border border-blue-100 shadow-sm">
+                      <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/95 backdrop-blur-md text-[#0071e3] border border-blue-100 shadow-sm z-10">
                         {prod.status}
                       </div>
                     </div>
@@ -677,18 +683,18 @@ export default function StorePage() {
                     <span className="text-[11px] font-bold text-[#0071e3] uppercase tracking-wider">
                       {prod.brand}
                     </span>
-                    <h3 className="text-xl font-bold text-[#1d1d1f] mt-1">
+                    <h3 className="text-lg font-bold text-[#1d1d1f] mt-1 line-clamp-2 min-h-[3rem] leading-snug">
                       {prod.name}
                     </h3>
-                    <p className="text-xs text-[#6e6e73] mt-2 leading-relaxed">
+                    <p className="text-xs text-[#6e6e73] mt-2 leading-relaxed line-clamp-2 min-h-[2.5rem]">
                       {prod.tagline}
                     </p>
 
-                    <ul className="mt-4 space-y-1.5 text-xs text-[#1d1d1f]">
+                    <ul className="mt-4 space-y-1.5 text-xs text-[#1d1d1f] min-h-[4.5rem]">
                       {prod.specs.map((spec, idx) => (
                         <li key={idx} className="flex items-center gap-2">
                           <CheckCircle2 className="w-3.5 h-3.5 text-[#0071e3] flex-shrink-0" />
-                          <span>{spec}</span>
+                          <span className="line-clamp-1">{spec}</span>
                         </li>
                       ))}
                     </ul>
