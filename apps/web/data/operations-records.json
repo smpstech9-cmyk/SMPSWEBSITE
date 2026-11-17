@@ -1,0 +1,17 @@
+[
+  {
+    "id": "rec_demo_1",
+    "type": "contact",
+    "title": "Inquiry: High-Voltage Test Bay Access",
+    "name": "Dr. Arvind Rao",
+    "email": "arvind.rao@vtu.ac.in",
+    "phone": "+91 98450 12345",
+    "status": "new",
+    "submittedAt": "2026-11-16T22:38:20.316Z",
+    "data": {
+      "subject": "R&D Facility Access",
+      "message": "Requesting access for M.Tech students to the 1500V DC regenerative battery cycler bay."
+    },
+    "notes": "Academic coordinator contacted"
+  }
+]

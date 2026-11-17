@@ -1,36 +1,25 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getGalleryItems, saveGalleryItems } from "@/lib/server-storage";
 
 export const dynamic = "force-dynamic";
 
-const RAW_API = process.env.NEXT_PUBLIC_API_URL || "https://smpswebsite.onrender.com";
-const API_BASE = RAW_API.replace(/\/api\/v1\/?$/, "");
-
 export async function GET() {
   try {
-    const res = await fetch(`${API_BASE}/api/v1/gallery`, {
-      cache: "no-store",
-    });
-
-    if (!res.ok) {
-      throw new Error(`Backend returned status ${res.status}`);
-    }
-
-    const items = await res.json();
+    const items = await getGalleryItems();
     return NextResponse.json({
       success: true,
       data: items,
       count: items.length,
-      source: "database",
+      source: "local-persistent",
     });
   } catch (error: any) {
-    console.error("Gallery database fetch error:", error);
+    console.error("Gallery fetch error:", error);
     return NextResponse.json(
       {
         success: false,
-        error: error.message || "Failed to fetch gallery items from database",
-        source: "error",
+        error: error.message || "Failed to fetch gallery items",
       },
-      { status: 502 }
+      { status: 500 }
     );
   }
 }
@@ -38,88 +27,66 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
+    let currentItems = await getGalleryItems();
 
     // Check if it's a batch sync request
     if (Array.isArray(body) || body.items) {
       const itemsList = Array.isArray(body) ? body : body.items;
-      const res = await fetch(`${API_BASE}/api/v1/gallery/batch`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          items: itemsList.map((item: any) => ({
-            id: item.id,
-            title: item.title,
-            category: item.category || "labs",
-            date: item.date || "",
-            location: item.location || "",
-            image_url: item.imageUrl || item.image_url,
-            description: item.description || "",
-          })),
-        }),
-      });
-
-      if (!res.ok) {
-        const err = await res.text();
-        throw new Error(err || "Batch sync failed");
-      }
-
-      const saved = await res.json();
-      return NextResponse.json({ success: true, count: saved.length, data: saved });
-    }
-
-    // Single item creation / upsert
-    const res = await fetch(`${API_BASE}/api/v1/gallery`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        id: body.id,
+      currentItems = itemsList.map((item: any) => ({
+        id: item.id || `gal_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
+        title: item.title,
+        category: item.category || "labs",
+        date: item.date || "",
+        location: item.location || "",
+        image_url: item.imageUrl || item.image_url,
+        description: item.description || "",
+      }));
+    } else {
+      // Single item upsert
+      const newItem = {
+        id: body.id || `gal_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
         title: body.title,
         category: body.category || "labs",
         date: body.date || "",
         location: body.location || "",
         image_url: body.imageUrl || body.image_url,
         description: body.description || "",
-      }),
-    });
+      };
 
-    if (!res.ok) {
-      const err = await res.text();
-      throw new Error(err || "Item save failed");
+      const existingIndex = currentItems.findIndex((it) => it.id === newItem.id);
+      if (existingIndex >= 0) {
+        currentItems[existingIndex] = newItem;
+      } else {
+        currentItems.unshift(newItem);
+      }
     }
 
-    const saved = await res.json();
-    return NextResponse.json({ success: true, data: saved });
+    await saveGalleryItems(currentItems);
+    return NextResponse.json({ success: true, count: currentItems.length, data: currentItems });
   } catch (error: any) {
-    console.error("Gallery database save error:", error);
+    console.error("Gallery save error:", error);
     return NextResponse.json(
-      { success: false, error: error.message || "Failed to save to database" },
+      { success: false, error: error.message || "Failed to save to gallery" },
       { status: 500 }
     );
   }
-}
-
-export async function PUT(request: NextRequest) {
-  return POST(request);
 }
 
 export async function DELETE(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const id = searchParams.get("id");
+
     if (!id) {
-      return NextResponse.json({ error: "Missing item ID" }, { status: 400 });
+      return NextResponse.json({ success: false, error: "Missing id" }, { status: 400 });
     }
 
-    const res = await fetch(`${API_BASE}/api/v1/gallery/${id}`, {
-      method: "DELETE",
-    });
+    const currentItems = await getGalleryItems();
+    const updated = currentItems.filter((item) => item.id !== id);
+    await saveGalleryItems(updated);
 
-    if (!res.ok) {
-      throw new Error("Failed to delete item from database");
-    }
-
-    return NextResponse.json({ success: true, deletedId: id });
+    return NextResponse.json({ success: true, count: updated.length });
   } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }
 }

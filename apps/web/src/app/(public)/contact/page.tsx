@@ -24,14 +24,36 @@ export default function ContactPage() {
     setIsSubmitting(true);
     setErrorMessage(null);
 
-    // Simulate submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const res = await fetch("/api/records", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "contact",
+          name: name.trim(),
+          email: email.trim(),
+          subject: subject,
+          message: message.trim(),
+          data: {
+            subject,
+            message: message.trim(),
+          },
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Unable to deliver message. Please retry or call directly.");
+      }
+
       setIsSuccess(true);
       setName("");
       setEmail("");
       setMessage("");
-    }, 800);
+    } catch (err: any) {
+      setErrorMessage(err.message || "Failed to submit message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

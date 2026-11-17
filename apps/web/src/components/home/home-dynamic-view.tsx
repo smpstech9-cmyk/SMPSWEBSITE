@@ -344,7 +344,8 @@ export function HomeDynamicView() {
   // Dynamic Data Selectors
   const activeMilestones = home.milestones !== undefined ? home.milestones : collaborationMilestones;
   const activeDomainPillars = home.domains !== undefined ? home.domains : domainPillars;
-  const activeUpcomingProducts = permanentUpcomingProducts;
+  const activeUpcomingProducts = home.upcomingProducts && home.upcomingProducts.length > 0 ? home.upcomingProducts : permanentUpcomingProducts;
+  const activeClientLogos = home.clientLogos && home.clientLogos.length > 0 ? home.clientLogos : clientLogos;
   const activeHomeFAQs = home.faqs !== undefined ? home.faqs : homeFAQs;
 
   return (
@@ -741,7 +742,7 @@ export function HomeDynamicView() {
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-5">
-              {clientLogos.map((cl) => (
+              {activeClientLogos.map((cl) => (
                 <div
                   key={cl.name}
                   className="brand-crystal-tile p-3.5 h-20 flex items-center justify-center transition-all duration-200 hover:shadow-md"

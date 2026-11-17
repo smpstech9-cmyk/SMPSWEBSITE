@@ -1,0 +1,834 @@
+[
+  {
+    "id": "prod-1",
+    "slug": "purna-bess-commercial",
+    "name": "PURNA BESS™ Commercial Modular Storage",
+    "brand_line": "SMPS CleanTech",
+    "short_description": "Scalable 50 kWh to 1 MWh liquid-cooled LFP battery energy storage system.",
+    "description": "Engineered for industrial peak shaving, demand response, and solar microgrid integration with 1500V architecture and CAN-FD real-time telemetry.",
+    "primary_image_url": "/images/products/purna-bess.jpg",
+    "indiamart_url": "https://www.indiamart.com/smpselectriccontrol/",
+    "specifications_json": {
+      "Energy Capacity": "100 kWh - 1 MWh Modular",
+      "Battery Chemistry": "LiFePO4 (Lithium Iron Phosphate)",
+      "Nominal DC Voltage": "1500V DC Architecture",
+      "Thermal Management": "Active Closed-Loop Liquid Cooling",
+      "Cycle Life": "> 6000 Cycles @ 80% DoD",
+      "Communications": "Dual CAN-FD, Modbus TCP/RTU, SCADA",
+      "Enclosure Protection": "IP55 Weatherized Industrial Cabinet"
+    },
+    "is_published": true,
+    "category": {
+      "id": "cat-1",
+      "name": "Battery Energy Storage Systems (BESS)",
+      "slug": "bess"
+    },
+    "skus": [
+      {
+        "id": "sku-1",
+        "sku_code": "SMPS-BESS-100KWH",
+        "title": "100 kWh Industrial Modular Rack",
+        "price_inr": 2850000,
+        "hsn_code": "85076000",
+        "tax_rate_percent": 18,
+        "quantity_available": 4,
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "prod-2",
+    "slug": "quantum-bess-container",
+    "name": "Quantum BESS™ 500 kWh / 1 MWh Container",
+    "brand_line": "SMPS CleanTech",
+    "short_description": "Utility-scale containerized liquid-cooled industrial energy storage system.",
+    "description": "Features active liquid cooling loop, modular bidirectional PCS inverters, multi-stage fire suppression, and automated SCADA integration.",
+    "primary_image_url": "/images/products/quantum-bess.jpg",
+    "specifications_json": {
+      "Container Capacity": "500 kWh / 1000 kWh (1 MWh)",
+      "PCS Inverter Power": "250 kW / 500 kW Bidirectional",
+      "Battery Cells": "Tier-1 280Ah/314Ah Prismatic LiFePO4",
+      "Fire Suppression": "Dual Stage Clean Agent FM-200 + Aerosol",
+      "Grid Synchronization": "IEC 61850 / DNP3 / Modbus TCP",
+      "Container Standard": "20ft ISO High-Cube Corten Steel Container"
+    },
+    "is_published": true,
+    "category": {
+      "id": "cat-1",
+      "name": "Battery Energy Storage Systems (BESS)",
+      "slug": "bess"
+    },
+    "skus": [
+      {
+        "id": "sku-2",
+        "sku_code": "SMPS-QBESS-500KWH",
+        "title": "500 kWh Utility Container",
+        "price_inr": 12500000,
+        "hsn_code": "85076000",
+        "tax_rate_percent": 18,
+        "quantity_available": 2,
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "prod-3",
+    "slug": "smartlink-industrial-gateway",
+    "name": "SmartLink™ Industrial IoT & Grid Gateway",
+    "brand_line": "SMPS Telemetry",
+    "short_description": "Rugged DIN-rail edge telemetry router and long-range wireless bridge.",
+    "description": "Carrier-grade hardware with dual CAN-FD, RS-485 Modbus, 4G/LTE, and high-throughput wireless mesh for power stations and microgrids.",
+    "primary_image_url": "/images/products/smartlink-gateway.jpg",
+    "indiamart_url": "https://www.indiamart.com/smpselectriccontrol/",
+    "specifications_json": {
+      "Processor": "Dual-Core ARM Cortex-A7 @ 800MHz",
+      "Serial Interfaces": "2x Isolated RS-485 (Modbus RTU), 1x RS-232",
+      "Fieldbus Ports": "2x Isolated CAN 2.0B / CAN-FD Ports",
+      "Network Uplink": "4G LTE Cat-M1 / NB-IoT with Dual SIM & Fallback",
+      "Cloud Telemetry": "MQTT, WebSockets, HTTPS, IEC 60870-5-104",
+      "Mounting Form Factor": "Standard 35mm DIN-Rail, IP30 Rugged Enclosure"
+    },
+    "is_published": true,
+    "category": {
+      "id": "cat-5",
+      "name": "IoT & Robotics Development Kits",
+      "slug": "iot-robotics"
+    },
+    "skus": [
+      {
+        "id": "sku-3",
+        "sku_code": "SMPS-SLINK-GW20",
+        "title": "SmartLink Gateway Pro",
+        "price_inr": 45000,
+        "hsn_code": "85176290",
+        "tax_rate_percent": 18,
+        "quantity_available": 25,
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "prod-4",
+    "slug": "swarnali-60kw-dc-fast-charger",
+    "name": "Swarnali™ Dual-Gun 60kW DC Fast Charger",
+    "brand_line": "SMPS E-Mobility",
+    "short_description": "Commercial high-power EV charging station with OCPP 2.0.1 compliance.",
+    "description": "Dual CCS2 guns with dynamic power sharing, RFID authentication, 96% peak conversion efficiency, and IP55 weatherized enclosure.",
+    "primary_image_url": "/images/products/swarnali-ev-charger.jpg",
+    "indiamart_url": "https://www.indiamart.com/smpselectriccontrol/",
+    "specifications_json": {
+      "Continuous Power": "60 kW Dynamic Split (30kW + 30kW or 60kW Single)",
+      "Connector Standard": "Dual CCS2 (Combined Charging System Type 2)",
+      "Output DC Voltage": "150V – 1000V DC Wide Range",
+      "Conversion Efficiency": "96.5% Peak Efficiency",
+      "Cloud Protocol": "OCPP 2.0.1 and OCPP 1.6J Full Compliant",
+      "User Interface": "7-inch Anti-Glare Touchscreen + RFID Reader"
+    },
+    "is_published": true,
+    "category": {
+      "id": "cat-4",
+      "name": "EV Fast Chargers & Telecom SMPS",
+      "slug": "ev-telecom-power"
+    },
+    "skus": [
+      {
+        "id": "sku-4",
+        "sku_code": "SMPS-EV-60KW-DC",
+        "title": "60 kW Dual-Gun Fast Charger",
+        "price_inr": 750000,
+        "hsn_code": "85044090",
+        "tax_rate_percent": 18,
+        "quantity_available": 6,
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "prod-5",
+    "slug": "saralachip-dev-board",
+    "name": "SaralaChip™ CCU DSP Development Board",
+    "brand_line": "SMPS Silicon",
+    "short_description": "Real-time DSP controller board for resonant power conversion and motor drive.",
+    "description": "Sub-microsecond fault protection, dual isolated CAN-FD channels, GaN/SiC optimized gate driver interfaces, and comprehensive C SDK.",
+    "primary_image_url": "/images/products/saralachip.jpg",
+    "indiamart_url": "https://www.indiamart.com/smpselectriccontrol/",
+    "specifications_json": {
+      "DSP Processor": "32-bit Floating Point DSP @ 200MHz",
+      "Gate Driver Interfaces": "Optimized for GaN HEMT and SiC MOSFET Modules",
+      "Protection Latency": "< 50 nanoseconds Hardware Cycle-by-Cycle Tripping",
+      "Analog Inputs": "16-channel 12-bit High-Speed ADC with PGA",
+      "Connectivity": "Dual Isolated CAN-FD, High-Speed SPI, Isolated UART",
+      "SDK & Firmware": "Bare-Metal C & MATLAB Simulink Code Generation"
+    },
+    "is_published": true,
+    "category": {
+      "id": "cat-3",
+      "name": "Semiconductors & CCU Controllers",
+      "slug": "semiconductors"
+    },
+    "skus": [
+      {
+        "id": "sku-5",
+        "sku_code": "SMPS-SARALA-EVB1",
+        "title": "SaralaChip Evaluation Kit",
+        "price_inr": 18500,
+        "hsn_code": "85423100",
+        "tax_rate_percent": 18,
+        "quantity_available": 50,
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "prod-6",
+    "slug": "smps-iot-embedded-kit",
+    "name": "SMPS IoT & Embedded Robotics Kit",
+    "brand_line": "SMPS Education",
+    "short_description": "VTU-accredited engineering student lab development and sensor suite.",
+    "description": "Includes microcontroller development board, multi-sensor shield, LCD/OLED display, motor drivers, and hands-on laboratory workbook.",
+    "primary_image_url": "/images/products/iot-kit.jpg",
+    "indiamart_url": "https://www.indiamart.com/smpselectriccontrol/",
+    "specifications_json": {
+      "Controller Core": "Dual-Core ESP32-S3 Xtensa LX7 (WiFi 4 + BLE 5.0)",
+      "Sensors Integrated": "Precision CT, Voltage Sensor, DHT22, MPU6050 6-DoF, Ultrasonic",
+      "Display Modules": "0.96-inch I2C OLED Display + 16x2 Character I2C LCD",
+      "Actuator Modules": "Dual H-Bridge Motor Driver, Relay Module, Servo Output",
+      "Curriculum Alignment": "VTU 2026 DeepTech & IoT Robotics Laboratory Syllabus",
+      "Lab Resources": "Complete Circuit Schematics, C++/Python Code Examples & Lab Manual"
+    },
+    "is_published": true,
+    "category": {
+      "id": "cat-5",
+      "name": "IoT & Robotics Development Kits",
+      "slug": "iot-robotics"
+    },
+    "skus": [
+      {
+        "id": "sku-6",
+        "sku_code": "SMPS-EDU-IOTK1",
+        "title": "Academic Hardware Student Kit",
+        "price_inr": 4999,
+        "hsn_code": "90230000",
+        "tax_rate_percent": 18,
+        "quantity_available": 120,
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "prod-im-1",
+    "slug": "ev-charging-station-commercial",
+    "name": "SARALA EVC™ Commercial EV Charging Station (AC/DC Fast Charger)",
+    "brand_line": "SARALA EVC™",
+    "short_description": "Commercial AC & DC electric vehicle fast-charging station with dual-gun dynamic load balancing and OCPP 2.0.1 compliance.",
+    "description": "Engineered for public highway hubs, commercial fleet depots, and enterprise campuses. Features dual CCS2 guns, RFID user authentication, weatherized IP55 enclosure, and cloud telemetry integration.",
+    "primary_image_url": "/images/products/indiamart/1-ev-charging-station.jpg",
+    "indiamart_url": "https://www.indiamart.com/smpselectriccontrol/",
+    "is_published": true,
+    "category": {
+      "id": "cat-ev",
+      "name": "EV Fast Chargers & Power Systems",
+      "slug": "ev-chargers"
+    },
+    "skus": [
+      {
+        "id": "sku-im-1",
+        "sku_code": "SMPS-EVC-60KW",
+        "title": "Commercial 60kW DC Dual-Gun Charger",
+        "price_inr": 450000,
+        "hsn_code": "85044090",
+        "tax_rate_percent": 18,
+        "quantity_available": 12,
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "prod-im-2",
+    "slug": "multi-chemistry-battery-charger",
+    "name": "SARALA™ 2500W Multi-Chemistry Battery Charger (CC/CV)",
+    "brand_line": "SARALA DC™",
+    "short_description": "Wide-range multi-chemistry intelligent battery charger with programmable constant current / constant voltage profiles.",
+    "description": "Supports Lithium-ion, LFP, Lead-Acid, and Gel chemistries. Built with high-frequency resonant topology delivering over 94% efficiency, CAN-bus battery communication, and reverse polarity protection.",
+    "primary_image_url": "/images/products/indiamart/2-multi-chemistry-charger.jpg",
+    "indiamart_url": "https://www.indiamart.com/smpselectriccontrol/",
+    "is_published": true,
+    "category": {
+      "id": "cat-psu",
+      "name": "Industrial SMPS & Power Supplies",
+      "slug": "power-supplies"
+    },
+    "skus": [
+      {
+        "id": "sku-im-2",
+        "sku_code": "SMPS-EVC-2500W",
+        "title": "2500W Multi-Chemistry Bench Charger",
+        "price_inr": 38000,
+        "hsn_code": "85044090",
+        "tax_rate_percent": 18,
+        "quantity_available": 25,
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "prod-im-3",
+    "slug": "single-phase-ac-spd-230v",
+    "name": "SurgeTrap® Single Phase 230V AC Surge Protection Device (Class I+II)",
+    "brand_line": "SurgeTrap®",
+    "short_description": "High-capacity DIN-rail AC surge arrester engineered for 230V single-phase electrical panels and telecom rectifiers.",
+    "description": "Provides sub-25ns response time with metal oxide varistor (MOV) and gas discharge tube (GDT) hybrid technology. Rated for 40kA nominal discharge with remote signaling contacts and visual fault flags.",
+    "primary_image_url": "/images/products/indiamart/3-single-phase-ac-spd.jpg",
+    "indiamart_url": "https://www.indiamart.com/smpselectriccontrol/",
+    "is_published": true,
+    "category": {
+      "id": "cat-spd",
+      "name": "Surge Protection Devices (SPD)",
+      "slug": "surge-protection"
+    },
+    "skus": [
+      {
+        "id": "sku-im-3",
+        "sku_code": "SMPS-SPD-230V-1P",
+        "title": "230V AC Single Phase 40kA Surge Trap",
+        "price_inr": 4500,
+        "hsn_code": "85363000",
+        "tax_rate_percent": 18,
+        "quantity_available": 80,
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "prod-im-4",
+    "slug": "three-phase-ac-spd-415v",
+    "name": "SurgeTrap® 3-Phase 415V AC Surge Protection Device (Class I+II)",
+    "brand_line": "SurgeTrap®",
+    "short_description": "Industrial-grade 3-phase 415V AC surge diverter for heavy machinery, main distribution boards, and solar plants.",
+    "description": "Heavy-duty 4-pole DIN-rail assembly with 50kA/100kA impulse current handling, thermal disconnect isolation, and compliance with IEC 61643-11 standards.",
+    "primary_image_url": "/images/products/indiamart/4-three-phase-ac-spd.jpg",
+    "indiamart_url": "https://www.indiamart.com/smpselectriccontrol/",
+    "is_published": true,
+    "category": {
+      "id": "cat-spd",
+      "name": "Surge Protection Devices (SPD)",
+      "slug": "surge-protection"
+    },
+    "skus": [
+      {
+        "id": "sku-im-4",
+        "sku_code": "SMPS-SPD-415V-3P",
+        "title": "415V AC 3-Phase 100kA Surge Trap",
+        "price_inr": 12500,
+        "hsn_code": "85363000",
+        "tax_rate_percent": 18,
+        "quantity_available": 60,
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "prod-im-5",
+    "slug": "dc-spd-24v-class-2",
+    "name": "SurgeTrap® 24V DC Surge Protection Device (Class-II)",
+    "brand_line": "SurgeTrap®",
+    "short_description": "Compact DIN-rail 24V DC transient voltage surge suppressor for industrial automation and PLC control loops.",
+    "description": "Protects sensitive 24V DC control circuits, sensor loops, and telecom DC buses against induced lightning and switching surges with sub-10ns clamping speed.",
+    "primary_image_url": "/images/products/indiamart/5-24v-dc-spd.jpg",
+    "indiamart_url": "https://www.indiamart.com/smpselectriccontrol/",
+    "is_published": true,
+    "category": {
+      "id": "cat-spd",
+      "name": "Surge Protection Devices (SPD)",
+      "slug": "surge-protection"
+    },
+    "skus": [
+      {
+        "id": "sku-im-5",
+        "sku_code": "SMPS-SPD-24V-DC",
+        "title": "24V DC Automation Loop Surge Suppressor",
+        "price_inr": 3200,
+        "hsn_code": "85363000",
+        "tax_rate_percent": 18,
+        "quantity_available": 100,
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "prod-im-6",
+    "slug": "dc-spd-48v-class-2",
+    "name": "SurgeTrap® 48V DC Surge Protection Device (Class-II)",
+    "brand_line": "SurgeTrap®",
+    "short_description": "Telecom-grade 48V DC surge protector for cellular BTS sites, telecom rectifiers, and micro-substations.",
+    "description": "Engineered for 48V nominal DC power plants with 40kA surge rating, low residual clamping voltage, and integrated remote alarm monitoring contacts.",
+    "primary_image_url": "/images/products/indiamart/6-48v-dc-spd.jpg",
+    "indiamart_url": "https://www.indiamart.com/smpselectriccontrol/",
+    "is_published": true,
+    "category": {
+      "id": "cat-spd",
+      "name": "Surge Protection Devices (SPD)",
+      "slug": "surge-protection"
+    },
+    "skus": [
+      {
+        "id": "sku-im-6",
+        "sku_code": "SMPS-SPD-48V-DC",
+        "title": "48V DC Telecom Power Surge Arrester",
+        "price_inr": 3800,
+        "hsn_code": "85363000",
+        "tax_rate_percent": 18,
+        "quantity_available": 95,
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "prod-im-6a",
+    "slug": "dc-spd-500v-solar",
+    "name": "SurgeTrap® 500V DC Photovoltaic & Industrial Surge Arrester",
+    "brand_line": "SurgeTrap®",
+    "short_description": "High-voltage 500V DC SPD engineered for solar combiner boxes, string inverters, and battery banks.",
+    "description": "Dual-varistor pluggable cartridge design with built-in arc suppression, thermal disconnect status indicator, and IEC 61643-31 compliance for DC microgrids.",
+    "primary_image_url": "/images/products/indiamart/6a-500v-dc-spd.jpg",
+    "indiamart_url": "https://www.indiamart.com/smpselectriccontrol/",
+    "is_published": true,
+    "category": {
+      "id": "cat-spd",
+      "name": "Surge Protection Devices (SPD)",
+      "slug": "surge-protection"
+    },
+    "skus": [
+      {
+        "id": "sku-im-6a",
+        "sku_code": "SMPS-SPD-500V-DC",
+        "title": "500V DC Solar Array Surge Diverter",
+        "price_inr": 6500,
+        "hsn_code": "85363000",
+        "tax_rate_percent": 18,
+        "quantity_available": 50,
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "prod-im-7",
+    "slug": "dc-power-cables-sparkflex",
+    "name": "Spark Flex™ High-Flexibility DC Copper & Aluminium Power Cables",
+    "brand_line": "Spark Flex™",
+    "short_description": "Flame-retardant, high-current flexible DC cables engineered for industrial UPS, BESS battery banks, and solar arrays.",
+    "description": "Constructed with multi-strand electrolytic annealed tinned copper / aluminium conductors and dual XLPE/EPR insulation rated up to 1500V DC and 125°C operating temperature.",
+    "primary_image_url": "/images/products/indiamart/7-dc-cable.jpg",
+    "indiamart_url": "https://www.indiamart.com/smpselectriccontrol/",
+    "is_published": true,
+    "category": {
+      "id": "cat-cables",
+      "name": "Cables, Lugs & Interconnects",
+      "slug": "cables-lugs"
+    },
+    "skus": [
+      {
+        "id": "sku-im-7",
+        "sku_code": "SMPS-CBL-120SQMM",
+        "title": "SparkFlex 120 sq.mm Flexible DC Cable (per 100m roll)",
+        "price_inr": 8500,
+        "hsn_code": "85444990",
+        "tax_rate_percent": 18,
+        "quantity_available": 200,
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "prod-im-9a",
+    "slug": "variable-smps-psu-high-power",
+    "name": "SMART AMP™ High-Power Variable Output Industrial SMPS (CC/CV)",
+    "brand_line": "SMART AMP™",
+    "short_description": "Benchtop and rack-mount precision variable DC power supply with digital regulation up to 1000V / 100A.",
+    "description": "Features programmable constant current and constant voltage modes, low ripple and noise (<0.1%), remote RS485/Modbus control, and automated thermal throttling for R&D labs.",
+    "primary_image_url": "/images/products/indiamart/9-variable-smps-psu.jpg",
+    "indiamart_url": "https://www.indiamart.com/smpselectriccontrol/",
+    "is_published": true,
+    "category": {
+      "id": "cat-psu",
+      "name": "Industrial SMPS & Power Supplies",
+      "slug": "power-supplies"
+    },
+    "skus": [
+      {
+        "id": "sku-im-9a",
+        "sku_code": "SMPS-PSU-VAR-1000V",
+        "title": "1000V 10A Programmable DC Lab Supply",
+        "price_inr": 85000,
+        "hsn_code": "85044090",
+        "tax_rate_percent": 18,
+        "quantity_available": 15,
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "prod-im-9b",
+    "slug": "constant-smps-psu-industrial",
+    "name": "SMART AMP™ Heavy-Duty Constant Output Industrial SMPS Power Supply",
+    "brand_line": "SMART AMP™",
+    "short_description": "High-reliability industrial SMPS power supply with universal AC input and active power factor correction (PFC >0.98).",
+    "description": "Delivers clean, regulated DC voltage with over 93% conversion efficiency, built-in short circuit, overload, and overvoltage protections in an IP30 ventilated metal chassis.",
+    "primary_image_url": "/images/products/indiamart/9-constant-smps-psu.jpg",
+    "indiamart_url": "https://www.indiamart.com/smpselectriccontrol/",
+    "is_published": true,
+    "category": {
+      "id": "cat-psu",
+      "name": "Industrial SMPS & Power Supplies",
+      "slug": "power-supplies"
+    },
+    "skus": [
+      {
+        "id": "sku-im-9b",
+        "sku_code": "SMPS-PSU-CONST-48V",
+        "title": "48V 50A Industrial Constant Voltage SMPS",
+        "price_inr": 14500,
+        "hsn_code": "85044090",
+        "tax_rate_percent": 18,
+        "quantity_available": 40,
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "prod-im-10",
+    "slug": "isolated-dc-dc-converter",
+    "name": "SMART AMP™ 48V / 72V High-Efficiency Isolated DC-DC Converter",
+    "brand_line": "SMART AMP™",
+    "short_description": "Step-down and step-up isolated DC-DC power converters for electric mobility and telecom energy routers.",
+    "description": "Delivers galvanic isolation up to 2.5kV, 95% peak efficiency, ultra-wide input voltage ranges, and parallel load sharing for high-reliability industrial setups.",
+    "primary_image_url": "/images/products/indiamart/10-dc-dc-converter.jpg",
+    "indiamart_url": "https://www.indiamart.com/smpselectriccontrol/",
+    "is_published": true,
+    "category": {
+      "id": "cat-psu",
+      "name": "Industrial SMPS & Power Supplies",
+      "slug": "power-supplies"
+    },
+    "skus": [
+      {
+        "id": "sku-im-10",
+        "sku_code": "SMPS-DCDC-72-48",
+        "title": "72V to 48V 30A Isolated DC Converter",
+        "price_inr": 22000,
+        "hsn_code": "85044090",
+        "tax_rate_percent": 18,
+        "quantity_available": 30,
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "prod-im-12",
+    "slug": "high-frequency-current-transformer",
+    "name": "SARALA DC™ High-Frequency AC/DC Current Transformer (Up to 3000A)",
+    "brand_line": "SARALA DC™",
+    "short_description": "Precision Hall-effect and Rogowski current transformers for power measurement and fault current detection.",
+    "description": "Offers wide frequency response from DC to 100kHz, high galvanic isolation, sub-1% measurement linearity, and split-core mounting for non-intrusive retrofitting.",
+    "primary_image_url": "/images/products/indiamart/12-current-transformer.jpg",
+    "indiamart_url": "https://www.indiamart.com/smpselectriccontrol/",
+    "is_published": true,
+    "category": {
+      "id": "cat-semi",
+      "name": "Semiconductors & Telecommunications",
+      "slug": "semiconductors-telecom"
+    },
+    "skus": [
+      {
+        "id": "sku-im-12",
+        "sku_code": "SMPS-CT-3000A",
+        "title": "Split-Core 3000A Precision Current Sensor",
+        "price_inr": 7500,
+        "hsn_code": "85043100",
+        "tax_rate_percent": 18,
+        "quantity_available": 50,
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "prod-im-13",
+    "slug": "parallel-reverse-blocking-diode",
+    "name": "SaralaChip™ High-Current Parallel & Reverse Blocking Diode Module",
+    "brand_line": "SaralaChip™",
+    "short_description": "Industrial high-current diode assemblies engineered for paralleling redundant DC sources and solar strings.",
+    "description": "Ultra-low forward voltage drop with integrated heatsink mounting, surge ratings up to 600A, and transient voltage suppression for battery/solar array isolation.",
+    "primary_image_url": "/images/products/indiamart/13-parallel-diode.jpg",
+    "indiamart_url": "https://www.indiamart.com/smpselectriccontrol/",
+    "is_published": true,
+    "category": {
+      "id": "cat-semi",
+      "name": "Semiconductors & Telecommunications",
+      "slug": "semiconductors-telecom"
+    },
+    "skus": [
+      {
+        "id": "sku-im-13",
+        "sku_code": "SMPS-DIODE-600A",
+        "title": "600A High-Power Parallel Diode Block",
+        "price_inr": 4200,
+        "hsn_code": "85411000",
+        "tax_rate_percent": 18,
+        "quantity_available": 75,
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "prod-im-14",
+    "slug": "solar-hybrid-inverter-suvarna",
+    "name": "SUVARNA™ 5kW - 10kW On/Off-Grid Solar Hybrid Inverter",
+    "brand_line": "SUVARNA™",
+    "short_description": "Bi-directional high-frequency solar hybrid inverter with integrated MPPT and battery storage management.",
+    "description": "Seamless microgrid synchronization, pure sine wave AC output with <3% THD, dual MPPT inputs, and smart remote app telemetry via Wi-Fi and 4G.",
+    "primary_image_url": "/images/products/indiamart/14-solar-hybrid-inverter.jpg",
+    "indiamart_url": "https://www.indiamart.com/smpselectriccontrol/",
+    "is_published": true,
+    "category": {
+      "id": "cat-solar",
+      "name": "Renewable Energy & Solar Inverters",
+      "slug": "solar-renewables"
+    },
+    "skus": [
+      {
+        "id": "sku-im-14",
+        "sku_code": "SMPS-INV-5000W-HYB",
+        "title": "5kW Pure Sine Wave Hybrid Solar Inverter",
+        "price_inr": 95000,
+        "hsn_code": "85044090",
+        "tax_rate_percent": 18,
+        "quantity_available": 18,
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "prod-im-15",
+    "slug": "mppt-solar-charge-controller",
+    "name": "SARALA DC™ Intelligent MPPT Solar Charge Controller (12V-96V)",
+    "brand_line": "SARALA DC™",
+    "short_description": "Advanced multi-phase maximum power point tracking solar controller with 99.5% tracking efficiency.",
+    "description": "Maximizes energy yield from PV arrays across varying ambient irradiance, featuring programmable 4-stage battery charging, RS485 telemetry, and LCD diagnostics.",
+    "primary_image_url": "/images/products/indiamart/15-mppt-charge-controller.jpg",
+    "indiamart_url": "https://www.indiamart.com/smpselectriccontrol/",
+    "is_published": true,
+    "category": {
+      "id": "cat-solar",
+      "name": "Renewable Energy & Solar Inverters",
+      "slug": "solar-renewables"
+    },
+    "skus": [
+      {
+        "id": "sku-im-15",
+        "sku_code": "SMPS-MPPT-60A-96V",
+        "title": "60A 96V Industrial MPPT Solar Controller",
+        "price_inr": 18500,
+        "hsn_code": "85044090",
+        "tax_rate_percent": 18,
+        "quantity_available": 35,
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "prod-im-16",
+    "slug": "heavy-duty-copper-lugs",
+    "name": "Sona Grip™ Heavy-Duty Tinned Copper Lugs & Cable Jointers",
+    "brand_line": "Sona Grip™",
+    "short_description": "Electrolytic high-conductivity forged copper lugs with tin plating for corrosion resistance and high-current joints.",
+    "description": "Designed for heavy gauge power cables from 10 sq.mm up to 630 sq.mm with inspection bell mouth, heavy wall thickness, and IS/IEC electrical standards compliance.",
+    "primary_image_url": "/images/products/indiamart/16-copper-lugs.jpg",
+    "indiamart_url": "https://www.indiamart.com/smpselectriccontrol/",
+    "is_published": true,
+    "category": {
+      "id": "cat-cables",
+      "name": "Cables, Lugs & Interconnects",
+      "slug": "cables-lugs"
+    },
+    "skus": [
+      {
+        "id": "sku-im-16",
+        "sku_code": "SMPS-LUG-PACK100",
+        "title": "Assorted Heavy-Duty Tinned Copper Lugs Pack",
+        "price_inr": 1200,
+        "hsn_code": "85389000",
+        "tax_rate_percent": 18,
+        "quantity_available": 500,
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "prod-im-17",
+    "slug": "lithium-battery-pack-48v",
+    "name": "SwarnaLi™ 48V 100Ah Lithium-Ion Battery Pack & 280Ah Prismatic Cells",
+    "brand_line": "SwarnaLi™",
+    "short_description": "Deep-cycle Lithium Iron Phosphate (LiFePO4) storage pack engineered for telecom, solar, and industrial backup.",
+    "description": "Delivers over 6,000 cycles at 80% DoD, integrated smart BMS with active balancing, CAN-bus communication, and high thermal stability.",
+    "primary_image_url": "/images/products/indiamart/17-lithium-battery.jpg",
+    "indiamart_url": "https://www.indiamart.com/smpselectriccontrol/",
+    "is_published": true,
+    "category": {
+      "id": "cat-storage",
+      "name": "Energy Storage & Lithium Batteries",
+      "slug": "energy-storage"
+    },
+    "skus": [
+      {
+        "id": "sku-im-17",
+        "sku_code": "SMPS-LION-48V100A",
+        "title": "48V 100Ah 5.12kWh LiFePO4 Rack Module",
+        "price_inr": 115000,
+        "hsn_code": "85076000",
+        "tax_rate_percent": 18,
+        "quantity_available": 22,
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "prod-im-18",
+    "slug": "telecom-hybrid-ccu",
+    "name": "SMART AMP™ Smart Hybrid Central Control Unit (CCU) for Telecom BTS",
+    "brand_line": "SMART AMP™",
+    "short_description": "All-in-one energy management and intelligent control unit for cellular tower power plants and micro-substations.",
+    "description": "Automates seamless switching between grid, solar PV, diesel generator, and battery banks with real-time fuel monitoring, alarm logging, and SNMP/MQTT backhaul.",
+    "primary_image_url": "/images/products/indiamart/18-ccu-telecom.jpg",
+    "indiamart_url": "https://www.indiamart.com/smpselectriccontrol/",
+    "is_published": true,
+    "category": {
+      "id": "cat-semi",
+      "name": "Semiconductors & Telecommunications",
+      "slug": "semiconductors-telecom"
+    },
+    "skus": [
+      {
+        "id": "sku-im-18",
+        "sku_code": "SMPS-CCU-HYB-48V",
+        "title": "Telecom BTS Smart Hybrid Energy Controller",
+        "price_inr": 58000,
+        "hsn_code": "85044090",
+        "tax_rate_percent": 18,
+        "quantity_available": 20,
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "prod-im-19",
+    "slug": "rack-mounted-online-ups",
+    "name": "SMPS SMART AMP™ Industrial Rack-Mounted Online UPS (1kVA - 10kVA)",
+    "brand_line": "SMART AMP™",
+    "short_description": "True double-conversion high-frequency online rack-mounted UPS system for data centers and lab bays.",
+    "description": "Zero transfer time (0ms), unity power factor, wide input voltage tolerance, and hot-swappable battery expansion trays for critical mission infrastructure.",
+    "primary_image_url": "/images/products/indiamart/19-rack-mounted-ups.jpg",
+    "indiamart_url": "https://www.indiamart.com/smpselectriccontrol/",
+    "is_published": true,
+    "category": {
+      "id": "cat-psu",
+      "name": "Industrial SMPS & Power Supplies",
+      "slug": "power-supplies"
+    },
+    "skus": [
+      {
+        "id": "sku-im-19",
+        "sku_code": "SMPS-UPS-RACK-3KVA",
+        "title": "3kVA Rack-Mounted Double-Conversion UPS",
+        "price_inr": 48000,
+        "hsn_code": "85044090",
+        "tax_rate_percent": 18,
+        "quantity_available": 16,
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "prod-im-20",
+    "slug": "multi-output-ac-dc-smps",
+    "name": "SMPS Multi-Output Industrial AC-DC Power Supply Unit (PSU)",
+    "brand_line": "SMART AMP™",
+    "short_description": "Multi-rail regulated power supply delivering concurrent 5V, 12V, 24V, and 48V DC outputs from single AC mains.",
+    "description": "Designed for industrial automation enclosures, robotics testbenches, and control systems requiring isolated multi-voltage rails with independent overload protection.",
+    "primary_image_url": "/images/products/indiamart/20-multi-output-ac-dc-smps.jpg",
+    "indiamart_url": "https://www.indiamart.com/smpselectriccontrol/",
+    "is_published": true,
+    "category": {
+      "id": "cat-psu",
+      "name": "Industrial SMPS & Power Supplies",
+      "slug": "power-supplies"
+    },
+    "skus": [
+      {
+        "id": "sku-im-20",
+        "sku_code": "SMPS-PSU-MULTI-QUAD",
+        "title": "Quad-Output 5V/12V/24V/48V Industrial PSU",
+        "price_inr": 18500,
+        "hsn_code": "85044090",
+        "tax_rate_percent": 18,
+        "quantity_available": 28,
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "prod-im-21",
+    "slug": "mono-perc-solar-pv-module",
+    "name": "SUVARNA™ Mono PERC Half-Cut 560Wp - 595Wp Solar PV Module",
+    "brand_line": "SUVARNA™",
+    "short_description": "Tier-1 certified high-efficiency 144-cell M10 bifacial / monofacial solar photovoltaic panels.",
+    "description": "Features multi-busbar half-cut cell technology, anti-PID glass encapsulation, 21.8% module conversion efficiency, and BIS IS 14286 / IEC 61215 certifications.",
+    "primary_image_url": "/images/products/indiamart/21-solar-pv-module.jpg",
+    "indiamart_url": "https://www.indiamart.com/smpselectriccontrol/",
+    "is_published": true,
+    "category": {
+      "id": "cat-solar",
+      "name": "Renewable Energy & Solar Inverters",
+      "slug": "solar-renewables"
+    },
+    "skus": [
+      {
+        "id": "sku-im-21",
+        "sku_code": "SMPS-PV-560WP-M10",
+        "title": "560Wp Monocrystalline Half-Cut Solar Panel",
+        "price_inr": 14800,
+        "hsn_code": "85414300",
+        "tax_rate_percent": 18,
+        "quantity_available": 120,
+        "is_active": true
+      }
+    ]
+  },
+  {
+    "id": "prod-im-22",
+    "slug": "ac-dc-smps-charger-12v-30a",
+    "name": "SARALA DC™ 230V AC to 12V 30A High-Current SMPS Battery Charger",
+    "brand_line": "SARALA DC™",
+    "short_description": "Compact switch-mode industrial battery charger engineered for 12V automotive, generator starting, and backup banks.",
+    "description": "Three-stage automatic CC/CV/Float charging algorithm with over-temperature thermal foldback, short-circuit protection, and rugged aluminum heat sink enclosure.",
+    "primary_image_url": "/images/products/indiamart/22-ac-dc-smps-charger.jpg",
+    "indiamart_url": "https://www.indiamart.com/smpselectriccontrol/",
+    "is_published": true,
+    "category": {
+      "id": "cat-psu",
+      "name": "Industrial SMPS & Power Supplies",
+      "slug": "power-supplies"
+    },
+    "skus": [
+      {
+        "id": "sku-im-22",
+        "sku_code": "SMPS-CHG-12V30A",
+        "title": "12V 30A CC/CV Automated SMPS Charger",
+        "price_inr": 8200,
+        "hsn_code": "85044090",
+        "tax_rate_percent": 18,
+        "quantity_available": 45,
+        "is_active": true
+      }
+    ]
+  }
+]

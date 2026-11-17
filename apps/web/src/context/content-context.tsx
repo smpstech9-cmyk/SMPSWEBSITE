@@ -44,9 +44,7 @@ export function ContentProvider({ children }: { children: React.ReactNode }) {
     // 2. Fetch authoritative data from Database API
     fetchSiteContentFromDatabase().then((dbContent) => {
       if (dbContent) {
-        startTransition(() => {
-          setContent(dbContent);
-        });
+        setContent(dbContent);
         if (typeof window !== "undefined") {
           localStorage.setItem(STORAGE_KEY, JSON.stringify(dbContent));
         }
@@ -55,7 +53,8 @@ export function ContentProvider({ children }: { children: React.ReactNode }) {
 
     // 3. Sync across tabs/windows
     const handleUpdate = () => {
-      startTransition(() => {
+      // Defer to microtask so we never trigger state transitions during render
+      queueMicrotask(() => {
         setContent(loadSiteContent());
       });
     };
@@ -72,7 +71,10 @@ export function ContentProvider({ children }: { children: React.ReactNode }) {
     setIsSaving(true);
     setContent((prev) => {
       const next = updater(prev);
-      saveSiteContent(next); // Saves to localStorage, triggers smps-cms-updated, and calls database API
+      // Asynchronously schedule persistent storage write outside React render cycle
+      queueMicrotask(() => {
+        saveSiteContent(next);
+      });
       return next;
     });
     setLastSavedAt(new Date().toLocaleTimeString());

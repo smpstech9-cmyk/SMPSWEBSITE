@@ -55,6 +55,7 @@ yarn-error.log*
 pnpm-debug.log*
 
 *.zip
+*.tsbuildinfo
 
 
 # Source product materials

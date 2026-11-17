@@ -1,38 +1,48 @@
 import { NextResponse, NextRequest } from "next/server";
+import { getCmsContent, saveCmsContent } from "@/lib/server-storage";
+import { FullSiteContent } from "@/lib/cms-store";
 
-const BACKEND_URL = process.env.API_BASE_URL || process.env.NEXT_PUBLIC_API_URL || "https://smpswebsite.onrender.com";
+export const dynamic = "force-dynamic";
+
+const BACKEND_URL = process.env.API_BASE_URL || process.env.NEXT_PUBLIC_API_URL;
 
 export async function GET() {
   try {
-    const res = await fetch(`${BACKEND_URL}/api/v1/content`, {
-      cache: "no-store",
-    });
-    if (!res.ok) {
-      return NextResponse.json({}, { status: res.status });
-    }
-    const data = await res.json();
-    return NextResponse.json(data);
+    const content = await getCmsContent();
+    return NextResponse.json(content);
   } catch (err) {
-    console.error("Error fetching content from backend API:", err);
-    return NextResponse.json({}, { status: 500 });
+    console.error("Local CMS storage read error:", err);
+    return NextResponse.json({ error: "Failed to read content" }, { status: 500 });
   }
 }
 
 export async function PUT(req: NextRequest) {
   try {
-    const body = await req.json();
-    const res = await fetch(`${BACKEND_URL}/api/v1/content`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    });
-    if (!res.ok) {
-      return NextResponse.json({ error: "Failed to save content" }, { status: res.status });
+    const body: FullSiteContent = await req.json();
+    const success = await saveCmsContent(body);
+
+    if (!success) {
+      return NextResponse.json({ error: "Failed to persist content locally" }, { status: 500 });
     }
-    const saved = await res.json();
-    return NextResponse.json(saved);
+
+    // Optional background sync to remote backend if alive
+    if (BACKEND_URL && !BACKEND_URL.includes("localhost")) {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 2000);
+
+      fetch(`${BACKEND_URL}/api/v1/content`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+        signal: controller.signal,
+      })
+        .catch(() => {})
+        .finally(() => clearTimeout(timeout));
+    }
+
+    return NextResponse.json(body);
   } catch (err) {
-    console.error("Error saving content to backend API:", err);
+    console.error("Error saving content:", err);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }

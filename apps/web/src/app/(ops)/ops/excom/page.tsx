@@ -13,15 +13,36 @@ import {
   GraduationCap,
   Mail,
   Building2,
+  Camera,
+  Image as ImageIcon,
+  Sparkles,
+  UploadCloud,
+  X,
 } from "lucide-react";
 import { useSiteContent } from "@/context/content-context";
 import { ExComMemberItem } from "@/lib/cms-store";
+import { ImageUploader } from "@/components/ui/image-uploader";
+
+function getInitials(name: string, fallbackIndex?: number): string {
+  const cleaned = (name || "")
+    .replace(/^(mr\.|ms\.|dr\.|mrs\.|prof\.)\s+/i, "")
+    .trim();
+  const parts = cleaned.split(/\s+/).filter(Boolean);
+  if (parts.length >= 2) {
+    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  }
+  if (parts.length === 1 && parts[0].length >= 2) {
+    return parts[0].slice(0, 2).toUpperCase();
+  }
+  return fallbackIndex !== undefined ? `#${fallbackIndex + 1}` : "EC";
+}
 
 export default function ExComEditorPage() {
   const { content, updateSection } = useSiteContent();
   const [members, setMembers] = useState<ExComMemberItem[]>(content.excom || []);
   const [savedSuccess, setSavedSuccess] = useState(false);
   const [isAddingMember, setIsAddingMember] = useState(false);
+  const [activeUploaderMemberId, setActiveUploaderMemberId] = useState<string | null>(null);
 
   useEffect(() => {
     if (content.excom) {
@@ -37,6 +58,7 @@ export default function ExComEditorPage() {
   const [newQualifications, setNewQualifications] = useState("Ph.D. (Power Systems)");
   const [newBio, setNewBio] = useState("");
   const [newEmail, setNewEmail] = useState("");
+  const [newPhotoUrl, setNewPhotoUrl] = useState("");
 
   const handleSave = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
@@ -70,6 +92,8 @@ export default function ExComEditorPage() {
       qualifications: newQualifications.trim(),
       bio: newBio.trim() || "Advises curriculum accreditation and industrial testbench alignment.",
       email: newEmail.trim() || "council@vtu.ac.in",
+      photoUrl: newPhotoUrl.trim() || undefined,
+      category: "management",
     };
 
     const updated = [...members, newMember];
@@ -80,6 +104,7 @@ export default function ExComEditorPage() {
     setNewName("");
     setNewBio("");
     setNewEmail("");
+    setNewPhotoUrl("");
     setIsAddingMember(false);
     setSavedSuccess(true);
     setTimeout(() => setSavedSuccess(false), 2500);
@@ -110,7 +135,7 @@ export default function ExComEditorPage() {
           <Link
             href="/excom"
             target="_blank"
-            className="px-4 py-2.5 rounded-full bg-white hover:bg-[#e8e8ed] text-xs font-semibold text-[#1d1d1f] border border-[#e5e5ea] transition inline-flex items-center gap-1.5"
+            className="px-4 py-2.5 rounded-full bg-white hover:bg-[#e8e8ed] text-xs font-semibold text-[#1d1d1f] border border-[#e5e5ea] transition inline-flex items-center gap-1.5 shadow-xs"
           >
             <ExternalLink className="w-3.5 h-3.5" />
             <span>View Public ExCom</span>
@@ -139,8 +164,13 @@ export default function ExComEditorPage() {
         <form onSubmit={handleAddMember} className="apple-card-elevated rounded-[28px] border-2 border-blue-200 bg-white p-6 sm:p-8 space-y-5 shadow-lg animate-in fade-in-50 duration-200">
           <div className="flex items-center justify-between border-b border-[#e5e5ea] pb-3">
             <div>
-              <h3 className="text-base font-bold text-[#1d1d1f]">Add Executive Committee Member</h3>
-              <p className="text-xs text-[#6e6e73]">Register university council or industrial advisory leadership</p>
+              <div className="flex items-center gap-2">
+                <span className="p-1 rounded-lg bg-blue-50 text-[#0071e3]">
+                  <Sparkles className="w-4 h-4" />
+                </span>
+                <h3 className="text-base font-bold text-[#1d1d1f]">Add Executive Committee Member</h3>
+              </div>
+              <p className="text-xs text-[#6e6e73]">Register university council or industrial advisory leadership with portrait photo</p>
             </div>
             <button
               type="button"
@@ -149,6 +179,63 @@ export default function ExComEditorPage() {
             >
               Cancel
             </button>
+          </div>
+
+          {/* Photo Upload Section for New Member */}
+          <div className="bg-[#f5f5f7]/60 p-4 sm:p-5 rounded-2xl border border-[#e5e5ea] space-y-3">
+            <div className="flex items-center justify-between">
+              <label className="block text-xs font-bold text-[#1d1d1f] flex items-center gap-2">
+                <Camera className="w-4 h-4 text-[#0071e3]" />
+                <span>Executive Portrait Photo (Upload / URL)</span>
+              </label>
+              {newPhotoUrl && (
+                <button
+                  type="button"
+                  onClick={() => setNewPhotoUrl("")}
+                  className="text-[11px] text-rose-600 hover:underline flex items-center gap-1"
+                >
+                  <X className="w-3 h-3" /> Clear Photo
+                </button>
+              )}
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center gap-4">
+              {newPhotoUrl ? (
+                <div className="relative w-20 h-20 rounded-2xl overflow-hidden border-2 border-blue-300 shadow-md shrink-0 bg-neutral-100">
+                  <img
+                    src={newPhotoUrl}
+                    alt="Preview"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      (e.target as HTMLElement).style.display = "none";
+                    }}
+                  />
+                </div>
+              ) : (
+                <div className="w-20 h-20 rounded-2xl bg-blue-50 border-2 border-dashed border-blue-200 text-[#0071e3] flex flex-col items-center justify-center shrink-0">
+                  <Camera className="w-6 h-6 opacity-60" />
+                  <span className="text-[9px] font-bold mt-1 uppercase text-[#0071e3]/80">No Photo</span>
+                </div>
+              )}
+
+              <div className="w-full space-y-2">
+                <ImageUploader
+                  value={newPhotoUrl}
+                  onChange={setNewPhotoUrl}
+                  label="Upload Photo from System"
+                  helperText="Choose PNG, JPG, or WebP. The photo will appear in high-res on the ExCom council card & modal."
+                />
+                <div>
+                  <input
+                    type="text"
+                    value={newPhotoUrl}
+                    onChange={(e) => setNewPhotoUrl(e.target.value)}
+                    placeholder="Or paste image URL (e.g. /images/... or https://...)"
+                    className="w-full px-3 py-1.5 rounded-lg border border-[#e5e5ea] text-xs font-mono bg-white"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -267,113 +354,215 @@ export default function ExComEditorPage() {
             </div>
             <h3 className="text-base font-bold text-[#1d1d1f]">No Committee Members in Database</h3>
             <p className="text-xs text-[#6e6e73] max-w-sm mx-auto">
-              All committee members have been purged. Click &quot;+ Add Committee Member&quot; above whenever you are ready to configure a member profile.
+              All committee members have been purged. Click &quot;+ Add Member&quot; above whenever you are ready to configure a member profile.
             </p>
           </div>
         ) : (
           members.map((member, idx) => (
-          <div
-            key={member.id}
-            className="apple-card-elevated rounded-[28px] border border-[#e5e5ea] bg-white p-6 sm:p-7 space-y-4 shadow-xs"
-          >
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#e5e5ea] pb-3">
-              <div className="flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-blue-50 text-[#0071e3] font-bold text-xs flex items-center justify-center">
-                  #{idx + 1}
-                </span>
-                <div>
-                  <h3 className="text-base font-bold text-[#1d1d1f]">{member.name}</h3>
-                  <span className="text-[11px] text-[#6e6e73]">{member.designation}</span>
+            <div
+              key={member.id}
+              className="apple-card-elevated rounded-[28px] border border-[#e5e5ea] bg-white p-6 sm:p-7 space-y-5 shadow-xs transition hover:border-[#0071e3]/30"
+            >
+              {/* Member Card Header with Portrait Preview */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#e5e5ea] pb-4">
+                <div className="flex items-center gap-4">
+                  {/* Portrait Avatar Preview */}
+                  {member.photoUrl ? (
+                    <div className="relative w-14 h-14 rounded-2xl overflow-hidden border-2 border-blue-200 shadow-sm shrink-0 bg-neutral-100 group">
+                      <img
+                        src={member.photoUrl}
+                        alt={member.name}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          (e.target as HTMLElement).style.display = "none";
+                        }}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => handleMemberChange(member.id, "photoUrl", "")}
+                        className="absolute inset-0 bg-black/70 text-white text-[10px] font-semibold flex items-center justify-center opacity-0 group-hover:opacity-100 transition"
+                        title="Remove photo"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white font-extrabold text-sm flex items-center justify-center shrink-0 shadow-sm">
+                      {getInitials(member.name, idx)}
+                    </div>
+                  )}
+
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-[#0071e3] border border-blue-100">
+                        #{idx + 1}
+                      </span>
+                      <h3 className="text-base font-bold text-[#1d1d1f]">{member.name}</h3>
+                    </div>
+                    <span className="text-xs text-[#0071e3] font-medium">{member.role}</span>
+                    <span className="text-[11px] text-[#86868b] block">{member.designation}</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setActiveUploaderMemberId(
+                        activeUploaderMemberId === member.id ? null : member.id
+                      )
+                    }
+                    className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition inline-flex items-center gap-1.5 ${
+                      activeUploaderMemberId === member.id
+                        ? "bg-[#0071e3] text-white border-[#0071e3]"
+                        : "bg-blue-50 hover:bg-blue-100 text-[#0071e3] border-blue-200"
+                    }`}
+                  >
+                    <Camera className="w-3.5 h-3.5" />
+                    <span>{member.photoUrl ? "Change Photo" : "Upload Photo"}</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleDelete(member.id)}
+                    className="p-1.5 rounded-full text-gray-400 hover:text-rose-600 hover:bg-rose-50 transition"
+                    title="Remove member"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
                 </div>
               </div>
 
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={() => handleDelete(member.id)}
-                  className="p-1.5 rounded-full text-gray-400 hover:text-rose-600 hover:bg-rose-50 transition"
-                  title="Remove member"
-                >
-                  <Trash2 className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
+              {/* Inline Photo Uploader Panel for Existing Member */}
+              {activeUploaderMemberId === member.id && (
+                <div className="p-4 rounded-2xl bg-blue-50/50 border border-blue-200 space-y-3 animate-in fade-in-50 duration-200">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-bold text-[#1d1d1f] flex items-center gap-1.5">
+                      <UploadCloud className="w-4 h-4 text-[#0071e3]" />
+                      Upload Portrait for {member.name}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setActiveUploaderMemberId(null)}
+                      className="text-xs text-[#6e6e73] hover:text-[#1d1d1f]"
+                    >
+                      Done
+                    </button>
+                  </div>
+                  <ImageUploader
+                    value={member.photoUrl || ""}
+                    onChange={(url) => {
+                      handleMemberChange(member.id, "photoUrl", url);
+                      updateSection(
+                        "excom",
+                        members.map((m) => (m.id === member.id ? { ...m, photoUrl: url } : m))
+                      );
+                    }}
+                    label="Choose Member Photo File"
+                    helperText="Upload any portrait photo from your device. It will be stored and automatically updated across the website."
+                  />
+                </div>
+              )}
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <div>
-                <label className="block text-[10px] font-semibold text-[#86868b] uppercase mb-1">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  value={member.name}
-                  onChange={(e) => handleMemberChange(member.id, "name", e.target.value)}
-                  className="w-full px-3 py-1.5 rounded-lg border border-[#e5e5ea] text-xs font-bold text-[#1d1d1f]"
-                />
+              {/* Editable Fields */}
+              <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
+                <div className="sm:col-span-1">
+                  <label className="block text-[10px] font-semibold text-[#86868b] uppercase mb-1">
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    value={member.name}
+                    onChange={(e) => handleMemberChange(member.id, "name", e.target.value)}
+                    className="w-full px-3 py-1.5 rounded-lg border border-[#e5e5ea] text-xs font-bold text-[#1d1d1f]"
+                  />
+                </div>
+                <div className="sm:col-span-1">
+                  <label className="block text-[10px] font-semibold text-[#86868b] uppercase mb-1">
+                    Mandate / Role
+                  </label>
+                  <input
+                    type="text"
+                    value={member.role}
+                    onChange={(e) => handleMemberChange(member.id, "role", e.target.value)}
+                    className="w-full px-3 py-1.5 rounded-lg border border-[#e5e5ea] text-xs text-[#0071e3] font-semibold"
+                  />
+                </div>
+                <div className="sm:col-span-1">
+                  <label className="block text-[10px] font-semibold text-[#86868b] uppercase mb-1">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    value={member.email}
+                    onChange={(e) => handleMemberChange(member.id, "email", e.target.value)}
+                    className="w-full px-3 py-1.5 rounded-lg border border-[#e5e5ea] text-xs font-mono text-[#1d1d1f]"
+                  />
+                </div>
+                <div className="sm:col-span-1">
+                  <label className="block text-[10px] font-semibold text-[#86868b] uppercase mb-1">
+                    Photo URL / Link
+                  </label>
+                  <div className="flex items-center gap-1.5">
+                    <input
+                      type="text"
+                      value={member.photoUrl || ""}
+                      placeholder="e.g. /images/... or URL"
+                      onChange={(e) => handleMemberChange(member.id, "photoUrl", e.target.value)}
+                      className="w-full px-3 py-1.5 rounded-lg border border-[#e5e5ea] text-xs font-mono text-[#1d1d1f]"
+                    />
+                    {member.photoUrl && (
+                      <button
+                        type="button"
+                        onClick={() => handleMemberChange(member.id, "photoUrl", "")}
+                        className="p-1.5 text-xs text-rose-500 hover:bg-rose-50 rounded-lg"
+                        title="Clear photo"
+                      >
+                        <X className="w-3.5 h-3.5" />
+                      </button>
+                    )}
+                  </div>
+                </div>
               </div>
-              <div>
-                <label className="block text-[10px] font-semibold text-[#86868b] uppercase mb-1">
-                  Mandate / Role
-                </label>
-                <input
-                  type="text"
-                  value={member.role}
-                  onChange={(e) => handleMemberChange(member.id, "role", e.target.value)}
-                  className="w-full px-3 py-1.5 rounded-lg border border-[#e5e5ea] text-xs text-[#0071e3] font-semibold"
-                />
-              </div>
-              <div>
-                <label className="block text-[10px] font-semibold text-[#86868b] uppercase mb-1">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  value={member.email}
-                  onChange={(e) => handleMemberChange(member.id, "email", e.target.value)}
-                  className="w-full px-3 py-1.5 rounded-lg border border-[#e5e5ea] text-xs font-mono text-[#1d1d1f]"
-                />
-              </div>
-            </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-[10px] font-semibold text-[#86868b] uppercase mb-1">
+                    Qualifications
+                  </label>
+                  <input
+                    type="text"
+                    value={member.qualifications}
+                    onChange={(e) => handleMemberChange(member.id, "qualifications", e.target.value)}
+                    className="w-full px-3 py-1.5 rounded-lg border border-[#e5e5ea] text-xs text-[#6e6e73]"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-semibold text-[#86868b] uppercase mb-1">
+                    Department
+                  </label>
+                  <input
+                    type="text"
+                    value={member.department}
+                    onChange={(e) => handleMemberChange(member.id, "department", e.target.value)}
+                    className="w-full px-3 py-1.5 rounded-lg border border-[#e5e5ea] text-xs text-[#6e6e73]"
+                  />
+                </div>
+              </div>
+
               <div>
                 <label className="block text-[10px] font-semibold text-[#86868b] uppercase mb-1">
-                  Qualifications
+                  Bio
                 </label>
-                <input
-                  type="text"
-                  value={member.qualifications}
-                  onChange={(e) => handleMemberChange(member.id, "qualifications", e.target.value)}
+                <textarea
+                  rows={2}
+                  value={member.bio}
+                  onChange={(e) => handleMemberChange(member.id, "bio", e.target.value)}
                   className="w-full px-3 py-1.5 rounded-lg border border-[#e5e5ea] text-xs text-[#6e6e73]"
                 />
               </div>
-              <div>
-                <label className="block text-[10px] font-semibold text-[#86868b] uppercase mb-1">
-                  Department
-                </label>
-                <input
-                  type="text"
-                  value={member.department}
-                  onChange={(e) => handleMemberChange(member.id, "department", e.target.value)}
-                  className="w-full px-3 py-1.5 rounded-lg border border-[#e5e5ea] text-xs text-[#6e6e73]"
-                />
-              </div>
             </div>
-
-            <div>
-              <label className="block text-[10px] font-semibold text-[#86868b] uppercase mb-1">
-                Bio
-              </label>
-              <textarea
-                rows={2}
-                value={member.bio}
-                onChange={(e) => handleMemberChange(member.id, "bio", e.target.value)}
-                className="w-full px-3 py-1.5 rounded-lg border border-[#e5e5ea] text-xs text-[#6e6e73]"
-              />
-            </div>
-          </div>
-        ))
-      )}
+          ))
+        )}
       </div>
     </div>
   );

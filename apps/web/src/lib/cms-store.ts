@@ -61,6 +61,7 @@ export interface HomePageContent {
   milestones: CMS_MilestoneItem[];
   domains: CMS_DomainPillar[];
   upcomingProducts: CMS_UpcomingProduct[];
+  clientLogos?: Array<{ name: string; path: string }>;
   faqs: FAQItem[];
   ctaTitle: string;
   ctaSubtitle: string;
@@ -129,6 +130,11 @@ export interface ExComMemberItem {
   qualifications: string;
   bio: string;
   email: string;
+  photoUrl?: string;
+  category?: "management" | "employees" | "advisory";
+  mandates?: string[];
+  publications?: string[];
+  patentsHandled?: string[];
 }
 
 export interface CMS_EventItem {
@@ -440,6 +446,27 @@ export const INITIAL_SITE_CONTENT: FullSiteContent = {
         availability: "Engineering Samples & Dev Boards",
         link: "/store",
       },
+    ],
+    clientLogos: [
+      { name: "Reliance Jio", path: "/logos/clients/client-14.png" },
+      { name: "Bharat Electronics Limited (BEL)", path: "/logos/clients/client-1.png" },
+      { name: "BSNL Telecom", path: "/logos/clients/client-7.png" },
+      { name: "Larsen & Toubro (L&T)", path: "/logos/clients/client-8.png" },
+      { name: "Indian Oil Corporation", path: "/logos/clients/client-9.png" },
+      { name: "TowerVision Infrastructure", path: "/logos/clients/client-10.png" },
+      { name: "BP (British Petroleum)", path: "/logos/clients/client-11.png" },
+      { name: "ACME Solar Power", path: "/logos/clients/client-12.png" },
+      { name: "BSES", path: "/logos/clients/client-13.png" },
+      { name: "Reliance Communications", path: "/logos/clients/client-15.png" },
+      { name: "Tata Group", path: "/logos/clients/client-16.png" },
+      { name: "Indian Railways", path: "/logos/clients/client-17.png" },
+      { name: "GAIL (India) Limited", path: "/logos/clients/client-18.png" },
+      { name: "Indian Army", path: "/logos/clients/indian-army.png" },
+      { name: "Ericsson", path: "/logos/clients/client-19.png" },
+      { name: "KEC International", path: "/logos/clients/client-4.png" },
+      { name: "Adventz Group", path: "/logos/clients/client-6.png" },
+      { name: "Huawei Enterprise", path: "/logos/clients/client-3.png" },
+      { name: "Vodafone Idea (Vi)", path: "/logos/clients/client-2.png" },
     ],
     faqs: [
       {

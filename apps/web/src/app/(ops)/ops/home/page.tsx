@@ -42,7 +42,7 @@ export default function HomeEditorPage() {
   }, [content.home]);
   const [savedSuccess, setSavedSuccess] = useState(false);
   const [activeTab, setActiveTab] = useState<
-    "hero" | "stats" | "technologies" | "milestones" | "domains" | "upcoming" | "faqs" | "cta"
+    "hero" | "stats" | "technologies" | "milestones" | "domains" | "upcoming" | "clients" | "faqs" | "cta"
   >("hero");
 
   const handleSave = (e: React.FormEvent) => {
@@ -50,6 +50,32 @@ export default function HomeEditorPage() {
     updateSection("home", form);
     setSavedSuccess(true);
     setTimeout(() => setSavedSuccess(false), 2500);
+  };
+
+  // Client Logos Handlers
+  const handleClientLogoChange = (index: number, field: "name" | "path", value: string) => {
+    setForm((prev) => {
+      const next = [...(prev.clientLogos || [])];
+      next[index] = { ...next[index], [field]: value };
+      return { ...prev, clientLogos: next };
+    });
+  };
+
+  const handleAddClientLogo = () => {
+    setForm((prev) => ({
+      ...prev,
+      clientLogos: [
+        ...(prev.clientLogos || []),
+        { name: "New Client / Off-Taker", path: "/logos/clients/client-1.png" },
+      ],
+    }));
+  };
+
+  const handleRemoveClientLogo = (index: number) => {
+    setForm((prev) => ({
+      ...prev,
+      clientLogos: (prev.clientLogos || []).filter((_, i) => i !== index),
+    }));
   };
 
   // 1. Stats Handlers
@@ -230,6 +256,7 @@ export default function HomeEditorPage() {
     { key: "milestones", label: `Milestones (${(form.milestones || []).length})` },
     { key: "domains", label: `Domains (${(form.domains || []).length})` },
     { key: "upcoming", label: `Upcoming (${(form.upcomingProducts || []).length})` },
+    { key: "clients", label: `Client Logos (${(form.clientLogos || []).length})` },
     { key: "faqs", label: `FAQs (${(form.faqs || []).length})` },
     { key: "cta", label: "CTA Banner" },
   ];
@@ -940,6 +967,90 @@ export default function HomeEditorPage() {
                       )
                     }
                     className="w-full px-3 py-2 rounded-lg border border-[#e5e5ea] bg-white text-xs font-mono"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* 6.5 CLIENT & OFF-TAKER LOGOS */}
+      {activeTab === "clients" && (
+        <div className="apple-card-elevated rounded-[28px] border border-[#e5e5ea] bg-white p-6 sm:p-8 space-y-6 shadow-xs">
+          <div className="flex items-center justify-between border-b border-[#e5e5ea] pb-4">
+            <div>
+              <h2 className="text-lg font-bold text-[#1d1d1f] flex items-center gap-2">
+                <Layers className="w-5 h-5 text-[#0071e3]" />
+                Industrial Customers & Off-Taker Logos ({(form.clientLogos || []).length})
+              </h2>
+              <p className="text-xs text-[#6e6e73] mt-0.5">
+                Manage the sequence, partner names, and logo image assets displayed on the public homepage grid.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={handleAddClientLogo}
+              className="px-3.5 py-1.5 rounded-full bg-blue-50 text-[#0071e3] hover:bg-blue-100 text-xs font-semibold flex items-center gap-1 transition"
+            >
+              <Plus className="w-3.5 h-3.5" />
+              <span>Add Client Logo</span>
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {(form.clientLogos || []).map((client, idx) => (
+              <div
+                key={idx}
+                className="p-4 rounded-2xl border border-[#e5e5ea] bg-[#fbfbfd] space-y-3 relative group"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-mono font-bold text-[#86868b] px-2 py-0.5 rounded-full bg-white border border-[#e5e5ea]">
+                    #{idx + 1}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveClientLogo(idx)}
+                    className="p-1 rounded-full text-[#86868b] hover:text-rose-600 hover:bg-rose-50 transition"
+                    title="Remove Logo"
+                  >
+                    <Trash2 className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+
+                {/* Logo Preview */}
+                <div className="h-16 w-full rounded-xl bg-white border border-[#e5e5ea] p-2 flex items-center justify-center">
+                  <img
+                    src={client.path}
+                    alt={client.name}
+                    className="max-h-full max-w-full object-contain"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLElement).style.display = "none";
+                    }}
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-[10px] font-bold uppercase text-[#86868b] mb-1">
+                    Partner / Client Name
+                  </label>
+                  <input
+                    type="text"
+                    value={client.name}
+                    onChange={(e) => handleClientLogoChange(idx, "name", e.target.value)}
+                    className="w-full px-3 py-1.5 bg-white border border-[#e5e5ea] rounded-lg text-xs text-[#1d1d1f] focus:outline-none focus:border-[#0071e3]"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-[10px] font-bold uppercase text-[#86868b] mb-1">
+                    Image Asset Path or URL
+                  </label>
+                  <input
+                    type="text"
+                    value={client.path}
+                    onChange={(e) => handleClientLogoChange(idx, "path", e.target.value)}
+                    className="w-full px-3 py-1.5 bg-white border border-[#e5e5ea] rounded-lg text-xs font-mono text-[#1d1d1f] focus:outline-none focus:border-[#0071e3]"
                   />
                 </div>
               </div>

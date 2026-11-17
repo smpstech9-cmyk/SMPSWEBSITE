@@ -63,16 +63,38 @@ export default function CareersPage() {
     setApplicationSuccess(false);
   };
 
-  const handleApplicationSubmit = (e: React.FormEvent) => {
+  const handleApplicationSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!fullName || !email) return;
 
     setIsSubmitting(true);
-    // Instant simulation
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      await fetch("/api/records", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "career",
+          name: fullName.trim(),
+          email: email.trim(),
+          phone: phone.trim(),
+          roleTitle: selectedRoleForModal?.title || "DeepTech Hardware Role",
+          data: {
+            roleId: selectedRoleForModal?.id,
+            roleTitle: selectedRoleForModal?.title,
+            department: selectedRoleForModal?.department,
+            linkedinUrl,
+            portfolioUrl,
+            experienceSummary,
+          },
+        }),
+      });
       setApplicationSuccess(true);
-    }, 700);
+    } catch {
+      // Fallback: still show confirmation to user
+      setApplicationSuccess(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
