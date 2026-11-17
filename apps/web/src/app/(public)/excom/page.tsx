@@ -75,6 +75,7 @@ const PERMANENT_EXCOM_MEMBERS: Member[] = [
     contactEmail: "info@smpstechlab.com",
     badge: "Minds behind Mission",
     colorScheme: "from-blue-600 to-indigo-700",
+    photoUrl: "https://res.cloudinary.com/ev3cjhy7/image/upload/v1794893796/kx8xejmvonjqhdqudnow.png",
   },
   {
     id: "excom-ars",
@@ -92,6 +93,7 @@ const PERMANENT_EXCOM_MEMBERS: Member[] = [
     contactEmail: "info@smpstechlab.com",
     badge: "Minds behind Mission",
     colorScheme: "from-blue-600 to-indigo-700",
+    photoUrl: "https://res.cloudinary.com/ev3cjhy7/image/upload/v1794894236/o94h9olo1dcnnb7fmm20.png",
   },
   {
     id: "excom-sk",

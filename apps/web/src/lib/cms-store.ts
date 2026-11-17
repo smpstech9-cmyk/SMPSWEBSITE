@@ -644,6 +644,7 @@ export const INITIAL_SITE_CONTENT: FullSiteContent = {
       qualifications: "B.E., Electronics & Communication Engineering, REVA University",
       bio: "Mr. Amareshwar Karatagi is a Co-Founder and the Chief Strategic Officer of SMPS Tech Lab, and the architect of its growth strategy. He also serves as Special Industrial Advisor guiding technological alliances, ODM co-development, and enterprise commercial partnerships.",
       email: "amareshwar.karatagi@smpstechlab.com",
+      photoUrl: "https://res.cloudinary.com/ev3cjhy7/image/upload/v1794893796/kx8xejmvonjqhdqudnow.png",
     },
     {
       id: "excom-ars",
@@ -654,6 +655,7 @@ export const INITIAL_SITE_CONTENT: FullSiteContent = {
       qualifications: "B.E., Information Science & Engineering • MBA",
       bio: "Ms. A. R. Shalini is the Chief Business Development Officer at SMPS Tech Lab, driving strategic growth, operational effectiveness and ecosystem partnerships across enterprise energy storage, microgrid deployments, and university joint research programs.",
       email: "shalini.ar@smpstechlab.com",
+      photoUrl: "https://res.cloudinary.com/ev3cjhy7/image/upload/v1794894236/o94h9olo1dcnnb7fmm20.png",
     },
     {
       id: "excom-sk",
